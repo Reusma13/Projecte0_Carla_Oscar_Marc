@@ -10,36 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projecte0
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para Registrarse.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Registrarse : Window
     {
-        Persona p = new Persona();
-        Connexio connexio = new Connexio();
-        public MainWindow()
+        public Registrarse()
         {
             InitializeComponent();
-            connexio.ConnexioBDD();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            Registrarse ventanaRegistrar = new Registrarse();
-            ventanaRegistrar.Show();
-            this.Close();
-        }
-
-        private void btnIniciarSessio_Click(object sender, RoutedEventArgs e)
-        {
-            if (txBoxUsuari.Text != "" && pwdBoxUsuari.Password != "")
+            if (txBoxDniUsuari.Text != "" && txBoxNomUsuari.Text != "" && txBoxCognom.Text != "" && pwdUsuari.Password != "")
             {
-                
+                Persona persona = new Persona(txBoxDniUsuari.Text,txBoxNomUsuari.Text,txBoxCognom.Text,pwdUsuari.Password);
+                /*if (persona.ComprovarBDD())
+                {
+
+                }*/
             }
         }
     }
