@@ -59,5 +59,35 @@ namespace Projecte0
             get { return fotos; }
             set { fotos = value; }
         }
+
+        // Metodes
+        public void ActualitzarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
+        {
+            Reserva reservaAActualitzar = reserves.Find(r => r.IdReserva == idReserva);
+            if (reservaAActualitzar != null)
+            {
+                reservaAActualitzar.Data = novaData;
+                reservaAActualitzar.Hora = novaHora;
+                reservaAActualitzar.NumComensals = numComensals;
+                reservaAActualitzar.Preferencies = preferencies;
+            }
+        }
+
+        public void ModificarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
+        {
+            Reserva reservaAModificar = reserves.Find(r => r.IdReserva == idReserva);
+            if (reservaAModificar != null)
+            {
+                reservaAModificar.Data = novaData;
+                reservaAModificar.Hora = novaHora;
+                reservaAModificar.NumComensals = numComensals;
+                reservaAModificar.Preferencies = preferencies;
+            }
+        }
+
+        public List<Reserva> VisualitzarReserves()
+        {
+            return reserves;
+        }
     }
 }

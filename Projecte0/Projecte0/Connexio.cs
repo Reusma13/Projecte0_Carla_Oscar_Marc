@@ -32,6 +32,9 @@ namespace Projecte0
                     Console.WriteLine("{0} {1} {2}", reader["Dni"], reader["nom"], reader["cognom"]);
                 }
                 reader.Close();*/
+
+                // Hem de fer un mètode per Obrir i un altre mètode per Tancar tal com ho han fet els companys en el exemple
+                // El command es fa quan tenim el text i la connexió on volem connectar
             }
             catch (Exception ex)
             {
