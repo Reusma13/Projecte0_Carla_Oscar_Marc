@@ -10,15 +10,18 @@ namespace Projecte0
     {
         // Atributs
         protected Valoracio puntuacio;
+        protected List<Reserva> reserves;
 
         // Constructors
         public Usuari() : base()
         {
             puntuacio = new Valoracio();
+            reserves = new List<Reserva>();
         }
-        public Usuari(string dni, string nom, string cognom, string password, Valoracio puntuacio) : base(dni, nom, cognom, password)
+        public Usuari(string dni, string nom, string cognom, string password, Valoracio puntuacio,List<Reserva> reserves) : base(dni, nom, cognom, password)
         {
             this.puntuacio = puntuacio;
+            this.reserves = new List<Reserva>();
         }
 
         // Propietats
@@ -26,23 +29,6 @@ namespace Projecte0
         {
             get { return puntuacio; }
             set { puntuacio = value; }
-        }
-
-        // Metodes
-        public Reserva RealitzarReserva()
-        {
-            // Implementa la lògica aquí
-            return new Reserva();
-        }
-
-        public void CancelarReserva()
-        {
-            // Implementa la lògica aquí
-        }
-
-        public void CrearValoracio()
-        {
-            // Implementa la lògica aquí
         }
 
         // Metodes
@@ -58,7 +44,6 @@ namespace Projecte0
             };
 
             reserves.Add(novaReserva);
-            // restaurante.GestionarReserves(novaReserva);  Suposem que el restaurant té un mètode per gestionar les reserves
 
             return novaReserva;
         }

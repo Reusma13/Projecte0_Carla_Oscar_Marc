@@ -15,7 +15,7 @@ namespace Projecte0
         private static string database = "projecte0";
         private static string port = "3306";
 
-        public void ConnexioBDD()
+        public void ConnexioBDD(string sql)
         {
             string connexio = $"server={server};user={user};database={database};port{port};password={password}";
             MySqlConnection connection = new MySqlConnection(connexio);

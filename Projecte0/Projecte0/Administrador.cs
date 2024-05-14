@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Mysqlx.Crud.Order.Types;
+using System.Windows.Media;
 
 namespace Projecte0
 {
@@ -10,16 +12,19 @@ namespace Projecte0
     {
         // Atributs
         private List<Restaurant> restaurants;
+        protected Connexio connexio;
 
         // Constructors
         public Administrador() : base()
         {
             restaurants = new List<Restaurant>();
             password = "admin";
+            connexio = new Connexio();
         }
         public Administrador(string dni, string nom, string cognom,string password,List<Restaurant> restaurants) : base(dni, nom, cognom, password)
         {
             this.restaurants = restaurants;
+            connexio = new Connexio();
         }
         
         // Propietats
@@ -30,24 +35,30 @@ namespace Projecte0
         }
 
         // Mètodes 
-        public void CrearRestaurant()
+        public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
         {
-            //lògica aquí
+            Restaurant nouRestaurante = new Restaurant(nom, direccio, tipusCuina, capacitat, fotos, reserves);
+            string sql = $"INSERT INTO restaurants (nom, direccio, tipusCuina, capacitat) VALUES ('{nouRestaurante.Nom}', '{nouRestaurante.Direccio}', '{nouRestaurante.TipusCuina}', {nouRestaurante.Capacitat})";
+            connexio.ConnexioBDD(sql);
         }
 
-        public void EliminarRestaurant()
+        public void EliminarRestaurant(string nom)
         {
-            //lògica aquí
+            string sql = $"DELETE FROM restaurants WHERE nom = '{nom}'";
+            connexio.ConnexioBDD(sql);
         }
 
-        public void ActualitzarPerfilRestaurant()
+        public void ActualizarPerfilRestaurante(string nom, string novaDireccio, string nouTipusCuina, int novaCapacitat, List<string> novesFotos, List<Reserva> novesReserves)
         {
-            //lògica aquí
+            string sql = $"UPDATE restaurants SET direccio = '{novaDireccio}', tipusCuina = '{nouTipusCuina}', capacitat = {novaCapacitat} WHERE nom = '{nom}'";
+            connexio.ConnexioBDD(sql);
         }
+
 
         public void VisualitzarEstadistica()
         {
-            //lògica aquí
+            // Aquí podríes implementar la lògica per visualitzar les estadístiques que necessitis.
+            // Per exemple, podríes mostrar el nombre total de restaurants, la mitjana de capacitat, etc.
         }
     }
 }
