@@ -17,7 +17,7 @@ namespace Projecte0
             restaurants = new List<Restaurant>();
             password = "admin";
         }
-        public Administrador(string dni, string nom, string cognom,string password,List<Restaurant> restaurants) : base(dni, nom, cognom, password)
+        public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : base(dni, nom, cognom, password,esAdmin)
         {
             this.restaurants = restaurants;
         }

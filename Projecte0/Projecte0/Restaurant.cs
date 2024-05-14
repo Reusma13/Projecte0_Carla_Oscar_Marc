@@ -14,6 +14,7 @@ namespace Projecte0
         protected string tipusCuina;
         protected int capacitat;
         protected List<string> fotos;
+        protected List<Reserva> reserves;
 
         // Constructors
         public Restaurant()
