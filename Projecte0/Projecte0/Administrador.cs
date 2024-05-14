@@ -28,5 +28,26 @@ namespace Projecte0
             get { return restaurants; }
             set { restaurants = value; }
         }
+
+        // Mètodes 
+        public void CrearRestaurant()
+        {
+            //lògica aquí
+        }
+
+        public void EliminarRestaurant()
+        {
+            //lògica aquí
+        }
+
+        public void ActualitzarPerfilRestaurant()
+        {
+            //lògica aquí
+        }
+
+        public void VisualitzarEstadistica()
+        {
+            //lògica aquí
+        }
     }
 }
