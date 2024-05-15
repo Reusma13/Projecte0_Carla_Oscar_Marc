@@ -15,7 +15,6 @@ namespace Projecte0
         protected Connexio connexio;
 
         // -------- Constructors --------
-
         /// <summary>
         /// Constructor buit amb la base de la clase pare
         /// </summary>
@@ -33,6 +32,7 @@ namespace Projecte0
         /// <param name="nom">El nom de l'administrador</param>
         /// <param name="cognom">El cognom de l'administrador</param>
         /// <param name="password">La contrasenya de l'administrador</param>
+        /// <param name="esAdmin"></param>
         /// <param name="restaurants">Llista de restaurants que pot administrar l'administrador</param>
         public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : base(dni, nom, cognom, password,esAdmin)
         {
@@ -49,6 +49,15 @@ namespace Projecte0
 
 
         // -------- Mètodes --------
+        /// <summary>
+        /// Crea un restaurant
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="direccio"></param>
+        /// <param name="tipusCuina"></param>
+        /// <param name="capacitat"></param>
+        /// <param name="fotos"></param>
+        /// <param name="reserves"></param>
         public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
         {
             Restaurant nouRestaurante = new Restaurant(nom, direccio, tipusCuina, capacitat, fotos, reserves);
@@ -82,6 +91,7 @@ namespace Projecte0
         /// Actualitza un perfil de restaurant
         /// </summary>
         /// <param name="nom">Nom del restaurant</param>
+        /// <param name="nouNom">Nou nom que es vol posar al restaurant</param>
         /// <param name="direccio">Direccio del restaurant</param>
         /// <param name="tipusCuina">Tipus de cuina del restaurant</param>
         /// <param name="capacitat">Capacitat del restaurant</param>
