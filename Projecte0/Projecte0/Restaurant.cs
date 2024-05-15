@@ -24,14 +24,16 @@ namespace Projecte0
             tipusCuina = "";
             capacitat = 0;
             fotos = new List<string>();
+            reserves = new List<Reserva>();
         }
-        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos)
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
         {
             this.nom = nom;
             this.direccio = direccio;
             this.tipusCuina = tipusCuina;
             this.capacitat = capacitat;
             this.fotos = fotos;
+            this.reserves = new List<Reserva>();
         }
 
         // Propietats
@@ -59,6 +61,12 @@ namespace Projecte0
         {
             get { return fotos; }
             set { fotos = value; }
+        }
+
+        public List<Reserva> Reserves
+        {
+            get { return reserves; }
+            set { reserves = value; }
         }
 
         // Metodes
@@ -89,6 +97,11 @@ namespace Projecte0
         public List<Reserva> VisualitzarReserves()
         {
             return reserves;
+        }
+
+        public void AfegirReserva(Reserva reserva)
+        {
+            reserves.Add(reserva);
         }
     }
 }
