@@ -8,11 +8,11 @@ namespace Projecte0
 {
     class Valoracio
     {
-        // Atributs
+        // -------- Atributs --------
         protected string comentari;
         protected int puntuacio;
 
-        // Constructors
+        // -------- Constructors --------
         public Valoracio()
         {
             comentari = "";
@@ -24,7 +24,7 @@ namespace Projecte0
             this.puntuacio = puntuacio;
         }
 
-        // Propietats
+        // -------- Propietats --------
         public string Comentari
         {
             get { return comentari; }
@@ -35,5 +35,6 @@ namespace Projecte0
             get { return puntuacio; }
             set { puntuacio = value; }
         }
+
     }
 }

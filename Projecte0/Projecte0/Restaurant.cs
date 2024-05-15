@@ -8,14 +8,18 @@ namespace Projecte0
 {
     class Restaurant
     {
-        // Atributs
+        // -------- Atributs --------
         protected string nom;
         protected string direccio;
         protected string tipusCuina;
         protected int capacitat;
         protected List<string> fotos;
+        protected List<Valoracio> valoracio;
 
-        // Constructors
+        // -------- Constructors --------
+        /// <summary>
+        /// Constructor buit de Restaurant
+        /// </summary>
         public Restaurant()
         {
             nom = "";
@@ -23,17 +27,29 @@ namespace Projecte0
             tipusCuina = "";
             capacitat = 0;
             fotos = new List<string>();
+            valoracio = new List<Valoracio>();
         }
-        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos)
+
+        /// <summary>
+        /// Constructor amb tots els atributs de la clase Restaurant
+        /// </summary>
+        /// <param name="nom">Nom del restaurant</param>
+        /// <param name="direccio">Direccio del restaurant</param>
+        /// <param name="tipusCuina">Tipus de cuina del restaurant</param>
+        /// <param name="capacitat">Capacitat del restaurant</param>
+        /// <param name="fotos">Llista de fotos del restaurant</param>
+        /// <param name="valoracio">Llista de valoracions del restaurant</param>
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Valoracio> valoracio)
         {
             this.nom = nom;
             this.direccio = direccio;
             this.tipusCuina = tipusCuina;
             this.capacitat = capacitat;
             this.fotos = fotos;
+            this.valoracio = valoracio;
         }
 
-        // Propietats
+        // -------- Propietats --------
         public string Nom
         {
             get { return nom; }
@@ -60,31 +76,59 @@ namespace Projecte0
             set { fotos = value; }
         }
 
-        // Metodes
-        public void ActualitzarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
+        // -------- Metodes --------
+        /// <summary>
+        /// Actualiza les reserves
+        /// </summary>
+        /// <param name="idReserva">Identificador de la reserva</param>
+        /// <param name="novaData">Nova data de la reserva</param>
+        /// <param name="novaHora">Nova hora de la reserva</param>
+        /// <param name="numComensals">Nou numero de comensals de la reserva</param>
+        /// <param name="preferencies">Noves preferencies de la reserva</param>
+        /// <returns>Retorna true si la reserva s'ha actualitzat correctament, si no, retorna false</returns>
+        public bool ActualitzarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
         {
-            Reserva reservaAActualitzar = reserves.Find(r => r.IdReserva == idReserva);
-            if (reservaAActualitzar != null)
+            Reserva reservaActualitzar = reserves.Find(r => r.IdReserva == idReserva);
+            bool reservaActualitzada = false;
+            if (reservaActualitzar != null)
             {
-                reservaAActualitzar.Data = novaData;
-                reservaAActualitzar.Hora = novaHora;
-                reservaAActualitzar.NumComensals = numComensals;
-                reservaAActualitzar.Preferencies = preferencies;
+                reservaActualitzar.Data = novaData;
+                reservaActualitzar.Hora = novaHora;
+                reservaActualitzar.NumComensals = numComensals;
+                reservaActualitzar.Preferencies = preferencies;
+                reservaActualitzada = true;
             }
+            return reservaActualitzada;
         }
 
-        public void ModificarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
+        /// <summary>
+        /// Modifica les reserves
+        /// </summary>
+        /// <param name="idReserva">Identificador de la reserva</param>
+        /// <param name="novaData">Nova data de la reserva</param>
+        /// <param name="novaHora">Nova hora de la reserva</param>
+        /// <param name="numComensals">Nou numero de comensals de la reserva</param>
+        /// <param name="preferencies">Noves preferencies de la reserva</param>
+        /// <returns>Retorna true si la reserva s'ha modificat correctament, si no, retorna false</returns>
+        public bool ModificarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
         {
             Reserva reservaAModificar = reserves.Find(r => r.IdReserva == idReserva);
+            bool reservaModificada = false;
             if (reservaAModificar != null)
             {
                 reservaAModificar.Data = novaData;
                 reservaAModificar.Hora = novaHora;
                 reservaAModificar.NumComensals = numComensals;
                 reservaAModificar.Preferencies = preferencies;
+                reservaModificada = true;
             }
+            return reservaModificada;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Reserva> VisualitzarReserves()
         {
             return reserves;

@@ -9,13 +9,17 @@ namespace Projecte0
 {
     class Persona
     {
-        // Atributs
+        // -------- Atributs --------
         protected string dni;
         protected string nom;
         protected string cognom;
         protected string password;
 
-        // Constructors
+        // -------- Constructors --------
+
+        /// <summary>
+        /// Constructor buit de Persona
+        /// </summary>
         public Persona() 
         {
             dni = "";
@@ -23,6 +27,14 @@ namespace Projecte0
             cognom = "";
             password = "";
         }
+
+        /// <summary>
+        /// Contructor amb tots els atributs de persona
+        /// </summary>
+        /// <param name="dni">El DNI de la persona</param>
+        /// <param name="nom">El nom de la persona</param>
+        /// <param name="cognom">El cognom de la persona</param>
+        /// <param name="password">La contrasenya de la persona</param>
         public Persona(string dni, string nom, string cognom, string password)
         {
             this.dni = dni;
@@ -31,7 +43,7 @@ namespace Projecte0
             this.password = password;
         }
 
-        // Propietats
+        // -------- Propietats --------
         public string Dni
         {
             get { return dni; }
@@ -53,7 +65,7 @@ namespace Projecte0
             set { password = value; }
         }
 
-        // Metodes
+        // -------- Metodes --------
         /*public bool ComprovarBDD()
         {
             

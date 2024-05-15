@@ -8,27 +8,29 @@ namespace Projecte0
 {
     class Usuari : Persona
     {
-        // Atributs
+        // -------- Atributs --------
         protected Valoracio puntuacio;
 
-        // Constructors
+        // -------- Constructors --------
         public Usuari() : base()
         {
             puntuacio = new Valoracio();
         }
+
+
         public Usuari(string dni, string nom, string cognom, string password, Valoracio puntuacio) : base(dni, nom, cognom, password)
         {
             this.puntuacio = puntuacio;
         }
 
-        // Propietats
+        // -------- Propietats --------
         public Valoracio Puntuacio
         {
             get { return puntuacio; }
             set { puntuacio = value; }
         }
 
-        // Metodes
+        // -------- Metodes --------
         public Reserva RealitzarReserva()
         {
             // Falta Codi
@@ -45,7 +47,7 @@ namespace Projecte0
             // Falta Codi
         }
 
-        // Metodes
+        // -------- Metodes --------
         public Reserva RealitzarReserva(Restaurant restaurante, DateTime data, TimeSpan hora, int numComensals, string preferencies)
         {
             Reserva novaReserva = new Reserva()
