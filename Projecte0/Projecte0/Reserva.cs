@@ -8,14 +8,18 @@ namespace Projecte0
 {
     class Reserva
     {
-        // Atributs
+        // -------- Atributs --------
         protected int idReserva;
         protected DateTime data;
         protected TimeSpan hora;
         protected int numComensals;
         protected string preferencies;
 
-        // Constructors
+        // -------- Constructors --------
+
+        /// <summary>
+        /// Constructor buit de Reserva
+        /// </summary>
         public Reserva()
         {
             idReserva = 0;
@@ -24,6 +28,15 @@ namespace Projecte0
             numComensals = 0;
             preferencies = "";
         }
+
+        /// <summary>
+        /// Constructor amb tots els atributs de la clase Reserva
+        /// </summary>
+        /// <param name="idReserva">Identificador de la reserva</param>
+        /// <param name="data">Data de la reserva</param>
+        /// <param name="hora">Hora de la reserva</param>
+        /// <param name="numComensals">Numero de comensals de la reserva</param>
+        /// <param name="preferencies">Preferencies de la reserva</param>
         public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies)
         {
             this.idReserva = idReserva;
@@ -33,7 +46,7 @@ namespace Projecte0
             this.preferencies = preferencies;
         }
 
-        // Propietats
+        // -------- Propietats --------
         public int IdReserva
         {
             get { return idReserva; }

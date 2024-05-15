@@ -8,30 +8,33 @@ namespace Projecte0
 {
     class Usuari : Persona
     {
-        // Atributs
+        // -------- Atributs --------
         protected Valoracio puntuacio;
         protected List<Reserva> reserves;
 
-        // Constructors
+        // -------- Constructors --------
         public Usuari() : base()
         {
             puntuacio = new Valoracio();
             reserves = new List<Reserva>();
         }
+
         public Usuari(string dni, string nom, string cognom, string password,string esAdmin, Valoracio puntuacio) : base(dni, nom, cognom, password, esAdmin)
         {
             this.puntuacio = puntuacio;
             this.reserves = new List<Reserva>();
         }
 
-        // Propietats
+        // -------- Propietats --------
         public Valoracio Puntuacio
         {
             get { return puntuacio; }
             set { puntuacio = value; }
         }
 
-        // Metodes
+
+
+        // -------- Metodes --------
         public Reserva RealitzarReserva(Restaurant restaurante, DateTime data, TimeSpan hora, int numComensals, string preferencies)
         {
             Reserva novaReserva = new Reserva()
