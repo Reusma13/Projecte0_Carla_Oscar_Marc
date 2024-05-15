@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindowsUsuari" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dgReserves" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,310"/>
+        <Button x:Name="btnNovaReserva" Content="Realitzar Reserva" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="166" Height="35" />
+
     </Grid>
 </Window>
