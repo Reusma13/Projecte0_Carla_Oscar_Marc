@@ -30,6 +30,7 @@ namespace Projecte0
             capacitat = 0;
             fotos = new List<string>();
             valoracio = new List<Valoracio>();
+            reserves = new List<Reserva>();
         }
 
         /// <summary>
@@ -40,8 +41,9 @@ namespace Projecte0
         /// <param name="tipusCuina">Tipus de cuina del restaurant</param>
         /// <param name="capacitat">Capacitat del restaurant</param>
         /// <param name="fotos">Llista de fotos del restaurant</param>
-        /// <param name="valoracio">Llista de valoracions del restaurant</param>  
-        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
+        /// <param name="valoracio">Llista de valoracions del restaurant</param>
+        /// <param name="reserves">Llista de reserves del restaurant</param>
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Valoracio> valoracio, List<Reserva> reserves)
 
         {
             this.nom = nom;
@@ -50,7 +52,7 @@ namespace Projecte0
             this.capacitat = capacitat;
             this.fotos = fotos;
             this.valoracio = valoracio;
-            this.reserves = new List<Reserva>();
+            this.reserves = reserves();
         }
 
         // -------- Propietats --------

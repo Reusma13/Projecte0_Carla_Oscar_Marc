@@ -38,6 +38,7 @@ namespace Projecte0
         /// <param name="nom">El nom de la persona</param>
         /// <param name="cognom">El cognom de la persona</param>
         /// <param name="password">La contrasenya de la persona</param>
+        /// <param name="esAdmin"></param>
         public Persona(string dni, string nom, string cognom, string password, string esAdmin)
         {
             this.dni = dni;
