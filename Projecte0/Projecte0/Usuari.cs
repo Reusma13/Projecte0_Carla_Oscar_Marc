@@ -31,18 +31,18 @@ namespace Projecte0
         // Metodes
         public Reserva RealitzarReserva()
         {
-            // Implementa la lògica aquí
+            // Falta Codi
             return new Reserva();
         }
 
         public void CancelarReserva()
         {
-            // Implementa la lògica aquí
+            // Falta Codi
         }
 
         public void CrearValoracio()
         {
-            // Implementa la lògica aquí
+            // Falta Codi
         }
 
         // Metodes

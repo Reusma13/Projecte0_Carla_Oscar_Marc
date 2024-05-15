@@ -30,24 +30,55 @@ namespace Projecte0
         }
 
         // Mètodes 
-        public void CrearRestaurant()
+        public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat)
         {
-            //lògica aquí
+            //Mirar bien como hacer lo de las fotos
+
+            Restaurant nouRestaurant = new Restaurant(nom, direccio, tipusCuina, capacitat);
+            restaurants.Add(nouRestaurant);
         }
 
-        public void EliminarRestaurant()
+        public void EliminarRestaurant(string nomRestaurantEliminar)
         {
-            //lògica aquí
+            bool restaurantEliminat = false;
+            for(int i; i < restaurants.Count && !restaurantEliminat; i++)
+            {
+                if (restaurants[i].Nom == nomRestaurantEliminar)
+                {
+                    restaurants.RemoveAt(i);
+                    restaurantEliminat = true;
+                }
+            }
+
+            if (restaurantEliminat = true)
+            {
+                //Enseñar que se elimino correctamente
+            }
+            else if (restaurantEliminat = false)
+            {
+                //Poner que no se encontro el restaurante
+            }
+            else
+            {
+                //Decir que hubo algun error
+            }
+
+            return;
         }
 
-        public void ActualitzarPerfilRestaurant()
+        public void ActualitzarPerfilRestaurant(int posicio, string nom, string direccio, string tipusCuina, int capacitat)
         {
-            //lògica aquí
+            bool restaurantEliminat = false;
+            restaurants[posicio].Nom = nom;
+            restaurants[posicio].Direccio = direccio;
+            restaurants[posicio].TipusCuina = tipusCuina;
+            restaurants[posicio].Capacitat = capacitat;
+
         }
 
         public void VisualitzarEstadistica()
         {
-            //lògica aquí
+            // Falta Codi
         }
     }
 }
