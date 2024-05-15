@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Projecte0
 {
-    class Persona
+    public class Persona
     {
         // Atributs
         protected string dni;
         protected string nom;
         protected string cognom;
         protected string password;
+        protected string esAdmin;
 
         // Constructors
         public Persona() 
@@ -22,6 +23,7 @@ namespace Projecte0
             nom = "";
             cognom = "";
             password = "";
+            esAdmin = "no";
         }
         public Persona(string dni, string nom, string cognom, string password)
         {
@@ -29,6 +31,14 @@ namespace Projecte0
             this.nom = nom;
             this.cognom = cognom;
             this.password = password;
+        }
+        public Persona(string dni, string nom, string cognom, string password, string esAdmin)
+        {
+            this.dni = dni;
+            this.nom = nom;
+            this.cognom = cognom;
+            this.password = password;
+            this.esAdmin = esAdmin;
         }
 
         // Propietats
@@ -52,11 +62,16 @@ namespace Projecte0
             get { return password; }
             set { password = value; }
         }
+        public string EsAdmin
+        {
+            get { return esAdmin;}
+            set { esAdmin = value; }
+        }
 
         // Metodes
         /*public bool ComprovarBDD()
         {
-            
+
         }*/
     }
 }

@@ -21,7 +21,7 @@ namespace Projecte0
             password = "admin";
             connexio = new Connexio();
         }
-        public Administrador(string dni, string nom, string cognom,string password,List<Restaurant> restaurants) : base(dni, nom, cognom, password)
+        public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : base(dni, nom, cognom, password,esAdmin)
         {
             this.restaurants = restaurants;
             connexio = new Connexio();

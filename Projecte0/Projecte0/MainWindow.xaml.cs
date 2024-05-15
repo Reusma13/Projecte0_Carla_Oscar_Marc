@@ -25,7 +25,6 @@ namespace Projecte0
         public MainWindow()
         {
             InitializeComponent();
-            connexio.ConnexioBDD();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
@@ -39,7 +38,19 @@ namespace Projecte0
         {
             if (txBoxUsuari.Text != "" && pwdBoxUsuari.Password != "")
             {
-                
+                Persona p = connexio.SelectPersonesBDD(txBoxUsuari.Text,pwdBoxUsuari.Password);
+                if(p.EsAdmin.ToLower() == "si")
+                {
+                    MainWindowAdministrador mainWindowAdministrador = new MainWindowAdministrador();
+                    mainWindowAdministrador.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MainWindowsUsuari mainWindowsUsuari = new MainWindowsUsuari();
+                    mainWindowsUsuari.Show();
+                    this.Close();
+                }
             }
         }
     }
