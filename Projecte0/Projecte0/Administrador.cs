@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Mysqlx.Crud.Order.Types;
+using System.Windows.Media;
 
 namespace Projecte0
 {
@@ -10,6 +12,7 @@ namespace Projecte0
     {
         // -------- Atributs --------
         private List<Restaurant> restaurants;
+        protected Connexio connexio;
 
         // -------- Constructors --------
 
@@ -20,6 +23,7 @@ namespace Projecte0
         {
             restaurants = new List<Restaurant>();
             password = "admin";
+
         }
 
         /// <summary>
@@ -30,9 +34,10 @@ namespace Projecte0
         /// <param name="cognom">El cognom de l'administrador</param>
         /// <param name="password">La contrasenya de l'administrador</param>
         /// <param name="restaurants">Llista de restaurants que pot administrar l'administrador</param>
-        public Administrador(string dni, string nom, string cognom,string password,List<Restaurant> restaurants) : base(dni, nom, cognom, password)
+        public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : base(dni, nom, cognom, password,esAdmin)
         {
             this.restaurants = restaurants;
+            connexio = new Connexio();
         }
 
         // -------- Propietats --------
@@ -42,13 +47,13 @@ namespace Projecte0
             set { restaurants = value; }
         }
 
-        // -------- Mètodes --------
-        public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat)
-        {
-            //Mirar bien como hacer lo de las fotos
 
-            Restaurant nouRestaurant = new Restaurant(nom, direccio, tipusCuina, capacitat);
-            restaurants.Add(nouRestaurant);
+        // -------- Mètodes --------
+        public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
+        {
+            Restaurant nouRestaurante = new Restaurant(nom, direccio, tipusCuina, capacitat, fotos, reserves);
+            string sql = $"INSERT INTO restaurants (nom, direccio, tipusCuina, capacitat) VALUES ('{nouRestaurante.Nom}', '{nouRestaurante.Direccio}', '{nouRestaurante.TipusCuina}', {nouRestaurante.Capacitat})";
+            connexio.ConnexioBDD(sql);
         }
 
         /// <summary>
@@ -58,6 +63,9 @@ namespace Projecte0
         /// <returns>Retorna true si el restaurant s'ha eliminat correctament, si no, retorna false</returns>
         public bool EliminarRestaurant(string nomRestaurantEliminar)
         {
+            string sql = $"DELETE FROM restaurants WHERE nom = '{nomRestaurantEliminar}'";
+            connexio.ConnexioBDD(sql);
+          
             Restaurant restaurant = restaurants.FirstOrDefault(r => r.Nom == nom);
             bool restaurantEliminat = false;
 
@@ -80,6 +88,9 @@ namespace Projecte0
         /// <returns>Retorna true si el restaurant s'ha actualitzat correctament, si no, retorna false</returns>
         public bool ActualitzarPerfilRestaurant(string nom, string nouNom, string direccio, string tipusCuina, int capacitat)
         {
+            string sql = $"UPDATE restaurants SET direccio = '{novaDireccio}', tipusCuina = '{nouTipusCuina}', capacitat = {novaCapacitat} WHERE nom = '{nom}'";
+            connexio.ConnexioBDD(sql);
+          
             Restaurant restaurant = restaurants.FirstOrDefault(r => r.Nom == nom);
             bool canviatCorrectament = false;
 

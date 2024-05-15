@@ -15,6 +15,8 @@ namespace Projecte0
         protected int capacitat;
         protected List<string> fotos;
         protected List<Valoracio> valoracio;
+        protected List<Reserva> reserves;
+
 
         // -------- Constructors --------
         /// <summary>
@@ -38,8 +40,9 @@ namespace Projecte0
         /// <param name="tipusCuina">Tipus de cuina del restaurant</param>
         /// <param name="capacitat">Capacitat del restaurant</param>
         /// <param name="fotos">Llista de fotos del restaurant</param>
-        /// <param name="valoracio">Llista de valoracions del restaurant</param>
-        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Valoracio> valoracio)
+        /// <param name="valoracio">Llista de valoracions del restaurant</param>  
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
+
         {
             this.nom = nom;
             this.direccio = direccio;
@@ -47,6 +50,7 @@ namespace Projecte0
             this.capacitat = capacitat;
             this.fotos = fotos;
             this.valoracio = valoracio;
+            this.reserves = new List<Reserva>();
         }
 
         // -------- Propietats --------
@@ -75,6 +79,12 @@ namespace Projecte0
             get { return fotos; }
             set { fotos = value; }
         }
+          
+        public List<Reserva> Reserves
+        {
+            get { return reserves; }
+            set { reserves = value; }
+        } 
 
         // -------- Metodes --------
         /// <summary>
@@ -87,7 +97,7 @@ namespace Projecte0
         /// <param name="preferencies">Noves preferencies de la reserva</param>
         /// <returns>Retorna true si la reserva s'ha actualitzat correctament, si no, retorna false</returns>
         public bool ActualitzarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
-        {
+         {
             Reserva reservaActualitzar = reserves.Find(r => r.IdReserva == idReserva);
             bool reservaActualitzada = false;
             if (reservaActualitzar != null)
@@ -100,7 +110,8 @@ namespace Projecte0
             }
             return reservaActualitzada;
         }
-
+      
+      
         /// <summary>
         /// Modifica les reserves
         /// </summary>
@@ -132,6 +143,11 @@ namespace Projecte0
         public List<Reserva> VisualitzarReserves()
         {
             return reserves;
+        }
+
+        public void AfegirReserva(Reserva reserva)
+        {
+            reserves.Add(reserva);
         }
     }
 }

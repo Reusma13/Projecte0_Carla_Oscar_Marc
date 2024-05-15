@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Projecte0
         protected string nom;
         protected string cognom;
         protected string password;
+        protected string esAdmin;
 
         // -------- Constructors --------
 
@@ -26,6 +28,7 @@ namespace Projecte0
             nom = "";
             cognom = "";
             password = "";
+            esAdmin = "no";
         }
 
         /// <summary>
@@ -35,12 +38,13 @@ namespace Projecte0
         /// <param name="nom">El nom de la persona</param>
         /// <param name="cognom">El cognom de la persona</param>
         /// <param name="password">La contrasenya de la persona</param>
-        public Persona(string dni, string nom, string cognom, string password)
+        public Persona(string dni, string nom, string cognom, string password, string esAdmin)
         {
             this.dni = dni;
             this.nom = nom;
             this.cognom = cognom;
             this.password = password;
+            this.esAdmin = esAdmin;
         }
 
         // -------- Propietats --------
@@ -64,7 +68,11 @@ namespace Projecte0
             get { return password; }
             set { password = value; }
         }
-
+        public string EsAdmin
+        {
+            get { return esAdmin;}
+            set { esAdmin = value; }
+        }
         // -------- Metodes --------
         /*public bool ComprovarBDD()
         {

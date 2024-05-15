@@ -15,36 +15,40 @@ namespace Projecte0
         private static string database = "projecte0";
         private static string port = "3306";
 
-        public void ConnexioBDD()
+
+        public MySqlConnection ConnexioBDD()
         {
-            string connexio = $"server={server};user={user};database={database};port{port};password={password}";
+            string connexio = $"server={server};user={user};database={database};port={port};password={password}";
             MySqlConnection connection = new MySqlConnection(connexio);
             try
             {
-                Console.WriteLine("Intentant obrir Base De Dades...");
                 connection.Open();
-                // REUBICAR CUANDO LO EXPLIQUE
-                /*string sql = "SELECT * FROM persona";
-                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
-                MySqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine("{0} {1} {2}", reader["Dni"], reader["nom"], reader["cognom"]);
-                }
-                reader.Close();*/
-
-                // Hem de fer un mètode per Obrir i un altre mètode per Tancar tal com ho han fet els companys en el exemple
-                // El command es fa quan tenim el text i la connexió on volem connectar
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                connection = null;
             }
-            finally 
-            { 
+            return connection;
+
+        }
+        public Persona SelectPersonesBDD(string dni, string password)
+        {
+            MySqlConnection connection = ConnexioBDD();
+            Persona persona = new Persona();
+            if (connection != null)
+            {
+                string sql = $"SELECT * FROM persona WHERE Dni = '{dni}' AND password = '{password}'";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    persona = new Persona(reader["Dni"].ToString(), reader["nom"].ToString(), reader["cognom"].ToString(), reader["password"].ToString(), reader["esAdmin"].ToString());
+                }
+                reader.Close();
                 connection.Close();
-                Console.WriteLine("Connexio tancada.");
             }
+            return persona;
         }
 
     }
