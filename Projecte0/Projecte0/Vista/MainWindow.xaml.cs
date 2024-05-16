@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Projecte0.Domini;
 
 namespace Projecte0
 {
@@ -21,7 +22,6 @@ namespace Projecte0
     public partial class MainWindow : Window
     {
         Persona p = new Persona();
-        Connexio connexio = new Connexio();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace Projecte0
         {
             if (txBoxUsuari.Text != "" && pwdBoxUsuari.Password != "")
             {
-                Persona p = connexio.SelectPersonesBDD(txBoxUsuari.Text,pwdBoxUsuari.Password);
+                p = p.SelectPersona(txBoxUsuari.Text,pwdBoxUsuari.Password);
                 if(p.EsAdmin.ToLower() == "si")
                 {
                     MainWindowAdministrador mainWindowAdministrador = new MainWindowAdministrador();
