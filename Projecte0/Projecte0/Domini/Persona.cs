@@ -6,10 +6,12 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projecte0
+namespace Projecte0.Domini
 {
     class Persona
     {
+
+        PersonaBD personaBD;
         // -------- Atributs --------
         protected string dni;
         protected string nom;
@@ -29,8 +31,16 @@ namespace Projecte0
             cognom = "";
             password = "";
             esAdmin = "no";
+            personaBD = new PersonaBD();
         }
 
+        public Persona(string dni, string nom, string cognom, string password) : this()
+        {
+            this.dni = dni;
+            this.nom = nom;
+            this.cognom = cognom;
+            this.password = password;
+        }
         /// <summary>
         /// Contructor amb tots els atributs de persona
         /// </summary>
@@ -39,12 +49,8 @@ namespace Projecte0
         /// <param name="cognom">El cognom de la persona</param>
         /// <param name="password">La contrasenya de la persona</param>
         /// <param name="esAdmin"></param>
-        public Persona(string dni, string nom, string cognom, string password, string esAdmin)
+        public Persona(string dni, string nom, string cognom, string password, string esAdmin) : this(dni,nom,cognom,password)
         {
-            this.dni = dni;
-            this.nom = nom;
-            this.cognom = cognom;
-            this.password = password;
             this.esAdmin = esAdmin;
         }
 
@@ -60,8 +66,8 @@ namespace Projecte0
             set { nom = value; }
         }
         public string Cognom
-        { 
-            get { return cognom; } 
+        {
+            get { return cognom; }
             set { cognom = value; }
         }
         public string Password
@@ -71,13 +77,29 @@ namespace Projecte0
         }
         public string EsAdmin
         {
-            get { return esAdmin;}
+            get { return esAdmin; }
             set { esAdmin = value; }
         }
+
         // -------- Metodes --------
-        /*public bool ComprovarBDD()
+        public Persona SelectPersona(string dni, string password)
         {
-            
-        }*/
+            Persona p = personaBD.SelectPersonesBDD(dni, password);
+            return p;
+        }
+        public bool InsertPersona(Persona persona)
+        {
+            return personaBD.InsertPersonaBDD(persona);
+        }
+
+        // Sobreescriptura
+        public static bool operator==(Persona a, Persona b)
+        {
+            return a.dni == b.dni;
+        }
+        public static bool operator!=(Persona a, Persona b)
+        {
+            return !(a.dni == b.dni);
+        }
     }
 }
