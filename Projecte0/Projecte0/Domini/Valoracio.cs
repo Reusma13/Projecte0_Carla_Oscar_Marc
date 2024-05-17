@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projecte0.Domini
 {
-    class Valoracio
+    public class Valoracio
     {
         // -------- Atributs --------
         protected string comentari;

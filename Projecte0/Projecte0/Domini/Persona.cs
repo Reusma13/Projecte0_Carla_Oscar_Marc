@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Projecte0.Domini
 {
-    class Persona
+    public class Persona
     {
 
         PersonaBD personaBD;

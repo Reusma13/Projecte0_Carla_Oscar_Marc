@@ -1,3 +1,4 @@
+using Projecte0.Domini;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projecte0
 {
-    class Restaurant
+    public class Restaurant
     {
         // -------- Atributs --------
         protected string nom;
@@ -32,6 +33,14 @@ namespace Projecte0
             valoracio = new List<Valoracio>();
             reserves = new List<Reserva>();
         }
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat)
+
+        {
+            this.nom = nom;
+            this.direccio = direccio;
+            this.tipusCuina = tipusCuina;
+            this.capacitat = capacitat;
+        }
 
         /// <summary>
         /// Constructor amb tots els atributs de la clase Restaurant
@@ -52,7 +61,7 @@ namespace Projecte0
             this.capacitat = capacitat;
             this.fotos = fotos;
             this.valoracio = valoracio;
-            this.reserves = reserves();
+            this.reserves = reserves;
         }
 
         // -------- Propietats --------
