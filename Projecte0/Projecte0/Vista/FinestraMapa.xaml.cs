@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Projecte0
 {
     /// <summary>
-    /// Lógica de interacción para MainWindowsUsuari.xaml
+    /// Lógica de interacción para FinestraMapa.xaml
     /// </summary>
-    public partial class MainWindowsUsuari : Window
+    public partial class FinestraMapa : Window
     {
-        public MainWindowsUsuari()
+        public FinestraMapa()
         {
             InitializeComponent();
         }
