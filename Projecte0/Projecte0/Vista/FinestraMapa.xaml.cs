@@ -23,5 +23,25 @@ namespace Projecte0
         {
             InitializeComponent();
         }
+
+        private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonTaula3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonTaula4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
