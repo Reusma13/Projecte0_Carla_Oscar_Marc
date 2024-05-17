@@ -52,7 +52,7 @@ namespace Projecte0
             this.capacitat = capacitat;
             this.fotos = fotos;
             this.valoracio = valoracio;
-            this.reserves = reserves();
+            this.reserves = reserves;
         }
 
         // -------- Propietats --------
@@ -139,17 +139,22 @@ namespace Projecte0
         }
 
         /// <summary>
-        /// 
+        /// Retorna la llista de totes les reserves
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Llista d'objectes Reserva que conte totes les reserves</returns>
         public List<Reserva> VisualitzarReserves()
         {
             return reserves;
         }
 
+        /// <summary>
+        /// Afegeix una nova reserva
+        /// </summary>
+        /// <param name="reserva">La reserva que es vol afegir</param>
         public void AfegirReserva(Reserva reserva)
         {
             reserves.Add(reserva);
+            //Añadir a la base de datos tambien
         }
     }
 }
