@@ -194,5 +194,10 @@ namespace Projecte0.Domini
             reserves.Add(reserva);
             //Añadir a la base de datos tambien
         }
+
+        public override string ToString()
+        {
+            return nom;
+        }
     }
 }

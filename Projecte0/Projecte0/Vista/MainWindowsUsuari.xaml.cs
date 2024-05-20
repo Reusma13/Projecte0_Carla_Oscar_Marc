@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using Projecte0.AccesDades;
 using Projecte0.Domini;
 
-namespace Projecte0.Vista
+namespace Projecte0
 {
     /// <summary>
     /// Lógica de interacción para MainWindowsUsuari.xaml

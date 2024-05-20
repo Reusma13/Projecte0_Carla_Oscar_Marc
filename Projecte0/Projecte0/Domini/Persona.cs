@@ -1,3 +1,4 @@
+using Projecte0.AccesDades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
