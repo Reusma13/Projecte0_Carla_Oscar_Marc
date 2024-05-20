@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using static Mysqlx.Crud.Order.Types;
 using System.Windows.Media;
-using Projecte0.Domini;
 
-namespace Projecte0
+namespace Projecte0.Domini
 {
     class Administrador : Persona
     {

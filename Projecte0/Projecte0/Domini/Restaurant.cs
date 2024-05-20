@@ -53,7 +53,7 @@ namespace Projecte0
             this.capacitat = capacitat;
             this.fotos = fotos;
             this.valoracio = valoracio;
-            this.reserves = reserves();
+            this.reserves = reserves;
         }
 
         // -------- Propietats --------
