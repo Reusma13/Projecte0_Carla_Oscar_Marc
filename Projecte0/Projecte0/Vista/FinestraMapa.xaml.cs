@@ -31,7 +31,7 @@ namespace Projecte0.Vista
             string nomTaula = ButtonTaula1.Content.ToString();
 
             // Obrim la finestra de reserva amb la taula seleccionada
-            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            FinestraReservas finestraReservas = new FinestraReservas(nomTaula);
             finestraReserva.Show();
         }
 
