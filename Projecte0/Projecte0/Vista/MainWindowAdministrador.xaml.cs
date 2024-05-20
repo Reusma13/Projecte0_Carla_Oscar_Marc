@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projecte0.Domini;
 
-namespace Projecte0.Vista
+namespace Projecte0
 {
     /// <summary>
     /// Lógica de interacción para MainWindowAdministrador.xaml
@@ -27,6 +27,7 @@ namespace Projecte0.Vista
             restaurant = new Restaurant();
             List<Restaurant> restaurants = restaurant.SelectRestaurantList(p.Dni);
             cBoxRestaurant.ItemsSource = restaurants;
+            cBoxRestaurant.DisplayMemberPath = "Nom";
         }
     }
 }

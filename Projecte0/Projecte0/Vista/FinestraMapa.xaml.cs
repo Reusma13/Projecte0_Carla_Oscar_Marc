@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projecte0.Domini;
+using Projecte0.Vista;
 
-namespace Projecte0.Vista
+namespace Projecte0
 {
     /// <summary>
     /// Lógica de interacción para FinestraMapa.xaml
@@ -30,8 +31,8 @@ namespace Projecte0.Vista
             // Obtenim el nom de la taula del botó
             string nomTaula = ButtonTaula1.Content.ToString();
 
-            // Obrim la finestra de reserva amb la taula seleccionada
-            FinestraReservas finestraReservas = new FinestraReservas(nomTaula);
+            // Ara pots obrir la finestra de reserva amb la taula seleccionada
+            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
             finestraReserva.Show();
         }
 

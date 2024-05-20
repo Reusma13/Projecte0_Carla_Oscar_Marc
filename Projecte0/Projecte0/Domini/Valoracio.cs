@@ -29,7 +29,7 @@ namespace Projecte0.Domini
         /// </summary>
         /// <param name="puntuacio">La puntuacio que vol posar</param>
         /// <param name="comentari">El comentari que es vol posar</param>
-        public Valoracio(string comentari, int puntuacio)
+        public Valoracio(string comentari, int puntuacio, string dni)
         {
             this.comentari = comentari;
             this.puntuacio = puntuacio;

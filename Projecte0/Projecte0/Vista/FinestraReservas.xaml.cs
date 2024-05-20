@@ -27,6 +27,10 @@ namespace Projecte0.Vista
 
             _nomTaula = nomTaula;
         }
+        public FinestraReserva(string nom) : this()
+        {
+
+        }
 
         private void btnReservar_Click(object sender, RoutedEventArgs e)
         {
