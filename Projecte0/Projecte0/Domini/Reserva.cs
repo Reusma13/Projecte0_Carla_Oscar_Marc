@@ -15,6 +15,7 @@ namespace Projecte0.Domini
         protected TimeSpan hora;
         protected int numComensals;
         protected string preferencies;
+        protected string nomTaula;
 
         // -------- Constructors --------
 
@@ -28,6 +29,7 @@ namespace Projecte0.Domini
             hora = TimeSpan.Zero;
             numComensals = 0;
             preferencies = "";
+            nomTaula = "";
         }
 
         /// <summary>
@@ -38,13 +40,15 @@ namespace Projecte0.Domini
         /// <param name="hora">Hora de la reserva</param>
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
-        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies)
+        /// <param name="nomTaula">El nom de la taula reservada</param>
+        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula)
         {
             this.idReserva = idReserva;
             this.data = data;
             this.hora = hora;
             this.numComensals = numComensals;
             this.preferencies = preferencies;
+            this.nomTaula = nomTaula;
         }
 
         // -------- Propietats --------
@@ -74,6 +78,12 @@ namespace Projecte0.Domini
             set { preferencies = value; }
         }
 
+        public string NomTaula
+        {
+            get { return nomTaula; }
+            set { nomTaula = value; }
+        }
+
         public Reserva SelectReserva(int idReserva)
         {
             return ReservaBD.SelectReservaBDD(idReserva);
@@ -93,5 +103,6 @@ namespace Projecte0.Domini
         {
             return ReservaBD.DeleteReservaBDD(reserva);
         }
+
     }
 }

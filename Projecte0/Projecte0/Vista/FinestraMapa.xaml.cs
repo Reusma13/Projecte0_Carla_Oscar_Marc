@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projecte0.Domini;
 
 namespace Projecte0.Vista
 {
@@ -29,7 +30,7 @@ namespace Projecte0.Vista
             // Obtenim el nom de la taula del botó
             string nomTaula = ButtonTaula1.Content.ToString();
 
-            // Ara pots obrir la finestra de reserva amb la taula seleccionada
+            // Obrim la finestra de reserva amb la taula seleccionada
             FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
             finestraReserva.Show();
         }
