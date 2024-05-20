@@ -11,8 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projecte0.Domini;
+using Projecte0.Vista;
 
-namespace Projecte0.Vista
+namespace Projecte0
 {
     /// <summary>
     /// Lógica de interacción para FinestraMapa.xaml
@@ -30,7 +32,7 @@ namespace Projecte0.Vista
             string nomTaula = ButtonTaula1.Content.ToString();
 
             // Ara pots obrir la finestra de reserva amb la taula seleccionada
-            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
             finestraReserva.Show();
         }
 

@@ -24,6 +24,10 @@ namespace Projecte0.Vista
         {
             InitializeComponent();
         }
+        public FinestraReserva(string nom) : this()
+        {
+
+        }
 
         private void btnReservar_Click(object sender, RoutedEventArgs e)
         {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Mysqlx.Crud.Order.Types;
 using System.Windows.Media;
-using Projecte0.Domini;
+using Projecte0.AccesDades;
 
 namespace Projecte0.Domini
 {

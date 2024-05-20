@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Projecte0;
+using Projecte0.Domini;
 using System;
 using System.Collections.Generic;
 using System.Linq;
