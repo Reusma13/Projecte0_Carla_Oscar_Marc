@@ -38,17 +38,23 @@ namespace Projecte0
 
         private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
         {
-
+            string nomTaula = ButtonTaula2.Content.ToString();
+            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            finestraReserva.Show();
         }
 
         private void ButtonTaula3_Click(object sender, RoutedEventArgs e)
         {
-
+            string nomTaula = ButtonTaula3.Content.ToString();
+            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            finestraReserva.Show();
         }
 
         private void ButtonTaula4_Click(object sender, RoutedEventArgs e)
         {
-
+            string nomTaula = ButtonTaula4.Content.ToString();
+            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            finestraReserva.Show();
         }
     }
 }

@@ -20,9 +20,12 @@ namespace Projecte0.Vista
     /// </summary>
     public partial class FinestraReserva : Window
     {
+        private string _nomTaula;
         public FinestraReserva()
         {
             InitializeComponent();
+
+            _nomTaula = nomTaula;
         }
         public FinestraReserva(string nom) : this()
         {
@@ -43,7 +46,8 @@ namespace Projecte0.Vista
                 Data = data,
                 Hora = hora,
                 NumComensals = numComensals,
-                Preferencies = preferencies
+                Preferencies = preferencies,
+                NomTaula = _nomTaula
             };
 
             // Aquí hauries d'afegir la lògica per guardar la nova reserva a la base de dades
