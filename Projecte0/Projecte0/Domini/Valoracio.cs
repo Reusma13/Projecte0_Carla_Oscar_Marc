@@ -13,11 +13,20 @@ namespace Projecte0.Domini
         protected int puntuacio;
 
         // -------- Constructors --------
+        /// <summary>
+        /// Constructor buit
+        /// </summary>
         public Valoracio()
         {
             comentari = "";
             puntuacio = 0;
         }
+
+        /// <summary>
+        /// Contructor amb els atributs de Valoracio
+        /// </summary>
+        /// <param name="puntuacio">La puntuacio que vol posar</param>
+        /// <param name="comentari">El comentari que es vol posar</param>
         public Valoracio(string comentari, int puntuacio)
         {
             this.comentari = comentari;
@@ -38,4 +47,3 @@ namespace Projecte0.Domini
 
     }
 }
->>>>>>> 61de0b1df7b480c63818765f156e52a9581fcbc5:Projecte0/Projecte0/Valoracio.cs

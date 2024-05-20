@@ -1,5 +1,4 @@
-
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -34,13 +33,6 @@ namespace Projecte0.Domini
             personaBD = new PersonaBD();
         }
 
-        public Persona(string dni, string nom, string cognom, string password) : this()
-        {
-            this.dni = dni;
-            this.nom = nom;
-            this.cognom = cognom;
-            this.password = password;
-        }
         /// <summary>
         /// Contructor amb tots els atributs de persona
         /// </summary>
@@ -48,7 +40,22 @@ namespace Projecte0.Domini
         /// <param name="nom">El nom de la persona</param>
         /// <param name="cognom">El cognom de la persona</param>
         /// <param name="password">La contrasenya de la persona</param>
-        /// <param name="esAdmin"></param>
+        public Persona(string dni, string nom, string cognom, string password) : this()
+        {
+            this.dni = dni;
+            this.nom = nom;
+            this.cognom = cognom;
+            this.password = password;
+        }
+
+        /// <summary>
+        /// Contructor amb tots els atributs de persona i indicant si es admin o no
+        /// </summary>
+        /// <param name="dni">El DNI de la persona</param>
+        /// <param name="nom">El nom de la persona</param>
+        /// <param name="cognom">El cognom de la persona</param>
+        /// <param name="password">La contrasenya de la persona</param>
+        /// <param name="esAdmin">Indicant si es admin o no</param>
         public Persona(string dni, string nom, string cognom, string password, string esAdmin) : this(dni,nom,cognom,password)
         {
             this.esAdmin = esAdmin;
@@ -82,21 +89,46 @@ namespace Projecte0.Domini
         }
 
         // -------- Metodes --------
+        /// <summary>
+        /// Selecciona una persona en concret de la base de dades
+        /// </summary>
+        /// <param name="dni">Dni de la persona que vols seleccionar</param>
+        /// <param name="password">Contrasenya de la persona que vols seleccionar</param>
+        /// <returns>Retorna la persona seleccionada si existeix a la base de dades, si no existeix, retorna null.</returns>
         public Persona SelectPersona(string dni, string password)
         {
             Persona p = personaBD.SelectPersonesBDD(dni, password);
             return p;
         }
+
+        /// <summary>
+        /// Afegeix una persona a la base de dades
+        /// </summary>
+        /// <param name="persona">Persona que es vol afegir</param>
+        /// <returns>Torna true si la persona s'ha afegit correctament, si no, retorna false</returns>
         public bool InsertPersona(Persona persona)
         {
             return personaBD.InsertPersonaBDD(persona);
         }
 
         // Sobreescriptura
+        /// <summary>
+        /// Comprova si dos persones son iguals
+        /// </summary>
+        /// <param name="a">Primera persona a comparar</param>
+        /// <param name="b">Segona persona a comparar</param>
+        /// <returns>Retorna true si els dos objectes Persona son iguals, si no, retorna false</returns>
         public static bool operator==(Persona a, Persona b)
         {
             return a.dni == b.dni;
         }
+
+        /// <summary>
+        /// Comprova si dos persones son diferents
+        /// </summary>
+        /// <param name="a">Primera persona a comparar</param>
+        /// <param name="b">Segona persona a comparar</param>
+        /// <returns>Retorna true si els dos objectes Persona son diferents, si no, retorna false</returns>
         public static bool operator!=(Persona a, Persona b)
         {
             return !(a.dni == b.dni);
