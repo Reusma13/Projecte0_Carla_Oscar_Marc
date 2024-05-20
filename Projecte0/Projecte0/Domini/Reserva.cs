@@ -7,7 +7,7 @@ using Projecte0.AccesDades;
 
 namespace Projecte0.Domini
 {
-    class Reserva
+    public class Reserva
     {
         // -------- Atributs --------
         protected int idReserva;
@@ -15,6 +15,7 @@ namespace Projecte0.Domini
         protected TimeSpan hora;
         protected int numComensals;
         protected string preferencies;
+        protected string dni;
 
         // -------- Constructors --------
 
@@ -28,6 +29,7 @@ namespace Projecte0.Domini
             hora = TimeSpan.Zero;
             numComensals = 0;
             preferencies = "";
+            dni = "";
         }
 
         /// <summary>
@@ -38,13 +40,14 @@ namespace Projecte0.Domini
         /// <param name="hora">Hora de la reserva</param>
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
-        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies)
+        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies,string dni)
         {
             this.idReserva = idReserva;
             this.data = data;
             this.hora = hora;
             this.numComensals = numComensals;
             this.preferencies = preferencies;
+            this.dni = dni;
         }
 
         // -------- Propietats --------
@@ -74,6 +77,11 @@ namespace Projecte0.Domini
             set { preferencies = value; }
         }
 
+        public string Dni
+        {
+            get { return dni; }
+            set { dni = value; }
+        }
         public Reserva SelectReserva(int idReserva)
         {
             return ReservaBD.SelectReservaBDD(idReserva);
