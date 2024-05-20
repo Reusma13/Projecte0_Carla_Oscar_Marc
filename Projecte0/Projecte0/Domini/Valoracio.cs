@@ -11,17 +11,20 @@ namespace Projecte0.Domini
         // -------- Atributs --------
         protected string comentari;
         protected int puntuacio;
+        protected string dni;
 
         // -------- Constructors --------
         public Valoracio()
         {
             comentari = "";
             puntuacio = 0;
+            dni = "";
         }
-        public Valoracio(string comentari, int puntuacio)
+        public Valoracio(string comentari, int puntuacio, string dni)
         {
             this.comentari = comentari;
             this.puntuacio = puntuacio;
+            this.dni = dni;
         }
 
         // -------- Propietats --------
@@ -35,7 +38,11 @@ namespace Projecte0.Domini
             get { return puntuacio; }
             set { puntuacio = value; }
         }
+        public string Dni
+        {
+            get { return dni; }
+            set { dni = value; }
+        }
 
     }
 }
->>>>>>> 61de0b1df7b480c63818765f156e52a9581fcbc5:Projecte0/Projecte0/Valoracio.cs

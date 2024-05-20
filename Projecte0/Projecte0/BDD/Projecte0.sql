@@ -64,14 +64,19 @@ VALUES ('b',1);
 INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant)
 VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1)
 
-SELECT * FROM restaurant WHERE nom = 'HOLA';
+SELECT * FROM restaurant ;
 
 SELECT f.url 
 FROM fotos f 
 JOIN restaurant r ON f.idRestaurant = r.id
 WHERE r.nom = 'HOLA';
 
-SELECT r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni 
+SELECT id, r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni 
 FROM reserva r 
 JOIN restaurant r2 ON r.idRestaurant = r2.id
 WHERE r2.nom = 'HOLA';
+
+SELECT v.comentari, v.puntuacio, v.Dni
+FROM valoracio v 
+JOIN restaurant r ON v.idRestaurant = r.id
+WHERE r.nom = 'HOLA';

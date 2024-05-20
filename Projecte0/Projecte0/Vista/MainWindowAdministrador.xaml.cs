@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projecte0.Domini;
 
 namespace Projecte0
 {
@@ -19,9 +20,13 @@ namespace Projecte0
     /// </summary>
     public partial class MainWindowAdministrador : Window
     {
-        public MainWindowAdministrador()
+        Restaurant restaurant;
+        public MainWindowAdministrador(Persona p)
         {
             InitializeComponent();
+            restaurant = new Restaurant();
+            List<Restaurant> restaurants = restaurant.SelectRestaurantList(p.Dni);
+            cBoxRestaurant.ItemsSource = restaurants;
         }
     }
 }

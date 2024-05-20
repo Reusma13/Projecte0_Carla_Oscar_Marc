@@ -42,5 +42,29 @@ namespace Projecte0
             }
             return inseritPersona;
         }
+        public bool DeletePersonaBDD(string dni)
+        {
+            bool deletePersona = false;
+            MySqlConnection connection = connexio.ConnexioBDD();
+            if (connection != null)
+            {
+                string sql = $"DELETE FROM persona WHERE Dni = '{dni}';";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                deletePersona = 1 == sqlCommand.ExecuteNonQuery();
+            }
+            return deletePersona;
+        }
+        public bool UpdatePersonaBDD(Persona persona)
+        {
+            bool updatePersona = false;
+            MySqlConnection connection = connexio.ConnexioBDD();
+            if (connection != null)
+            {
+                string sql = $"UPDATE persona SET nom = '{persona.Nom}', cognom = '{persona.Cognom}', password = '{persona.Password}', esAdmin = '{persona.EsAdmin}' WHERE Dni = '{persona.Dni}';";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                updatePersona = 1 == sqlCommand.ExecuteNonQuery();
+            }
+            return updatePersona;
+        }
     }
 }

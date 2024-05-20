@@ -91,6 +91,10 @@ namespace Projecte0.Domini
         {
             return personaBD.InsertPersonaBDD(persona);
         }
+        public bool DeletePersona(string dni)
+        {
+            return personaBD.DeletePersonaBDD(dni);
+        }
 
         // Sobreescriptura
         public static bool operator==(Persona a, Persona b)

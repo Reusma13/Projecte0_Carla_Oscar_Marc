@@ -23,6 +23,7 @@ namespace Projecte0
         {
             restaurants = new List<Restaurant>();
             password = "admin";
+            base.esAdmin = "si";
 
         }
 
@@ -59,19 +60,19 @@ namespace Projecte0
         /// <param name="capacitat"></param>
         /// <param name="fotos"></param>
         /// <param name="reserves"></param>
-        public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
+        /*public void CrearRestaurant(string nom, string direccio, string tipusCuina, int capacitat, List<string> fotos, List<Reserva> reserves)
         {
             Restaurant nouRestaurante = new Restaurant(nom, direccio, tipusCuina, capacitat, fotos, reserves);
             string sql = $"INSERT INTO restaurants (nom, direccio, tipusCuina, capacitat) VALUES ('{nouRestaurante.Nom}', '{nouRestaurante.Direccio}', '{nouRestaurante.TipusCuina}', {nouRestaurante.Capacitat})";
             connexio.ConnexioBDD(sql);
-        }
+        }*/
 
         /// <summary>
         /// Elimina un restaurant
         /// </summary>
         /// <param name="nomRestaurantEliminar">El nom del restaurant que es vol eliminar</param>
         /// <returns>Retorna true si el restaurant s'ha eliminat correctament, si no, retorna false</returns>
-        public bool EliminarRestaurant(string nomRestaurantEliminar)
+        /*public bool EliminarRestaurant(string nomRestaurantEliminar)
         {
             string sql = $"DELETE FROM restaurants WHERE nom = '{nomRestaurantEliminar}'";
             connexio.ConnexioBDD(sql);
@@ -86,7 +87,7 @@ namespace Projecte0
             }
 
             return restaurantEliminat;
-        }
+        }*/
 
         /// <summary>
         /// Actualitza un perfil de restaurant
@@ -97,7 +98,7 @@ namespace Projecte0
         /// <param name="tipusCuina">Tipus de cuina del restaurant</param>
         /// <param name="capacitat">Capacitat del restaurant</param>
         /// <returns>Retorna true si el restaurant s'ha actualitzat correctament, si no, retorna false</returns>
-        public bool ActualitzarPerfilRestaurant(string nom, string nouNom, string direccio, string tipusCuina, int capacitat)
+        /*public bool ActualitzarPerfilRestaurant(string nom, string nouNom, string direccio, string tipusCuina, int capacitat)
         {
             string sql = $"UPDATE restaurants SET direccio = '{novaDireccio}', tipusCuina = '{nouTipusCuina}', capacitat = {novaCapacitat} WHERE nom = '{nom}'";
             connexio.ConnexioBDD(sql);
@@ -115,16 +116,16 @@ namespace Projecte0
                 canviatCorrectament = true;
             }
             return canviatCorrectament;
-        }
+        }*/
 
         //Visualizar la Valoracion de un Restaurante en concreto
 
-        public List<Valoracio> VisualitzarEstadistica(string nomRestaurant)
+        /*public List<Valoracio> VisualitzarEstadistica(string nomRestaurant)
         {
             if (restaurants != null)
             {
                 return restaurants.Valoracio;
             }
-        }
+        }*/
     }
 }
