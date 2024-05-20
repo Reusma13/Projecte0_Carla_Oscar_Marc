@@ -14,13 +14,22 @@ namespace Projecte0.Domini
         protected string dni;
 
         // -------- Constructors --------
+        /// <summary>
+        /// Constructor buit
+        /// </summary>
         public Valoracio()
         {
             comentari = "";
             puntuacio = 0;
             dni = "";
         }
-        public Valoracio(string comentari, int puntuacio, string dni)
+
+        /// <summary>
+        /// Contructor amb els atributs de Valoracio
+        /// </summary>
+        /// <param name="puntuacio">La puntuacio que vol posar</param>
+        /// <param name="comentari">El comentari que es vol posar</param>
+        public Valoracio(string comentari, int puntuacio)
         {
             this.comentari = comentari;
             this.puntuacio = puntuacio;

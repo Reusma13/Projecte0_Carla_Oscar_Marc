@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using Projecte0.Domini;
 
-namespace Projecte0
+namespace Projecte0.Vista
 {
     /// <summary>
     /// Lógica de interacción para MainWindowsUsuari.xaml

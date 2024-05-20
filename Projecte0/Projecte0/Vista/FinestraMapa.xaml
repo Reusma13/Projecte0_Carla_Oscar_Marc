@@ -6,5 +6,13 @@
         xmlns:local="clr-namespace:Projecte0"
         mc:Ignorable="d"
         Title="FinestraMapa" Height="450" Width="800">
-    <Grid/>
+    <Grid>
+
+        <Image Margin="106,91,106,62" Source="/Vista/Imagenes/MapaRestaurant2.png" Stretch="Fill"/>
+        <Label Content="SELECCIONA LA TAULA QUE VOLS RESERVAR" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Source Serif Pro" Background="#FF8EE065"/>
+        <Button x:Name="ButtonTaula1" Content="Taula 1" HorizontalAlignment="Left" Margin="464,190,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula1_Click"/>
+        <Button x:Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="565,238,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click"/>
+        <Button x:Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="464,289,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click"/>
+        <Button x:Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="565,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click"/>
+    </Grid>
 </Window>
