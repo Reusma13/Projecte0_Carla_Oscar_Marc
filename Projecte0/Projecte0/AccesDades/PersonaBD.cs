@@ -10,7 +10,16 @@ namespace Projecte0
 {
     public class PersonaBD
     {
+        // -------- Atribut --------
         Connexio connexio = new Connexio();
+
+        // -------- Mètodes --------
+        /// <summary>
+        /// Busca a la base de dades quina Persona correspon al dni i password
+        /// </summary>
+        /// <param name="dni">Dni de la persona que vols seleccionar</param>
+        /// <param name="password">Contrasenya de la persona que vols seleccionar</param>
+        /// <returns>El objecte Persona de la persona seleccionada, o null si no es troba</returns>
         public Persona SelectPersonesBDD(string dni, string password)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -30,6 +39,11 @@ namespace Projecte0
             return persona;
         }
 
+        /// <summary>
+        /// Insereix una nova persona a la base de dades
+        /// </summary>
+        /// <param name="persona">L'objecte Persona que es vol afegir</param>
+        /// <returns>True si la persona s'ha afegit correctament, si no, false</returns>
         public bool InsertPersonaBDD(Persona persona)
         {
             bool inseritPersona = false;
