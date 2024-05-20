@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
-namespace Projecte0
+namespace Projecte0.Vista
 {
     /// <summary>
     /// Lógica de interacción para MainWindowsUsuari.xaml
