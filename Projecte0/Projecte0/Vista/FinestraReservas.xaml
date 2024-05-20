@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="FinestraReserva" Height="450" Width="800">
     <Grid>
+        <Label Content="Data:" HorizontalAlignment="Left" Margin="305,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.271,0.593"/>
+        <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="349,127,0,0" VerticalAlignment="Top" Width="146"/>
+
+        <Label Content="Hora:" HorizontalAlignment="Left" Margin="305,153,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbHora" HorizontalAlignment="Left" Margin="349,157,0,0" VerticalAlignment="Top" Width="146"/>
+
+        <Label Content="Número de comensals:" HorizontalAlignment="Left" Margin="305,187,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="tbNumComensals" HorizontalAlignment="Left" Margin="440,191,0,0" VerticalAlignment="Top" Width="55"/>
+
+        <Label Content="Preferències:" HorizontalAlignment="Left" Margin="305,217,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="tbPreferencies" HorizontalAlignment="Left" Margin="394,221,0,0" VerticalAlignment="Top" Width="101"/>
+
+        <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click"/>
         
     </Grid>
 </Window>
