@@ -26,7 +26,12 @@ namespace Projecte0
 
         private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
         {
+            // Obtenim el nom de la taula del botó
+            string nomTaula = ButtonTaula1.Content.ToString();
 
+            // Ara pots obrir la finestra de reserva amb la taula seleccionada
+            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            finestraReserva.Show();
         }
 
         private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
