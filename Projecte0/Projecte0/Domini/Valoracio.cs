@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Projecte0.Domini
 {
-    class Valoracio
+    public class Valoracio
     {
         // -------- Atributs --------
         protected string comentari;
         protected int puntuacio;
+        protected string dni;
 
         // -------- Constructors --------
         /// <summary>
@@ -20,6 +21,7 @@ namespace Projecte0.Domini
         {
             comentari = "";
             puntuacio = 0;
+            dni = "";
         }
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace Projecte0.Domini
         {
             this.comentari = comentari;
             this.puntuacio = puntuacio;
+            this.dni = dni;
         }
 
         // -------- Propietats --------
@@ -43,6 +46,11 @@ namespace Projecte0.Domini
         {
             get { return puntuacio; }
             set { puntuacio = value; }
+        }
+        public string Dni
+        {
+            get { return dni; }
+            set { dni = value; }
         }
 
     }

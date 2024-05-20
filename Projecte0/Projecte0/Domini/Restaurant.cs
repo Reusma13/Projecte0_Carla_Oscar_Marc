@@ -1,14 +1,18 @@
+using Projecte0.AccesDades;
+using Projecte0.Domini;
 using System;
 using Projecte0.Domini;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace Projecte0.Domini
 {
-    class Restaurant
+    public class Restaurant
     {
+        RestaurantBD restaurantBD;
         // -------- Atributs --------
         protected string nom;
         protected string direccio;
@@ -32,6 +36,15 @@ namespace Projecte0.Domini
             fotos = new List<string>();
             valoracio = new List<Valoracio>();
             reserves = new List<Reserva>();
+            restaurantBD = new RestaurantBD();
+        }
+        public Restaurant(string nom, string direccio, string tipusCuina, int capacitat) : this()
+
+        {
+            this.nom = nom;
+            this.direccio = direccio;
+            this.tipusCuina = tipusCuina;
+            this.capacitat = capacitat;
         }
 
         /// <summary>
@@ -82,7 +95,11 @@ namespace Projecte0.Domini
             get { return fotos; }
             set { fotos = value; }
         }
-          
+        public List<Valoracio> Valoracio
+        {
+            get { return valoracio; }
+            set { valoracio = value; }
+        }
         public List<Reserva> Reserves
         {
             get { return reserves; }
@@ -90,6 +107,26 @@ namespace Projecte0.Domini
         } 
 
         // -------- Metodes --------
+        public Restaurant SelectRestaurant(string nom)
+        {
+            return restaurantBD.SelectRestaurantBD(nom);
+        }
+        public List<Restaurant> SelectRestaurantList(string dni)
+        {
+            return restaurantBD.SelectRestaurantListBD(dni);
+        }
+        public bool InsertRestaurant(Restaurant restaurant, Administrador administrador)
+        {
+            return restaurantBD.CrearRestaurantBD(restaurant, administrador);
+        }
+        public bool DeleteRestaurant(string nom)
+        {
+            return restaurantBD.DeleteRestaurantBD(nom);
+        }
+        public bool UpdateRestaurant(Restaurant restaurant, Administrador admin)
+        {
+            return restaurantBD.UpdateRestaurantBD(restaurant,admin);
+        }
         /// <summary>
         /// Actualiza les reserves
         /// </summary>

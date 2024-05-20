@@ -1,9 +1,15 @@
-﻿using Projecte0.Domini;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Projecte0.Domini;
+
 
 namespace Projecte0.AccesDades
 {
     public class ReservaBD
-	{
+	  {
         // -------- Atribut --------
         Connexio connexio = new Connexio();
 
@@ -71,4 +77,5 @@ namespace Projecte0.AccesDades
         }
     }
 }
+
 

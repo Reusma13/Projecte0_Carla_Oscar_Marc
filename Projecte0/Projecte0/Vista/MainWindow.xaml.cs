@@ -21,10 +21,12 @@ namespace Projecte0
     /// </summary>
     public partial class MainWindow : Window
     {
-        Persona p = new Persona();
+        Persona p;
+        
         public MainWindow()
         {
             InitializeComponent();
+            p = new Persona();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
@@ -41,7 +43,7 @@ namespace Projecte0
                 p = p.SelectPersona(txBoxUsuari.Text,pwdBoxUsuari.Password);
                 if(p.EsAdmin.ToLower() == "si")
                 {
-                    MainWindowAdministrador mainWindowAdministrador = new MainWindowAdministrador();
+                    MainWindowAdministrador mainWindowAdministrador = new MainWindowAdministrador(p);
                     mainWindowAdministrador.Show();
                     this.Close();
                 }
