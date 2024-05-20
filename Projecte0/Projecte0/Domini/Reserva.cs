@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projecte0.AccesDades;
 
 namespace Projecte0.Domini
 {
@@ -71,6 +72,26 @@ namespace Projecte0.Domini
         {
             get { return preferencies; }
             set { preferencies = value; }
+        }
+
+        public Reserva SelectReserva(int idReserva)
+        {
+            return ReservaBD.SelectReservaBDD(idReserva);
+        }
+
+        public bool InsertReserva(Reserva reserva)
+        {
+            return ReservaBD.InsertReservaBDD(reserva);
+        }
+
+        public bool UpdateReserva(Reserva reserva)
+        {
+            return ReservaBD.UpdateReservaBDD(reserva);
+        }
+
+        public bool DeleteReserva(Reserva reserva)
+        {
+            return ReservaBD.DeleteReservaBDD(reserva);
         }
     }
 }

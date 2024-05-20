@@ -1,12 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
-using Projecte0.Domini;
+using Projecte0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projecte0
+namespace Projecte0.AccesDades
 {
     public class PersonaBD
     {

@@ -92,6 +92,7 @@ namespace Projecte0.Domini
                 Comentari = comentari
             };
 
+
             this.puntuacio = novaValoracio; // Suposem que cada usuari només pot tenir una valoració a la vegada
         }
     }
