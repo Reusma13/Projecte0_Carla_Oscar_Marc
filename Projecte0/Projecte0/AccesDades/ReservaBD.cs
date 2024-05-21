@@ -26,7 +26,7 @@ namespace Projecte0.AccesDades
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    reserva = new Reserva(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString());
+                    reserva = new Reserva(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString(), reader["nomTaula"].ToString());
                 }
                 reader.Close();
                 connection.Close();
@@ -41,7 +41,7 @@ namespace Projecte0.AccesDades
             if (connection != null)
             {
                 string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensals, preferencies) " +
-                            $"VALUES('{reserva.IdReserva}','{reserva.Data}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}');";
+                            $"VALUES('{reserva.IdReserva}','{reserva.Data}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}'), '{reserva.NomTaula}';";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 inseritReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
@@ -55,7 +55,7 @@ namespace Projecte0.AccesDades
             if (connection != null)
             {
                 string sql = $"UPDATE reserva " +
-                    $"SET data = {reserva.Data}, hora = {reserva.Hora}, numComensals = {reserva.NumComensals}, preferencies = {reserva.Preferencies} WHERE IdReserva = {reserva.IdReserva}";
+                    $"SET data = {reserva.Data}, hora = {reserva.Hora}, numComensals = {reserva.NumComensals}, preferencies = {reserva.Preferencies}, nomTaula = {reserva.NomTaula} WHERE IdReserva = {reserva.IdReserva}";
 
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 updateReserva = 1 == sqlCommand.ExecuteNonQuery();

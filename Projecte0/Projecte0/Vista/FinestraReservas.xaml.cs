@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projecte0.Domini;
+using Projecte0.AccesDades;
 
 namespace Projecte0.Vista
 {
@@ -21,15 +22,11 @@ namespace Projecte0.Vista
     public partial class FinestraReserva : Window
     {
         private string _nomTaula;
-        public FinestraReserva()
+        public FinestraReserva(string nomTaula)
         {
             InitializeComponent();
 
             _nomTaula = nomTaula;
-        }
-        public FinestraReserva(string nom) : this()
-        {
-
         }
 
         private void btnReservar_Click(object sender, RoutedEventArgs e)
@@ -50,7 +47,9 @@ namespace Projecte0.Vista
                 NomTaula = _nomTaula
             };
 
-            // Aquí hauries d'afegir la lògica per guardar la nova reserva a la base de dades
+            // Guardem la nova reserva a la base de dades
+            ReservaBD reservaBD = new ReservaBD();
+            reservaBD.InsertReservaBDD(novaReserva);
 
             // Tanquem la finestra de reserva
             this.Close();

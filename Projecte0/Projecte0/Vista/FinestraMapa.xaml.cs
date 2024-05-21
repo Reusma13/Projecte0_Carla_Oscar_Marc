@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projecte0.Domini;
-using Projecte0.Vista;
 
-namespace Projecte0
+namespace Projecte0.Vista
 {
     /// <summary>
     /// Lógica de interacción para FinestraMapa.xaml
@@ -39,21 +38,21 @@ namespace Projecte0
         private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
         {
             string nomTaula = ButtonTaula2.Content.ToString();
-            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
             finestraReserva.Show();
         }
 
         private void ButtonTaula3_Click(object sender, RoutedEventArgs e)
         {
             string nomTaula = ButtonTaula3.Content.ToString();
-            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
             finestraReserva.Show();
         }
 
         private void ButtonTaula4_Click(object sender, RoutedEventArgs e)
         {
             string nomTaula = ButtonTaula4.Content.ToString();
-            FinestraReservas finestraReserva = new FinestraReservas(nomTaula);
+            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
             finestraReserva.Show();
         }
     }
