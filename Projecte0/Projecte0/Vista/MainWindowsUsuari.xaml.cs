@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using Projecte0.AccesDades;
+using Projecte0.Domini;
 
 namespace Projecte0
 {
@@ -24,7 +26,7 @@ namespace Projecte0
         public MainWindowsUsuari()
         {
             InitializeComponent();
-            dgReserves.ItemsSource = ObtenirReserves();
+            // dgReserves.ItemsSource = ObtenirReserves();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,7 +38,7 @@ namespace Projecte0
             finestraMapa.Show();
         }
 
-        private List<Reserva> ObtenirReserves()
+        /*private List<Reserva> ObtenirReserves()
         {
             List<Reserva> reserves = new List<Reserva>();
 
@@ -66,6 +68,6 @@ namespace Projecte0
             reader.Close();
 
             return reserves;
-        }
+        }*/
     }
 }

@@ -1,9 +1,16 @@
-﻿using Projecte0.Domini;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using Projecte0.Domini;
+
 
 namespace Projecte0.AccesDades
 {
     public class ReservaBD
-	{
+	  {
         // -------- Atribut --------
         Connexio connexio = new Connexio();
 
@@ -19,7 +26,7 @@ namespace Projecte0.AccesDades
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    reserva = new Reserva(reader["idReserva"].ToString(), reader["data"].ToString(), reader["hora"].ToString(), reader["numComensals"].ToString(), reader["preferencies"].ToString());
+                    reserva = new Reserva(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString());
                 }
                 reader.Close();
                 connection.Close();
@@ -71,4 +78,5 @@ namespace Projecte0.AccesDades
         }
     }
 }
+
 

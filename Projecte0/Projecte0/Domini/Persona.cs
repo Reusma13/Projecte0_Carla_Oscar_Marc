@@ -1,3 +1,4 @@
+using Projecte0.AccesDades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Projecte0.Domini
 {
-    class Persona
+    public class Persona
     {
 
         PersonaBD personaBD;
@@ -109,6 +110,10 @@ namespace Projecte0.Domini
         public bool InsertPersona(Persona persona)
         {
             return personaBD.InsertPersonaBDD(persona);
+        }
+        public bool DeletePersona(string dni)
+        {
+            return personaBD.DeletePersonaBDD(dni);
         }
 
         // Sobreescriptura

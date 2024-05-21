@@ -7,14 +7,18 @@ using Projecte0.AccesDades;
 
 namespace Projecte0.Domini
 {
-    class Reserva
+
+    public class Reserva
     {
+        ReservaBD reservaBD;
         // -------- Atributs --------
         protected int idReserva;
         protected DateTime data;
         protected TimeSpan hora;
         protected int numComensals;
         protected string preferencies;
+        protected string dni;
+        protected string nomTaula;
 
         // -------- Constructors --------
 
@@ -28,6 +32,9 @@ namespace Projecte0.Domini
             hora = TimeSpan.Zero;
             numComensals = 0;
             preferencies = "";
+            dni = "";
+            reservaBD = new ReservaBD();
+            nomTaula = "";
         }
 
         /// <summary>
@@ -38,13 +45,16 @@ namespace Projecte0.Domini
         /// <param name="hora">Hora de la reserva</param>
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
-        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies)
+        /// <param name="nomTaula">El nom de la taula reservada</param>
+        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula, string dni): this()
         {
             this.idReserva = idReserva;
             this.data = data;
             this.hora = hora;
             this.numComensals = numComensals;
             this.preferencies = preferencies;
+            this.dni = dni;
+            this.nomTaula = nomTaula;
         }
 
         // -------- Propietats --------
@@ -74,24 +84,36 @@ namespace Projecte0.Domini
             set { preferencies = value; }
         }
 
+        public string Dni
+        {
+            get { return dni; }
+            set { dni = value; }
+        }
+        public string NomTaula
+        {
+            get { return nomTaula; }
+            set { nomTaula = value; }
+        }
+
         public Reserva SelectReserva(int idReserva)
         {
-            return ReservaBD.SelectReservaBDD(idReserva);
+            return reservaBD.SelectReservaBDD(idReserva);
         }
 
         public bool InsertReserva(Reserva reserva)
         {
-            return ReservaBD.InsertReservaBDD(reserva);
+            return reservaBD.InsertReservaBDD(reserva);
         }
 
         public bool UpdateReserva(Reserva reserva)
         {
-            return ReservaBD.UpdateReservaBDD(reserva);
+            return reservaBD.UpdateReservaBDD(reserva);
         }
 
         public bool DeleteReserva(Reserva reserva)
         {
-            return ReservaBD.DeleteReservaBDD(reserva);
+            return reservaBD.DeleteReservaBDD(reserva);
         }
+
     }
 }

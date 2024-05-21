@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projecte0.Domini
 {
-    class Usuari : Persona
+    public class Usuari : Persona
     {
         // -------- Atributs --------
         protected Valoracio puntuacio;
