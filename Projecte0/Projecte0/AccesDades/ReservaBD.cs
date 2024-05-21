@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MySql.Data.MySqlClient;
 using Projecte0.Domini;
+using Projecte0.Vista;
 
 
 namespace Projecte0.AccesDades
@@ -75,6 +77,48 @@ namespace Projecte0.AccesDades
                 deleteReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
             return deleteReserva;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Creem una nova instància de la finestra de reserva
+            FinestraMapa finestraMapa = new FinestraMapa();
+
+            // Obrim la finestra de reserva
+            finestraMapa.Show();
+        }
+
+        public List<Reserva> ObtenirReserves()
+        {
+            List<Reserva> reserves = new List<Reserva>();
+
+            // Creem la consulta SQL per obtenir totes les reserves de la base de dades
+            string sql = "SELECT * FROM reserves";
+
+            // Executem la consulta SQL
+            MySqlConnection mySqlConnection = connexio.ConnexioBDD();
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection);
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+            // Llegim les dades de les reserves de la base de dades
+            while (reader.Read())
+            {
+                Reserva reserva = new Reserva()
+                {
+                    IdReserva = reader.GetInt32("idReserva"),
+                    Data = reader.GetDateTime("data"),
+                    Hora = reader.GetTimeSpan("hora"),
+                    NumComensals = reader.GetInt32("numComensals"),
+                    Preferencies = reader.GetString("preferencies"),
+                    NomTaula = reader.GetString("nomTaula")
+                };
+
+                reserves.Add(reserva);
+            }
+
+            reader.Close();
+
+            return reserves;
         }
     }
 }

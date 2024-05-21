@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using Projecte0.AccesDades;
 using Projecte0.Domini;
+using Projecte0.Vista;
 
 namespace Projecte0
 {
@@ -23,10 +24,11 @@ namespace Projecte0
     public partial class MainWindowsUsuari : Window
     {
         Connexio connexio = new Connexio();
+        ReservaBD reservaBD = new ReservaBD(); // Creem una instància de ReservaBD
         public MainWindowsUsuari()
         {
             InitializeComponent();
-            // dgReserves.ItemsSource = ObtenirReserves();
+            dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,37 +39,5 @@ namespace Projecte0
             // Obrim la finestra de reserva
             finestraMapa.Show();
         }
-
-        /*private List<Reserva> ObtenirReserves()
-        {
-            List<Reserva> reserves = new List<Reserva>();
-
-            // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = "SELECT * FROM reserves";
-
-            // Executem la consulta SQL
-            MySqlConnection mySqlConnection = connexio.ConnexioBDD();
-            MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection); 
-            MySqlDataReader reader = mySqlCommand.ExecuteReader();
-
-            // Llegim les dades de les reserves de la base de dades
-            while (reader.Read())
-            {
-                Reserva reserva = new Reserva()
-                {
-                    IdReserva = reader.GetInt32("idReserva"),
-                    Data = reader.GetDateTime("data"),
-                    Hora = reader.GetTimeSpan("hora"),
-                    NumComensals = reader.GetInt32("numComensals"),
-                    Preferencies = reader.GetString("preferencies")
-                };
-
-                reserves.Add(reserva);
-            }
-
-            reader.Close();
-
-            return reserves;
-        }*/
     }
 }
