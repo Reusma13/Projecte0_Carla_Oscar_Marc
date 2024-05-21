@@ -34,6 +34,7 @@ CREATE OR REPLACE TABLE Reserva (
     preferencies VARCHAR(200),
     Dni VARCHAR(9),
     idRestaurant INT,
+    nomTaula VARCHAR(100),
     FOREIGN KEY (Dni) REFERENCES Persona(Dni),
     FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
 );
@@ -61,8 +62,8 @@ VALUES ('Bueno',7,'77924452S',1);
 INSERT INTO fotos (url,idRestaurant)
 VALUES ('b',1);
 
-INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant)
-VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1)
+INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant,nomTaula)
+VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1, 'Taula 1')
 
 SELECT * FROM restaurant ;
 
