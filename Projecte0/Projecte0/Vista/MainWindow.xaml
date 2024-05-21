@@ -6,13 +6,12 @@
         xmlns:local="clr-namespace:Projecte0"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Usuari:" HorizontalAlignment="Left" Margin="261,130,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txBoxUsuari" HorizontalAlignment="Left" Margin="312,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Contrasenya: " HorizontalAlignment="Left" Margin="261,161,0,0" VerticalAlignment="Top"/>
-        <PasswordBox Name="pwdBoxUsuari" HorizontalAlignment="Left" Margin="348,169,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Name="btnIniciarSessio" Content="Iniciar sessió" HorizontalAlignment="Left" Margin="267,197,0,0" VerticalAlignment="Top" Width="201" Click="btnIniciarSessio_Click"/>
-        <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Left" Margin="267,222,0,0" VerticalAlignment="Top" Width="201" Click="btnRegistrar_Click"/>
-
+    <Grid Background="Wheat">
+        <Label Content="Usuari:" HorizontalAlignment="Left" Margin="294,125,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox Name="txBoxUsuari" HorizontalAlignment="Left" Margin="344,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Contrasenya: " HorizontalAlignment="Left" Margin="294,156,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <PasswordBox Name="pwdBoxUsuari" HorizontalAlignment="Left" Margin="380,164,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnIniciarSessio" Content="Iniciar sessió" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Width="200" Click="btnIniciarSessio_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="200" Click="btnRegistrar_Click" Background="DarkRed" Foreground="White"/>
     </Grid>
 </Window>

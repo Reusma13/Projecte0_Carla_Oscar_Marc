@@ -6,24 +6,24 @@
         xmlns:local="clr-namespace:Projecte0.Vista"
         mc:Ignorable="d"
         Title="FinestraReserva" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Wheat">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="87*"/>
             <ColumnDefinition Width="713*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Data:" HorizontalAlignment="Left" Margin="218,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.271,0.593" Grid.Column="1"/>
+        <Label Content="Data:" HorizontalAlignment="Left" Margin="218,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.271,0.593" Grid.Column="1" Foreground="DarkRed"/>
         <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="262,127,0,0" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
 
-        <Label Content="Hora:" HorizontalAlignment="Left" Margin="218,153,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Hora:" HorizontalAlignment="Left" Margin="218,153,0,0" VerticalAlignment="Top" Grid.Column="1" Foreground="DarkRed"/>
         <TextBox x:Name="tbHora" HorizontalAlignment="Left" Margin="262,157,0,0" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
 
-        <Label Content="Número de comensals:" HorizontalAlignment="Left" Margin="218,187,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
+        <Label Content="Número de comensals:" HorizontalAlignment="Left" Margin="218,187,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1" Foreground="DarkRed"/>
         <TextBox x:Name="tbNumComensals" HorizontalAlignment="Left" Margin="353,191,0,0" VerticalAlignment="Top" Width="55" Grid.Column="1"/>
 
-        <Label Content="Preferències:" HorizontalAlignment="Left" Margin="218,217,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1"/>
+        <Label Content="Preferències:" HorizontalAlignment="Left" Margin="218,217,0,0" VerticalAlignment="Top" Width="142" Grid.Column="1" Foreground="DarkRed"/>
         <TextBox x:Name="tbPreferencies" HorizontalAlignment="Center" Margin="0,221,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
 
-        <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Left" Margin="218,248,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click" Grid.Column="1"/>
-
+        <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Left" Margin="218,248,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click" Grid.Column="1" Background="DarkRed" Foreground="White"/>
     </Grid>
+
 </Window>

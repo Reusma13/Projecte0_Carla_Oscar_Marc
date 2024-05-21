@@ -108,7 +108,7 @@ namespace Projecte0.AccesDades
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    Reserva reserva = new Reserva(Convert.ToInt32(reader["id"]),Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString());
+                    Reserva reserva = new Reserva(Convert.ToInt32(reader["id"]),Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString(), reader["nomTaula"].ToString());
                     reservas.Add(reserva);
                 }
                 reader.Close();

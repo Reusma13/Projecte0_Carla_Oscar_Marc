@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Projecte0"
         mc:Ignorable="d"
         Title="MainWindowsUsuari" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="dgReserves" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,310"/>
-        <Button x:Name="btnNovaReserva" Content="Realitzar Reserva" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="166" Height="35" />
-
+    <Grid Background="Wheat">
+        <DataGrid x:Name="dgReserves" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,310" Background="White" Foreground="DarkRed"/>
+        <Button x:Name="btnNovaReserva" Content="Realitzar Reserva" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="166" Height="35" Background="DarkRed" Foreground="White" />
+        <Image Margin="353,297,353,44" Source="/GironaBrasa.PNG" Stretch="Fill"/>
     </Grid>
 </Window>
