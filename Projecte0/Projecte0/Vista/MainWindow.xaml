@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="Wheat">
-        <Label Content="Usuari:" HorizontalAlignment="Left" Margin="294,125,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
-        <TextBox Name="txBoxUsuari" HorizontalAlignment="Left" Margin="344,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
-        <Label Content="Contrasenya: " HorizontalAlignment="Left" Margin="294,156,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
-        <PasswordBox Name="pwdBoxUsuari" HorizontalAlignment="Left" Margin="380,164,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Name="btnIniciarSessio" Content="Iniciar sessió" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Width="200" Click="btnIniciarSessio_Click" Background="DarkRed" Foreground="White"/>
-        <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="200" Click="btnRegistrar_Click" Background="DarkRed" Foreground="White"/>
+        <Label Content="Usuari:" HorizontalAlignment="Left" Margin="294,155,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox Name="txBoxUsuari" HorizontalAlignment="Left" Margin="344,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Contrasenya: " HorizontalAlignment="Left" Margin="294,186,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <PasswordBox Name="pwdBoxUsuari" HorizontalAlignment="Left" Margin="380,194,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnIniciarSessio" Content="Iniciar sessió" HorizontalAlignment="Center" Margin="0,222,0,0" VerticalAlignment="Top" Width="200" Click="btnIniciarSessio_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Center" Margin="0,247,0,0" VerticalAlignment="Top" Width="200" Click="btnRegistrar_Click" Background="DarkRed" Foreground="White"/>
+        <Image Margin="360,27,360,329" Source="/GironaBrasa.PNG" Stretch="Fill"/>
     </Grid>
 </Window>
