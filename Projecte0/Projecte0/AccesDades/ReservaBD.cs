@@ -1,3 +1,5 @@
+using MySql.Data.MySqlClient;
+using Projecte0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,8 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Projecte0.Domini;
-
-
 namespace Projecte0.AccesDades
 {
     public class ReservaBD
@@ -15,6 +15,11 @@ namespace Projecte0.AccesDades
         Connexio connexio = new Connexio();
 
         // -------- Mètodes --------
+        /// <summary>
+        /// Busca a la base de dades quina Reserva correspon al idReserva
+        /// </summary>
+        /// <param name="idReserva">id de la Reserva que vols seleccionar</param>
+        /// <returns>El objecte Reserva de la reserva seleccionada, o null si no es troba</returns>
         public Reserva SelectReservaBDD(int idReserva)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -34,6 +39,11 @@ namespace Projecte0.AccesDades
             return reserva;
         }
 
+        /// <summary>
+        /// Insereix una nova reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol insertar</param>
+        /// <returns>True si la reserva s'ha afegit correctament, si no, false</returns>
         public bool InsertReservaBDD(Reserva reserva)
         {
             bool inseritReserva = false;
@@ -48,6 +58,11 @@ namespace Projecte0.AccesDades
             return inseritReserva;
         }
 
+        /// <summary>
+        /// Actualitza una nova reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol actualitzar</param>
+        /// <returns>True si la reserva s'ha actualitzat correctament, si no, false</returns>
         public bool UpdateReservaBDD(Reserva reserva)
         {
             bool updateReserva = false;
@@ -63,6 +78,11 @@ namespace Projecte0.AccesDades
             return updateReserva;
         }
 
+        /// <summary>
+        /// Eliminar una nova reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol eliminar</param>
+        /// <returns>True si la reserva s'ha eliminat correctament, si no, false</returns>
         public bool DeleteReservaBDD(Reserva reserva)
         {
             bool deleteReserva = false;
