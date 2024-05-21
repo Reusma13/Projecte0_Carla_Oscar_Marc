@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Projecte0.Domini;
+
 namespace Projecte0.AccesDades
 {
     public class ReservaBD
@@ -38,6 +39,8 @@ namespace Projecte0.AccesDades
             }
             return reserva;
         }
+
+
 
         /// <summary>
         /// Insereix una nova reserva a la base de dades
@@ -79,7 +82,7 @@ namespace Projecte0.AccesDades
         }
 
         /// <summary>
-        /// Eliminar una nova reserva a la base de dades
+        /// Eliminar una reserva a la base de dades
         /// </summary>
         /// <param name="reserva">Reserva la qual es vol eliminar</param>
         /// <returns>True si la reserva s'ha eliminat correctament, si no, false</returns>
