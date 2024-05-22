@@ -13,5 +13,6 @@
         <Button Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="565,238,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click"/>
         <Button Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="464,289,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click"/>
         <Button Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="565,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click"/>
+        <ComboBox Name="cBoxRestaurantMapa" HorizontalAlignment="Left" Margin="35,64,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
     </Grid>
 </Window>

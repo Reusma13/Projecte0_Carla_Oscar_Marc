@@ -32,10 +32,15 @@ namespace Projecte0
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
-            FinestraMapa finestraMapa = new FinestraMapa();
+            //FinestraMapa finestraMapa = new FinestraMapa();
 
             // Obrim la finestra de reserva
-            finestraMapa.Show();
+            //finestraMapa.Show();
+        }
+
+        private void dgReserves_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         /*private List<Reserva> ObtenirReserves()
