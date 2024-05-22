@@ -125,6 +125,23 @@ namespace Projecte0.AccesDades
 
             return reserves;
         }
+
+        public bool EstaReservada(string nomTaula) //Mètode per saber si la taula ja esta reservada
+        {
+            using (MySqlConnection mySqlConnection = connexio.ConnexioBDD())
+            {
+                mySqlConnection.Open();
+
+                string query = "SELECT COUNT(*) FROM Reserva WHERE nomTaula = @nomTaula";
+
+                MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
+                cmd.Parameters.AddWithValue("@nomTaula", nomTaula);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return count > 0;
+            }
+        }
     }
 }
 
