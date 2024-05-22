@@ -18,6 +18,7 @@ namespace Projecte0.Domini
         protected int numComensals;
         protected string preferencies;
         protected string dni;
+        protected int idRestaurant;
         protected string nomTaula;
 
         // -------- Constructors --------
@@ -34,6 +35,7 @@ namespace Projecte0.Domini
             preferencies = "";
             dni = "";
             reservaBD = new ReservaBD();
+            idRestaurant = 0;
             nomTaula = "";
         }
 
@@ -46,7 +48,7 @@ namespace Projecte0.Domini
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
         /// <param name="nomTaula">El nom de la taula reservada</param>
-        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula, string dni): this()
+        public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula, string dni, int idRestaurant): this()
         {
             this.idReserva = idReserva;
             this.data = data;
@@ -54,6 +56,7 @@ namespace Projecte0.Domini
             this.numComensals = numComensals;
             this.preferencies = preferencies;
             this.dni = dni;
+            this.idRestaurant= idRestaurant;
             this.nomTaula = nomTaula;
         }
 
@@ -93,6 +96,11 @@ namespace Projecte0.Domini
         {
             get { return nomTaula; }
             set { nomTaula = value; }
+        }
+        public int IdRestaurant
+        {
+            get { return idRestaurant; }
+            set { idRestaurant = value;}
         }
 
         public Reserva SelectReserva(int idReserva)

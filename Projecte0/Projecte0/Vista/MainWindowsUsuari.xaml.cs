@@ -28,16 +28,51 @@ namespace Projecte0
         public MainWindowsUsuari()
         {
             InitializeComponent();
+            ActualitzarReserves();
             dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
             FinestraMapa finestraMapa = new FinestraMapa();
 
+            finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
+
             // Obrim la finestra de reserva
             finestraMapa.Show();
+        }
+
+        private void FinestraMapa_Closed(object sender, EventArgs e)
+        {
+            // Cuando se cierre la ventana de reserva, actualizamos la lista de reservas
+            ActualitzarReserves();
+        }
+
+        private void btnEliminarReserva_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtenir la reserva seleccionada
+            var reservaSeleccionada = dgReserves.SelectedItem as Reserva;
+
+            if (reservaSeleccionada != null)
+            {
+                // Eliminar la reserva seleccionada
+                reservaBD.DeleteReservaBDD(reservaSeleccionada);
+
+                // Actualitzar la vista de dades
+                dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+            }
+            else
+            {
+                MessageBox.Show("Si us plau, selecciona una reserva per eliminar.");
+            }
+        }
+
+        private void ActualitzarReserves()
+        {
+            // Actualizamos la lista de reservas
+            dgReserves.ItemsSource = null;
+            dgReserves.ItemsSource = reservaBD.ObtenirReserves();
         }
     }
 }
