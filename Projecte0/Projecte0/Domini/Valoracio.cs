@@ -79,5 +79,10 @@ namespace Projecte0.Domini
         {
             return valoracioBD.ObtenirValoracionsBDD(nom);
         }
+
+        public bool EliminarValoracionsPorRestaurante(string nom)
+        {
+            return valoracioBD.EliminarValoracionsPorRestauranteBDD(nom);
+        }
     }
 }

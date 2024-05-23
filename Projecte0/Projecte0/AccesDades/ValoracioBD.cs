@@ -117,5 +117,22 @@ namespace Projecte0.AccesDades
 
             return valoracions;
         }
+
+        public bool EliminarValoracionsPorRestauranteBDD(string nom)
+        {
+            MySqlConnection connection = connexio.ConnexioBDD();
+            bool deleteValoracio = false;
+            if (connection != null)
+            {
+                string sql = $"DELETE FROM valoracio WHERE dni IN (SELECT dni FROM restaurant WHERE nom = '{nom}')";
+
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                deleteValoracio = 1 == sqlCommand.ExecuteNonQuery();
+
+
+                connection.Close();
+            }
+            return deleteValoracio;
+        }
     }
 }
