@@ -14,6 +14,7 @@ namespace Projecte0.AccesDades
     {
         Connexio connexio = new Connexio();
         PersonaBD personaBD = new PersonaBD();
+        FotoBD fotoBD = new FotoBD();
 
         public List<Restaurant> SelectRestaurantListBD(string dni)
         {
@@ -116,7 +117,7 @@ namespace Projecte0.AccesDades
             }
             return reservas;
         }
-        public bool CrearRestaurantBD(Restaurant restaurant, Administrador admin)
+        public bool CrearRestaurantBD(Restaurant restaurant, Persona p)
         {
             bool insertRestaurant = false;
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -128,17 +129,17 @@ namespace Projecte0.AccesDades
                 }
                 else
                 {
-                    if (personaBD.SelectPersonesBDD(admin.Dni,admin.Password) != null)
+                    if (personaBD.SelectPersonesBDD(p.Dni,p.Password) is not null)
                     {
-                        string sql = $"INSERT INTO restaurant (nom, direccio, tipusCuina, capacitat,Dni) VALUES ('{restaurant.Nom}','{restaurant.Direccio}','{restaurant.TipusCuina}','{restaurant.Capacitat}','{admin.Dni}')";
+                        string sql = $"INSERT INTO restaurant (nom, direccio, tipusCuina, capacitat,Dni) VALUES ('{restaurant.Nom}','{restaurant.Direccio}','{restaurant.TipusCuina}','{restaurant.Capacitat}','{p.Dni}')";
                         MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                         insertRestaurant = 1 == sqlCommand.ExecuteNonQuery();
                     }
                     else
                     {
-                        if(personaBD.InsertPersonaBDD(admin))
+                        if(personaBD.InsertPersonaBDD(p))
                         {
-                            string sql = $"INSERT INTO restaurant (nom, direccio, tipusCuina, capacitat,Dni) VALUES ('{restaurant.Nom}','{restaurant.Direccio}','{restaurant.TipusCuina}','{restaurant.Capacitat}','{admin.Dni}')";
+                            string sql = $"INSERT INTO restaurant (nom, direccio, tipusCuina, capacitat,Dni) VALUES ('{restaurant.Nom}','{restaurant.Direccio}','{restaurant.TipusCuina}','{restaurant.Capacitat}','{p.Dni}')";
                             MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                             insertRestaurant = 1 == sqlCommand.ExecuteNonQuery();
                         }
@@ -146,6 +147,10 @@ namespace Projecte0.AccesDades
                         {
                             Console.WriteLine("Error.");
                         }
+                    }
+                    if (restaurant.Fotos is not null)
+                    {
+                        fotoBD.InsertFotoBD(restaurant.Fotos, restaurant);
                     }
 
                 }
@@ -158,6 +163,7 @@ namespace Projecte0.AccesDades
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null) 
             {
+                fotoBD.DeleteFotoBD(nom);
                 string sql = $"DELETE FROM restaurant WHERE nom = '{nom}';";
                 MySqlCommand sqlCommand = new MySqlCommand (sql, connection);
                 deleteRestaurant = 1 == sqlCommand.ExecuteNonQuery();
