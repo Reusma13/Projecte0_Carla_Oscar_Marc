@@ -16,7 +16,7 @@
         <Label Content="Contrasenya:" HorizontalAlignment="Left" Margin="298,231,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
         <PasswordBox Name="pwdUsuari" HorizontalAlignment="Left" Margin="382,235,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" Width="204" Click="btnRegistrar_Click" Background="DarkRed" Foreground="White"/>
-        <Image Margin="360,27,360,329" Source="/GironaBrasa.PNG" Stretch="Fill"/>
+        <Image Margin="360,27,360,329" Source="/Vista/Imagenes/GironaBrasa.PNG" Stretch="Fill"/>
 
     </Grid>
 

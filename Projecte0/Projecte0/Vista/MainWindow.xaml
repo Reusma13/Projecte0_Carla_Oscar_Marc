@@ -13,6 +13,6 @@
         <PasswordBox Name="pwdBoxUsuari" HorizontalAlignment="Left" Margin="380,194,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btnIniciarSessio" Content="Iniciar sessió" HorizontalAlignment="Center" Margin="0,222,0,0" VerticalAlignment="Top" Width="200" Click="btnIniciarSessio_Click" Background="DarkRed" Foreground="White"/>
         <Button Name="btnRegistrar" Content="Registrar-se" HorizontalAlignment="Center" Margin="0,247,0,0" VerticalAlignment="Top" Width="200" Click="btnRegistrar_Click" Background="DarkRed" Foreground="White"/>
-        <Image Margin="360,27,360,329" Source="/GironaBrasa.PNG" Stretch="Fill"/>
+        <Image Margin="360,27,360,329" Source="/Vista/Imagenes/GironaBrasa.PNG" Stretch="Fill"/>
     </Grid>
 </Window>

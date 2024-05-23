@@ -82,21 +82,12 @@ namespace Projecte0.AccesDades
             return deleteReserva;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Creem una nova instància de la finestra de reserva
-            FinestraMapa finestraMapa = new FinestraMapa();
-
-            // Obrim la finestra de reserva
-            finestraMapa.Show();
-        }
-
-        public List<Reserva> ObtenirReserves()
+        public List<Reserva> ObtenirReserves(Restaurant restaurant)
         {
             List<Reserva> reserves = new List<Reserva>();
 
             // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = "SELECT * FROM Reserva";
+            string sql = $"SELECT * FROM Reserva JOIN WHERE restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
 
             // Executem la consulta SQL
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();

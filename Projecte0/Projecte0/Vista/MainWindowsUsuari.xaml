@@ -9,7 +9,7 @@
     <Grid Background="Wheat">
         <DataGrid x:Name="dgReserves" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,310" Background="White" Foreground="DarkRed"/>
         <Button x:Name="btnNovaReserva" Content="Realitzar Reserva" HorizontalAlignment="Center" Margin="0,182,0,0" VerticalAlignment="Top" Width="166" Height="35" Background="DarkRed" Foreground="White" Click="btnNovaReserva_Click" />
-        <Image Margin="353,297,353,44" Source="/GironaBrasa.PNG" Stretch="Fill"/>
+        <Image Margin="353,297,353,44" Source="/Vista/Imagenes/GironaBrasa.PNG" Stretch="Fill"/>
         <Button x:Name="btnEliminarReserva" Content="Eliminar Reserva" HorizontalAlignment="Center" Margin="0,234,0,0" VerticalAlignment="Top" Width="166" Height="35" Background="DarkRed" Foreground="White" Click="btnEliminarReserva_Click"  />
     </Grid>
 </Window>

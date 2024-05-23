@@ -22,7 +22,7 @@
         <TextBox x:Name="tbPreferencies" HorizontalAlignment="Left" Margin="376,262,0,0" VerticalAlignment="Top" Width="100"/>
 
         <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Left" Margin="286,289,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click" Background="DarkRed" Foreground="White"/>
-        <Image Margin="334,17,372,324" Source="/GironaBrasa.PNG" Stretch="Fill"/>
+        <Image Margin="334,17,372,324" Source="/Vista/Imagenes/GironaBrasa.PNG" Stretch="Fill"/>
     </Grid>
 
 </Window>
