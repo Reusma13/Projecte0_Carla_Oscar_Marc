@@ -25,6 +25,7 @@ namespace Projecte0.Vista
         public FinestraMapa()
         {
             InitializeComponent();
+            ActualizarEstadoMesas();
         }
 
         private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
@@ -47,7 +48,7 @@ namespace Projecte0.Vista
             ManejarClicMesa(ButtonTaula4);
         }
 
-        private void ManejarClicMesa(Button botonMesa)
+        private void ManejarClicMesa(Button botonMesa) // He creat el ManejarClicMesa ja que els 4 botons tenien parts de codi repetides
         {
             string nomTaula = botonMesa.Content.ToString();
 
@@ -65,15 +66,13 @@ namespace Projecte0.Vista
 
         private void ActualizarEstadoMesas()
         {
-            // Aquí puedes agregar lógica para actualizar el estado de las mesas cuando se carga la ventana
-            // Por ejemplo, podrías cambiar el color del texto de los botones a rojo si las mesas correspondientes están reservadas
             ActualizarEstadoMesa(ButtonTaula1);
             ActualizarEstadoMesa(ButtonTaula2);
             ActualizarEstadoMesa(ButtonTaula3);
             ActualizarEstadoMesa(ButtonTaula4);
         }
 
-        private void ActualizarEstadoMesa(Button botonMesa)
+        private void ActualizarEstadoMesa(Button botonMesa) // He creat aquest mètode per canviar el color del text del botó quan la taula ja esta reservada
         {
             string nomTaula = botonMesa.Content.ToString();
 
@@ -83,7 +82,7 @@ namespace Projecte0.Vista
             }
             else
             {
-                botonMesa.Foreground = new SolidColorBrush(Colors.Black);
+                botonMesa.Foreground = new SolidColorBrush(Colors.White);
             }
         }
     }
