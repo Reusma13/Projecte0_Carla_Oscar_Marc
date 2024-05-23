@@ -24,7 +24,6 @@ namespace Projecte0.Domini
             restaurants = new List<Restaurant>();
             password = "admin";
             base.esAdmin = "si";
-
         }
 
         /// <summary>
@@ -36,7 +35,11 @@ namespace Projecte0.Domini
         /// <param name="password">La contrasenya de l'administrador</param>
         /// <param name="esAdmin"></param>
         /// <param name="restaurants">Llista de restaurants que pot administrar l'administrador</param>
-        public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : base(dni, nom, cognom, password,esAdmin)
+        public Administrador(string dni, string nom, string cognom, string password, string esAdmin) : base(dni,nom, cognom, password,esAdmin)
+        {
+
+        }
+        public Administrador(string dni, string nom, string cognom,string password,string esAdmin,List<Restaurant> restaurants) : this(dni, nom, cognom, password,esAdmin)
         {
             this.restaurants = restaurants;
             connexio = new Connexio();

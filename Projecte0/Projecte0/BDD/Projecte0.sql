@@ -5,17 +5,6 @@ CREATE OR REPLACE TABLE Persona (
     password VARCHAR(100),
     esAdmin VARCHAR (2)
 );
-
-CREATE OR REPLACE TABLE Valoracio (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    comentari VARCHAR(500),
-    puntuacio INT,
-    Dni VARCHAR(9),
-    idRestaurant INT,
-    FOREIGN KEY (Dni) REFERENCES Persona(Dni),
-    FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
-);
-
 CREATE OR REPLACE TABLE Restaurant (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
@@ -24,6 +13,15 @@ CREATE OR REPLACE TABLE Restaurant (
     capacitat INT,
     Dni VARCHAR(9),
     FOREIGN KEY (Dni) REFERENCES Persona(Dni) 
+);
+CREATE OR REPLACE TABLE Valoracio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    comentari VARCHAR(500),
+    puntuacio INT,
+    Dni VARCHAR(9),
+    idRestaurant INT,
+    FOREIGN KEY (Dni) REFERENCES Persona(Dni),
+    FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
 );
 
 CREATE OR REPLACE TABLE Reserva (
@@ -62,10 +60,17 @@ VALUES ('Bueno',7,'77924452S',1);
 INSERT INTO fotos (url,idRestaurant)
 VALUES ('b',1);
 
+INSERT INTO fotos (url, idRestaurant)
+SELECT 'c', id
+FROM restaurant 
+WHERE nom = 'HOLA';
+
 INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant,nomTaula)
 VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1, 'Taula 1')
 
+
 SELECT * FROM restaurant ;
+SELECT * FROM fotos f ;
 
 SELECT f.url 
 FROM fotos f 
@@ -81,3 +86,5 @@ SELECT v.comentari, v.puntuacio, v.Dni
 FROM valoracio v 
 JOIN restaurant r ON v.idRestaurant = r.id
 WHERE r.nom = 'HOLA';
+
+DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
