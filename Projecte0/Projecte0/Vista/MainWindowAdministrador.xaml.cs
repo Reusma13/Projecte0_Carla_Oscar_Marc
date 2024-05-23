@@ -46,5 +46,17 @@ namespace Projecte0
             }
         }
 
+        private void btnActualizarValoracions_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateValoracions();
+        }
+
+        private void cBoxRestaurant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cBoxRestaurant.SelectedItem != null)
+            {
+                UpdateValoracions();
+            }
+        }
     }
 }
