@@ -90,11 +90,11 @@ namespace Projecte0.AccesDades
             return eliminadaValoracio;
         }
 
-        public List<Valoracio> ObtenirValoracionsBDD()
+        public List<Valoracio> ObtenirValoracionsBDD(string nom)
         {
             List<Valoracio> valoracions = new List<Valoracio>();
 
-            string sql = "SELECT * FROM valoracio";
+            string sql = $"SELECT * FROM valoracio v WHERE JOIN restaurant r ON v.idRestaurant = r.id WHERE r.nom = '{nom}'";
 
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();
             MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection);

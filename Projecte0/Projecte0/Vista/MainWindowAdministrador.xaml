@@ -28,6 +28,13 @@
                     <TextBox HorizontalAlignment="Left" Margin="366,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Valoracions">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox Name="cBoxRestaurants" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="cBoxRestaurants_SelectionChanged"/>
+                    <Button Name="btnActualizarValoracions" Content="Actualizar" HorizontalAlignment="Left" Margin="240,20,0,0" VerticalAlignment="Top" Width="100" Click="btnActualizarValoracions_Click"/>
+                    <DataGrid Name="dgValoracions" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" AutoGenerateColumns="True" Height="201" Width="652"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Label Content="MAIN ADMINISTRADOR" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="DarkRed"/>
     </Grid>
