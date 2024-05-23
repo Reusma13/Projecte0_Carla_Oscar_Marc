@@ -81,13 +81,25 @@ namespace Projecte0.AccesDades
             }
             return deleteReserva;
         }
+        public bool DeleteReservaBDD(string nom)
+        {
+            bool deleteReserva = false;
+            MySqlConnection connection = connexio.ConnexioBDD();
+            if (connection != null)
+            {
+                string sql = $"DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = '{nom}');";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                deleteReserva = 1 == sqlCommand.ExecuteNonQuery();
+            }
+            return deleteReserva;
+        }
 
         public List<Reserva> ObtenirReserves(Restaurant restaurant)
         {
             List<Reserva> reserves = new List<Reserva>();
 
             // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = $"SELECT * FROM Reserva JOIN WHERE restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
+            string sql = $"SELECT * FROM Reserva JOIN restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
 
             // Executem la consulta SQL
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();

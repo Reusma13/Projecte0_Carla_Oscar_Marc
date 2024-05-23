@@ -29,7 +29,7 @@ namespace Projecte0
         {
             InitializeComponent();
             ActualitzarReserves();
-            dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
+            //dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
         }
 
         private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace Projecte0
                 reservaBD.DeleteReservaBDD(reservaSeleccionada);
 
                 // Actualitzar la vista de dades
-                dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+                //dgReserves.ItemsSource = reservaBD.ObtenirReserves();
             }
             else
             {
@@ -72,7 +72,7 @@ namespace Projecte0
         {
             // Actualizamos la lista de reservas
             dgReserves.ItemsSource = null;
-            dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+            //dgReserves.ItemsSource = reservaBD.ObtenirReserves();
         }
     }
 }

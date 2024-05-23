@@ -50,7 +50,7 @@ namespace Projecte0.AccesDades
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null)
             {
-                string sql = $"DELETE FROM fotos WHERE idRestaurnat = (SELECT id FROM restaurant WHERE nom = '{nom}';)";
+                string sql = $"DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = '{nom}';)";
                 MySqlCommand sqlCommand = new MySqlCommand(sql,connection);
                 deleteFotos = 1 == sqlCommand.ExecuteNonQuery();
             }

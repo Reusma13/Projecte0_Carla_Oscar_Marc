@@ -66,12 +66,6 @@ namespace Projecte0
             }
         }
 
-        private void btnModificarRestaurant_Click(object sender, RoutedEventArgs e)
-        {
-            FinestraModificarRestaurant finestraModificarRestaurant = new FinestraModificarRestaurant(cBoxRestaurant.SelectedItem.ToString());
-            finestraModificarRestaurant.Show();
-        }
-
         private void btnCargarFotos_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog(); // Creamos la ventana para seleccionar un fichero
@@ -89,19 +83,19 @@ namespace Projecte0
         private void btnCrearRestaurant_Click(object sender, RoutedEventArgs e)
         {
             Restaurant r;
-            if (txBoxNomRestaurant.Text != "" && txBoxDireccioRestaurant.Text != "" && txBoxTipusCuina.Text != "" && txBoxCapacitatRsstaurant.Text != "" && (txBoxURLFotoRestaurant.Text != "" || lineas != null))
+            if (txBoxNomRestaurant.Text != "" && txBoxDireccioRestaurant.Text != "" && txBoxTipusCuina.Text != "" && txBoxCapacitatRestaurant.Text != "" && (txBoxURLFotoRestaurant.Text != "" || lineas != null))
             {
                 if (restaurant.SelectRestaurant(txBoxNomRestaurant.Text) == null)
                 {
                     if (lineas != null)
                     {
-                        r = new Restaurant(txBoxNomRestaurant.Text, txBoxDireccioRestaurant.Text, txBoxTipusCuina.Text, Convert.ToInt32(txBoxCapacitatRsstaurant.Text), lineas, null, null);
+                        r = new Restaurant(txBoxNomRestaurant.Text, txBoxDireccioRestaurant.Text, txBoxTipusCuina.Text, Convert.ToInt32(txBoxCapacitatRestaurant.Text), lineas, null, null);
                     }
                     else
                     {
                         lineas = new List<string>();
                         lineas.Add(txBoxURLFotoRestaurant.Text);
-                        r = new Restaurant(txBoxNomRestaurant.Text, txBoxDireccioRestaurant.Text,txBoxTipusCuina.Text,Convert.ToInt32(txBoxCapacitatRsstaurant.Text),lineas,null,null);
+                        r = new Restaurant(txBoxNomRestaurant.Text, txBoxDireccioRestaurant.Text,txBoxTipusCuina.Text,Convert.ToInt32(txBoxCapacitatRestaurant.Text),lineas,null,null);
                     }
                     restaurant.InsertRestaurant(r, p);
                 }
@@ -114,6 +108,13 @@ namespace Projecte0
             {
                 restaurant.DeleteRestaurant(cBoxRestaurant.SelectedItem.ToString());
             }
+        }
+
+        private void btnModificarRestaurant_Click(object sender, RoutedEventArgs e)
+        {
+            string nom = cBoxRestaurant.SelectedItem.ToString();
+            FinestraModificarRestaurant finestraModificarRestaurant = new FinestraModificarRestaurant(nom, p);
+            finestraModificarRestaurant.Show();
         }
     }
 }
