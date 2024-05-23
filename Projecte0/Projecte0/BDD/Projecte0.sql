@@ -32,6 +32,7 @@ CREATE OR REPLACE TABLE Reserva (
     preferencies VARCHAR(200),
     Dni VARCHAR(9),
     idRestaurant INT,
+    nomTaula VARCHAR(100),
     FOREIGN KEY (Dni) REFERENCES Persona(Dni),
     FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
 );
@@ -43,7 +44,7 @@ CREATE OR REPLACE TABLE Fotos (
 );
 
 INSERT INTO Persona (Dni, nom, cognom,password,esAdmin)
-VALUES ('12345678A', 'Marc', 'Pérez', '12345', 'si');
+VALUES ('12345678B', 'Marc', 'Pérez', '12345', 'si');
 
 SELECT * FROM persona WHERE dni = '12345678A' AND password = '12345';
 SELECT * FROM persona;
@@ -64,8 +65,9 @@ SELECT 'c', id
 FROM restaurant 
 WHERE nom = 'HOLA';
 
-INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant)
-VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1)
+INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant,nomTaula)
+VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1, 'Taula 1')
+
 
 SELECT * FROM restaurant ;
 SELECT * FROM fotos f ;

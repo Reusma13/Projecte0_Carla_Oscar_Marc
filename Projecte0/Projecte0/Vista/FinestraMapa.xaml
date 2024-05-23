@@ -1,17 +1,17 @@
-﻿<Window x:Class="Projecte0.FinestraMapa"
+﻿<Window x:Class="Projecte0.Vista.FinestraMapa"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projecte0"
+        xmlns:local="clr-namespace:Projecte0.Vista"
         mc:Ignorable="d"
         Title="FinestraMapa" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Wheat">
         <Image Margin="106,91,106,62" Source="/Vista/Imagenes/MapaRestaurant2.png" Stretch="Fill"/>
-        <Label Content="SELECCIONA LA TAULA QUE VOLS RESERVAR" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Source Serif Pro" Background="#FF8EE065"/>
-        <Button Name="ButtonTaula1" Content="Taula 1" HorizontalAlignment="Left" Margin="464,190,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula1_Click"/>
-        <Button Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="565,238,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click"/>
-        <Button Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="464,289,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click"/>
-        <Button Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="565,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click"/>
+        <Label Content="SELECCIONA LA TAULA QUE VOLS RESERVAR" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Source Serif Pro" Foreground="DarkRed"/>
+        <Button Name="ButtonTaula1" Content="Taula 1" HorizontalAlignment="Left" Margin="464,190,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula1_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="565,238,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="464,289,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="565,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click" Background="DarkRed" Foreground="White"/>
     </Grid>
 </Window>

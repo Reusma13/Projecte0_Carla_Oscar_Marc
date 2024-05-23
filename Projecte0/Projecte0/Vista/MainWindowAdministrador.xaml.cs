@@ -24,6 +24,8 @@ namespace Projecte0
     /// </summary>
     public partial class MainWindowAdministrador : Window
     {
+        private List<Restaurant> restaurants;
+        private Valoracio valoracio;
         Restaurant restaurant;
         Persona p;
         List<string> lineas;
@@ -36,6 +38,32 @@ namespace Projecte0
             List<Restaurant> restaurants = restaurant.SelectRestaurantList(p.Dni);
             cBoxRestaurant.ItemsSource = restaurants;
             cBoxRestaurant.DisplayMemberPath = "Nom";
+            valoracio = new Valoracio();
+            cBoxRestaurants.ItemsSource = restaurants;
+            cBoxRestaurants.DisplayMemberPath = "Nom";
+        }
+
+        private void UpdateValoracions()
+        {
+            if (cBoxRestaurant.SelectedItem != null)
+            {
+                Restaurant selectedRestaurant = (Restaurant)cBoxRestaurant.SelectedItem;
+                List<Valoracio> valoracions = valoracio.ObtenirValoracions(selectedRestaurant.Nom);
+                dgValoracions.ItemsSource = valoracions;
+            }
+        }
+
+        private void btnActualizarValoracions_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateValoracions();
+        }
+
+        private void cBoxRestaurant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cBoxRestaurant.SelectedItem != null)
+            {
+                UpdateValoracions();
+            }
         }
 
         private void btnModificarRestaurant_Click(object sender, RoutedEventArgs e)

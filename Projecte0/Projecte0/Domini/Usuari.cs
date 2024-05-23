@@ -54,7 +54,7 @@ namespace Projecte0.Domini
         // -------- Metodes --------
 
         //FALTA COMENTARIO
-        public Reserva RealitzarReserva(Restaurant restaurante, DateTime data, TimeSpan hora, int numComensals, string preferencies)
+        public Reserva RealitzarReserva(Restaurant restaurante, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula)
         {
             Reserva novaReserva = new Reserva()
             {
@@ -62,7 +62,8 @@ namespace Projecte0.Domini
                 Data = data,
                 Hora = hora,
                 NumComensals = numComensals,
-                Preferencies = preferencies
+                Preferencies = preferencies,
+                NomTaula = nomTaula
             };
             //reserves.Add(novaReserva);
             // restaurante.GestionarReserves(novaReserva);  Suposem que el restaurant té un mètode per gestionar les reserves

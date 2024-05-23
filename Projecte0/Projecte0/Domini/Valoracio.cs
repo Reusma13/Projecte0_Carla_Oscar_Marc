@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projecte0.AccesDades;
 
 namespace Projecte0.Domini
 {
@@ -12,6 +13,7 @@ namespace Projecte0.Domini
         protected string comentari;
         protected int puntuacio;
         protected string dni;
+        ValoracioBD valoracioBD = new ValoracioBD();
 
         // -------- Constructors --------
         /// <summary>
@@ -53,5 +55,29 @@ namespace Projecte0.Domini
             set { dni = value; }
         }
 
+        public List<Valoracio> SelectValoracio()
+        {
+            return valoracioBD.SelectValoracioBDD();
+        }
+
+        public bool InsertValoracio(Valoracio valoracio)
+        {
+            return valoracioBD.InsertValoracioBDD(valoracio);
+        }
+
+        public bool UpdateValoracio(Valoracio valoracio)
+        {
+            return valoracioBD.UpdateValoracioBDD(valoracio);
+        }
+
+        public bool DeleteValoracio(string dni)
+        {
+            return valoracioBD.DeleteValoracioBDD(dni);
+        }
+
+        public List<Valoracio> ObtenirValoracions(string nom)
+        {
+            return valoracioBD.ObtenirValoracionsBDD(nom);
+        }
     }
 }

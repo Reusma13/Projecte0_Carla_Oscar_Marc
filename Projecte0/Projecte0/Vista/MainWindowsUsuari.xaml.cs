@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using Projecte0.AccesDades;
 using Projecte0.Domini;
+using Projecte0.Vista;
 
 namespace Projecte0
 {
@@ -23,51 +24,55 @@ namespace Projecte0
     public partial class MainWindowsUsuari : Window
     {
         Connexio connexio = new Connexio();
+        ReservaBD reservaBD = new ReservaBD(); // Creem una instància de ReservaBD
         public MainWindowsUsuari()
         {
             InitializeComponent();
-            // dgReserves.ItemsSource = ObtenirReserves();
+            ActualitzarReserves();
+            dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
             FinestraMapa finestraMapa = new FinestraMapa();
+
+            finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
 
             // Obrim la finestra de reserva
             finestraMapa.Show();
         }
 
-        /*private List<Reserva> ObtenirReserves()
+        private void FinestraMapa_Closed(object sender, EventArgs e)
         {
-            List<Reserva> reserves = new List<Reserva>();
+            // Cuando se cierre la ventana de reserva, actualizamos la lista de reservas
+            ActualitzarReserves();
+        }
 
-            // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = "SELECT * FROM reserves";
+        private void btnEliminarReserva_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtenir la reserva seleccionada
+            var reservaSeleccionada = dgReserves.SelectedItem as Reserva;
 
-            // Executem la consulta SQL
-            MySqlConnection mySqlConnection = connexio.ConnexioBDD();
-            MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection); 
-            MySqlDataReader reader = mySqlCommand.ExecuteReader();
-
-            // Llegim les dades de les reserves de la base de dades
-            while (reader.Read())
+            if (reservaSeleccionada != null)
             {
-                Reserva reserva = new Reserva()
-                {
-                    IdReserva = reader.GetInt32("idReserva"),
-                    Data = reader.GetDateTime("data"),
-                    Hora = reader.GetTimeSpan("hora"),
-                    NumComensals = reader.GetInt32("numComensals"),
-                    Preferencies = reader.GetString("preferencies")
-                };
+                // Eliminar la reserva seleccionada
+                reservaBD.DeleteReservaBDD(reservaSeleccionada);
 
-                reserves.Add(reserva);
+                // Actualitzar la vista de dades
+                dgReserves.ItemsSource = reservaBD.ObtenirReserves();
             }
+            else
+            {
+                MessageBox.Show("Si us plau, selecciona una reserva per eliminar.");
+            }
+        }
 
-            reader.Close();
-
-            return reserves;
-        }*/
+        private void ActualitzarReserves()
+        {
+            // Actualizamos la lista de reservas
+            dgReserves.ItemsSource = null;
+            dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+        }
     }
 }

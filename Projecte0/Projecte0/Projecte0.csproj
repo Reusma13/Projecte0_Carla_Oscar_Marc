@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Vista\Imagenes\GironaBrasa.PNG" />
     <None Remove="Vista\Imagenes\MapaRestaurant2.png" />
     <None Remove="Vista\Imagenes\Taula1.PNG" />
     <None Remove="Vista\Imagenes\taula2.PNG" />
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Vista\Imagenes\GironaBrasa.PNG" />
     <Resource Include="Vista\Imagenes\MapaRestaurant2.png" />
     <Resource Include="Vista\Imagenes\Taula1.PNG" />
     <Resource Include="Vista\Imagenes\taula2.PNG" />

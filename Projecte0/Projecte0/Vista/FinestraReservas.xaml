@@ -6,20 +6,23 @@
         xmlns:local="clr-namespace:Projecte0.Vista"
         mc:Ignorable="d"
         Title="FinestraReserva" Height="450" Width="800">
-    <Grid>
-        <Label Content="Data:" HorizontalAlignment="Left" Margin="305,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.271,0.593"/>
-        <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="349,127,0,0" VerticalAlignment="Top" Width="146"/>
+    <Grid Background="Wheat">
 
-        <Label Content="Hora:" HorizontalAlignment="Left" Margin="305,153,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbHora" HorizontalAlignment="Left" Margin="349,157,0,0" VerticalAlignment="Top" Width="146"/>
 
-        <Label Content="Número de comensals:" HorizontalAlignment="Left" Margin="305,187,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="tbNumComensals" HorizontalAlignment="Left" Margin="440,191,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label Content="Data:" HorizontalAlignment="Left" Margin="286,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.271,0.593" Foreground="DarkRed"/>
+        <DatePicker x:Name="dpData" HorizontalAlignment="Left" Margin="330,165,0,0" VerticalAlignment="Top" Width="146"/>
 
-        <Label Content="Preferències:" HorizontalAlignment="Left" Margin="305,217,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="tbPreferencies" HorizontalAlignment="Left" Margin="394,221,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Hora:" HorizontalAlignment="Left" Margin="286,194,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox x:Name="tbHora" HorizontalAlignment="Left" Margin="330,198,0,0" VerticalAlignment="Top" Width="146"/>
 
-        <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click"/>
-        
+        <Label Content="Número de comensals:" HorizontalAlignment="Left" Margin="286,227,0,0" VerticalAlignment="Top" Width="142" Foreground="DarkRed"/>
+        <TextBox x:Name="tbNumComensals" HorizontalAlignment="Left" Margin="421,231,0,0" VerticalAlignment="Top" Width="55"/>
+
+        <Label Content="Preferències:" HorizontalAlignment="Left" Margin="286,258,0,0" VerticalAlignment="Top" Width="142" Foreground="DarkRed"/>
+        <TextBox x:Name="tbPreferencies" HorizontalAlignment="Left" Margin="376,262,0,0" VerticalAlignment="Top" Width="100"/>
+
+        <Button x:Name="btnReservar" Content="Reservar" HorizontalAlignment="Left" Margin="286,289,0,0" VerticalAlignment="Top" Width="190" Click="btnReservar_Click" Background="DarkRed" Foreground="White"/>
+        <Image Margin="334,17,372,324" Source="/Vista/Imagenes/GironaBrasa.PNG" Stretch="Fill"/>
     </Grid>
+
 </Window>
