@@ -6,29 +6,37 @@
         xmlns:local="clr-namespace:Projecte0"
         mc:Ignorable="d"
         Title="MainWindowAdministrador" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Wheat">
         <TabControl Margin="86,49,0,0">
             <TabItem Header="Seleccionar restaurant">
                 <Grid Background="#FFE5E5E5">
                     <ComboBox Name="cBoxRestaurant" HorizontalAlignment="Left" Margin="68,43,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Selecciona el restaurant" HorizontalAlignment="Left" Margin="60,17,0,0" VerticalAlignment="Top"/>
-                    <Button Name="btnModificarRestaurant" Content="Modificar restaurant" HorizontalAlignment="Left" Margin="68,84,0,0" VerticalAlignment="Top"/>
-                    <Button Name="btnEliminarRestaurant" Content="Eliminar restaurant" HorizontalAlignment="Left" Margin="68,125,0,0" VerticalAlignment="Top" Width="111" Foreground="Red"/>
+                    <Label Content="Selecciona el restaurant" HorizontalAlignment="Left" Margin="60,17,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+                    <Button Name="btnModificarRestaurant" Content="Modificar restaurant" HorizontalAlignment="Left" Margin="68,84,0,0" VerticalAlignment="Top" Background="DarkRed" Foreground="White"/>
+                    <Button Name="btnEliminarRestaurant" Content="Eliminar restaurant" HorizontalAlignment="Left" Margin="68,125,0,0" VerticalAlignment="Top" Width="111" Foreground="Red" Background="DarkRed"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Inserir restaurant">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="Nom restaurant:" HorizontalAlignment="Left" Margin="52,34,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nom restaurant:" HorizontalAlignment="Left" Margin="52,34,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
                     <TextBox Name="txBoxNomRestaurant" HorizontalAlignment="Left" Margin="148,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBox HorizontalAlignment="Left" Margin="112,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
-                    <Label Content="Direccio:" HorizontalAlignment="Left" Margin="52,65,0,0" VerticalAlignment="Top" />
-                    <Label Content="Tipus de cuina:" HorizontalAlignment="Left" Margin="52,96,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Direccio:" HorizontalAlignment="Left" Margin="52,65,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+                    <Label Content="Tipus de cuina:" HorizontalAlignment="Left" Margin="52,96,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
                     <TextBox HorizontalAlignment="Left" Margin="146,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Capacitat:" HorizontalAlignment="Left" Margin="299,34,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Capacitat:" HorizontalAlignment="Left" Margin="299,34,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
                     <TextBox HorizontalAlignment="Left" Margin="366,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Valoracions">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox Name="cBoxRestaurants" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="cBoxRestaurants_SelectionChanged"/>
+                    <Button Name="btnActualizarValoracions" Content="Actualizar" HorizontalAlignment="Left" Margin="240,20,0,0" VerticalAlignment="Top" Width="100" Click="btnActualizarValoracions_Click"/>
+                    <DataGrid Name="dgValoracions" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" AutoGenerateColumns="True" Height="201" Width="652"/>
+                </Grid>
+            </TabItem>
         </TabControl>
-        <Label Content="MAIN ADMINISTRADOR" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label Content="MAIN ADMINISTRADOR" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="DarkRed"/>
     </Grid>
+
 </Window>

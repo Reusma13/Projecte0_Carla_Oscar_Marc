@@ -46,7 +46,7 @@ CREATE OR REPLACE TABLE Fotos (
 );
 
 INSERT INTO Persona (Dni, nom, cognom,password,esAdmin)
-VALUES ('12345678A', 'Marc', 'Pérez', '12345', 'si');
+VALUES ('12345678B', 'Marc', 'Pérez', '12345', 'si');
 
 SELECT * FROM persona WHERE dni = '12345678A' AND password = '12345';
 SELECT * FROM persona;

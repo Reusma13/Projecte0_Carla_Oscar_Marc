@@ -36,11 +36,12 @@ namespace Projecte0.Vista
             TimeSpan hora = TimeSpan.Parse(tbHora.Text);
             int numComensals = Convert.ToInt32(tbNumComensals.Text);
             string preferencies = tbPreferencies.Text;
+            string dataFormateada = data.ToString("yyyy-MM-dd"); // data formatejada
 
             // Creem una nova reserva amb aquestes dades
             Reserva novaReserva = new Reserva()
             {
-                Data = data,
+                Data = DateTime.Parse(dataFormateada),
                 Hora = hora,
                 NumComensals = numComensals,
                 Preferencies = preferencies,

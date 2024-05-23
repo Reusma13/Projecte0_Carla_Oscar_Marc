@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projecte0.AccesDades;
 using Projecte0.Domini;
 
 namespace Projecte0.Vista
@@ -20,40 +21,69 @@ namespace Projecte0.Vista
     /// </summary>
     public partial class FinestraMapa : Window
     {
+        ReservaBD reservaBD = new ReservaBD();
         public FinestraMapa()
         {
             InitializeComponent();
+            ActualizarEstadoMesas();
         }
 
         private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
         {
-            // Obtenim el nom de la taula del botó
-            string nomTaula = ButtonTaula1.Content.ToString();
-
-            // Ara pots obrir la finestra de reserva amb la taula seleccionada
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula1);
         }
 
         private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
         {
-            string nomTaula = ButtonTaula2.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula2);
         }
 
         private void ButtonTaula3_Click(object sender, RoutedEventArgs e)
         {
-            string nomTaula = ButtonTaula3.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula3);
         }
 
         private void ButtonTaula4_Click(object sender, RoutedEventArgs e)
         {
-            string nomTaula = ButtonTaula4.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula4);
+        }
+
+        private void ManejarClicMesa(Button botonMesa) // He creat el ManejarClicMesa ja que els 4 botons tenien parts de codi repetides
+        {
+            string nomTaula = botonMesa.Content.ToString();
+
+            if (reservaBD.EstaReservada(nomTaula))
+            {
+                MessageBox.Show("La mesa ya está reservada.");
+                botonMesa.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
+                finestraReserva.Show();
+            }
+        }
+
+        private void ActualizarEstadoMesas()
+        {
+            ActualizarEstadoMesa(ButtonTaula1);
+            ActualizarEstadoMesa(ButtonTaula2);
+            ActualizarEstadoMesa(ButtonTaula3);
+            ActualizarEstadoMesa(ButtonTaula4);
+        }
+
+        private void ActualizarEstadoMesa(Button botonMesa) // He creat aquest mètode per canviar el color del text del botó quan la taula ja esta reservada
+        {
+            string nomTaula = botonMesa.Content.ToString();
+
+            if (reservaBD.EstaReservada(nomTaula))
+            {
+                botonMesa.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                botonMesa.Foreground = new SolidColorBrush(Colors.White);
+            }
         }
     }
 }

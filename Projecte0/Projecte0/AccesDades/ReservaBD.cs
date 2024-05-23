@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MySql.Data.MySqlClient;
 using Projecte0.Domini;
+using Projecte0.Vista;
 
 
 namespace Projecte0.AccesDades
@@ -26,7 +28,7 @@ namespace Projecte0.AccesDades
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    reserva = new Reserva(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["Dni"].ToString(), reader["nomTaula"].ToString());
+                    reserva = new Reserva(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(),  reader["nomTaula"].ToString(), reader["Dni"].ToString(), Convert.ToInt32(reader["idRestaurant"]));
                 }
                 reader.Close();
                 connection.Close();
@@ -40,8 +42,11 @@ namespace Projecte0.AccesDades
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null)
             {
-                string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensals, preferencies) " +
-                            $"VALUES('{reserva.IdReserva}','{reserva.Data}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}'), '{reserva.NomTaula}';";
+                // Formateja la data al format 'YYYY-MM-DD'
+                string dataFormateada = reserva.Data.ToString("yyyy-MM-dd");
+
+                string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula) " +
+                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '12345678A',1,'{reserva.NomTaula}');";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 inseritReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
@@ -69,12 +74,64 @@ namespace Projecte0.AccesDades
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null)
             {
-                string sql = $"DELETE * FROM reserva WHERE idReserva = {reserva.IdReserva}";
+                string sql = $"DELETE FROM reserva WHERE idReserva = {reserva.IdReserva}";
 
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 deleteReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
             return deleteReserva;
+        }
+
+        public List<Reserva> ObtenirReserves(Restaurant restaurant)
+        {
+            List<Reserva> reserves = new List<Reserva>();
+
+            // Creem la consulta SQL per obtenir totes les reserves de la base de dades
+            string sql = $"SELECT * FROM Reserva JOIN WHERE restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
+
+            // Executem la consulta SQL
+            MySqlConnection mySqlConnection = connexio.ConnexioBDD();
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection);
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+            // Llegim les dades de les reserves de la base de dades
+            while (reader.Read())
+            {
+                Reserva reserva = new Reserva()
+                {
+                    IdReserva = reader.GetInt32("idReserva"),
+                    Data = reader.GetDateTime("data"),
+                    Hora = reader.GetTimeSpan("hora"),
+                    NumComensals = reader.GetInt32("numComensales"),
+                    Preferencies = reader.GetString("preferencies"),
+                    Dni = reader.GetString("Dni"),
+                    IdRestaurant = reader.GetInt32("idRestaurant"),
+                    NomTaula = reader.GetString("nomTaula")
+                };
+
+                reserves.Add(reserva);
+            }
+
+            reader.Close();
+
+            return reserves;
+        }
+
+        public bool EstaReservada(string nomTaula) //Mètode per saber si la taula ja esta reservada
+        {
+            using (MySqlConnection mySqlConnection = connexio.ConnexioBDD())
+            {
+                mySqlConnection.Open();
+
+                string query = "SELECT COUNT(*) FROM Reserva WHERE nomTaula = @nomTaula";
+
+                MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
+                cmd.Parameters.AddWithValue("@nomTaula", nomTaula);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return count > 0;
+            }
         }
     }
 }
