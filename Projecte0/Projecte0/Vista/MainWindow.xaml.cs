@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Projecte0.AccesDades;
 using Projecte0.Domini;
 
 namespace Projecte0
@@ -40,7 +41,7 @@ namespace Projecte0
         {
             if (txBoxUsuari.Text != "" && pwdBoxUsuari.Password != "")
             {
-                p = p.SelectPersona(txBoxUsuari.Text,pwdBoxUsuari.Password);
+                p = p.SelectPersona(txBoxUsuari.Text, pwdBoxUsuari.Password);
                 if(p.EsAdmin.ToLower() == "si")
                 {
                     MainWindowAdministrador mainWindowAdministrador = new MainWindowAdministrador(p);
@@ -49,7 +50,7 @@ namespace Projecte0
                 }
                 else
                 {
-                    MainWindowsUsuari mainWindowsUsuari = new MainWindowsUsuari();
+                    MainWindowsUsuari mainWindowsUsuari = new MainWindowsUsuari(p);
                     mainWindowsUsuari.Show();
                     this.Close();
                 }

@@ -108,9 +108,9 @@ namespace Projecte0.Domini
             return reservaBD.SelectReservaBDD(idReserva);
         }
 
-        public bool InsertReserva(Reserva reserva)
+        public bool InsertReserva(Reserva reserva, string dni)
         {
-            return reservaBD.InsertReservaBDD(reserva);
+            return reservaBD.InsertReservaBDD(reserva, dni);
         }
 
         public bool UpdateReserva(Reserva reserva)
@@ -122,6 +122,9 @@ namespace Projecte0.Domini
         {
             return reservaBD.DeleteReservaBDD(reserva);
         }
-
+        public List<Reserva> ObtenirReservaList(string dni)
+        {
+            return reservaBD.ObtenirReserves(dni);
+        }
     }
 }

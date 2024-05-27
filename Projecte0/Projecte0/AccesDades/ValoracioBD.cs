@@ -94,7 +94,7 @@ namespace Projecte0.AccesDades
         {
             List<Valoracio> valoracions = new List<Valoracio>();
 
-            string sql = $"SELECT * FROM valoracio v WHERE JOIN restaurant r ON v.idRestaurant = r.id WHERE r.nom = '{nom}'";
+            string sql = $"SELECT * FROM valoracio v JOIN restaurant r ON v.idRestaurant = r.id WHERE r.nom = '{nom}';";
 
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();
             MySqlCommand mySqlCommand = new MySqlCommand(sql, mySqlConnection);

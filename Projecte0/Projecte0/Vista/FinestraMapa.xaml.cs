@@ -21,11 +21,14 @@ namespace Projecte0.Vista
     /// </summary>
     public partial class FinestraMapa : Window
     {
+
         ReservaBD reservaBD = new ReservaBD();
-        public FinestraMapa()
+        Persona persona; 
+        public FinestraMapa(Persona p)
         {
             InitializeComponent();
             ActualizarEstadoMesas();
+            persona = p;
         }
 
         private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
@@ -59,7 +62,7 @@ namespace Projecte0.Vista
             }
             else
             {
-                FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
+                FinestraReserva finestraReserva = new FinestraReserva(nomTaula, persona);
                 finestraReserva.Show();
             }
         }

@@ -1,3 +1,5 @@
+using MySql.Data.MySqlClient;
+using Projecte0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,6 @@ using MySql.Data.MySqlClient;
 using Projecte0.Domini;
 using Projecte0.Vista;
 
-
 namespace Projecte0.AccesDades
 {
     public class ReservaBD
@@ -17,6 +18,11 @@ namespace Projecte0.AccesDades
         Connexio connexio = new Connexio();
 
         // -------- Mètodes --------
+        /// <summary>
+        /// Busca a la base de dades quina Reserva correspon al idReserva
+        /// </summary>
+        /// <param name="idReserva">id de la Reserva que vols seleccionar</param>
+        /// <returns>El objecte Reserva de la reserva seleccionada, o null si no es troba</returns>
         public Reserva SelectReservaBDD(int idReserva)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -35,8 +41,14 @@ namespace Projecte0.AccesDades
             }
             return reserva;
         }
+      
+        /// <summary>
+        /// Insereix una nova reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol insertar</param>
+        /// <returns>True si la reserva s'ha afegit correctament, si no, false</returns>
+        public bool InsertReservaBDD(Reserva reserva, string dni)
 
-        public bool InsertReservaBDD(Reserva reserva)
         {
             bool inseritReserva = false;
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -46,13 +58,18 @@ namespace Projecte0.AccesDades
                 string dataFormateada = reserva.Data.ToString("yyyy-MM-dd");
 
                 string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula) " +
-                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '12345678A',1,'{reserva.NomTaula}');";
+                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '{dni}',1,'{reserva.NomTaula}');";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 inseritReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
             return inseritReserva;
         }
 
+        /// <summary>
+        /// Actualitza una nova reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol actualitzar</param>
+        /// <returns>True si la reserva s'ha actualitzat correctament, si no, false</returns>
         public bool UpdateReservaBDD(Reserva reserva)
         {
             bool updateReserva = false;
@@ -68,6 +85,11 @@ namespace Projecte0.AccesDades
             return updateReserva;
         }
 
+        /// <summary>
+        /// Eliminar una reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Reserva la qual es vol eliminar</param>
+        /// <returns>True si la reserva s'ha eliminat correctament, si no, false</returns>
         public bool DeleteReservaBDD(Reserva reserva)
         {
             bool deleteReserva = false;
@@ -81,13 +103,25 @@ namespace Projecte0.AccesDades
             }
             return deleteReserva;
         }
+        public bool DeleteReservaBDD(string nom)
+        {
+            bool deleteReserva = false;
+            MySqlConnection connection = connexio.ConnexioBDD();
+            if (connection != null)
+            {
+                string sql = $"DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = '{nom}');";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                deleteReserva = 1 == sqlCommand.ExecuteNonQuery();
+            }
+            return deleteReserva;
+        }
 
-        public List<Reserva> ObtenirReserves(Restaurant restaurant)
+        public List<Reserva> ObtenirReserves(string dni)
         {
             List<Reserva> reserves = new List<Reserva>();
 
             // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = $"SELECT * FROM Reserva JOIN WHERE restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
+            string sql = $"SELECT * FROM reserva WHERE dni = '{dni}';";
 
             // Executem la consulta SQL
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();
@@ -121,7 +155,6 @@ namespace Projecte0.AccesDades
         {
             using (MySqlConnection mySqlConnection = connexio.ConnexioBDD())
             {
-                mySqlConnection.Open();
 
                 string query = "SELECT COUNT(*) FROM Reserva WHERE nomTaula = @nomTaula";
 
