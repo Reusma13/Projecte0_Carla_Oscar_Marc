@@ -21,54 +21,72 @@ namespace Projecte0.Vista
     /// </summary>
     public partial class FinestraMapa : Window
     {
-        Restaurant restaurant;
-        List<Restaurant> restaurants;
-        Restaurant restaurantSeleccionat;
 
+        ReservaBD reservaBD = new ReservaBD();
+        Persona persona; 
         public FinestraMapa(Persona p)
         {
             InitializeComponent();
-            restaurant = new Restaurant();
-            restaurants = restaurant.SelectRestaurantList(p.Dni);
-            cBoxRestaurantMapa.ItemsSource = restaurants;
-            cBoxRestaurantMapa.DisplayMemberPath = "Nom";
+            ActualizarEstadoMesas();
+            persona = p;
         }
 
         private void ButtonTaula1_Click(object sender, RoutedEventArgs e)
         {
-            //Llegeix el restaurant
-            restaurantSeleccionat = cBoxRestaurantMapa.SelectedItem as Restaurant;
-
-            // Obtenim el nom de la taula del botó
-            string nomTaula = ButtonTaula1.Content.ToString();
-
-            // Ara pots obrir la finestra de reserva amb la taula seleccionada
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula1);
         }
 
         private void ButtonTaula2_Click(object sender, RoutedEventArgs e)
         {
-            restaurantSeleccionat = cBoxRestaurantMapa.SelectedItem as Restaurant;
-            string nomTaula = ButtonTaula2.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula2);
         }
 
         private void ButtonTaula3_Click(object sender, RoutedEventArgs e)
         {
-            restaurantSeleccionat = cBoxRestaurantMapa.SelectedItem as Restaurant;
-            string nomTaula = ButtonTaula3.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula3);
         }
 
         private void ButtonTaula4_Click(object sender, RoutedEventArgs e)
         {
-            restaurantSeleccionat = cBoxRestaurantMapa.SelectedItem as Restaurant;
-            string nomTaula = ButtonTaula4.Content.ToString();
-            FinestraReserva finestraReserva = new FinestraReserva(nomTaula);
-            finestraReserva.Show();
+            ManejarClicMesa(ButtonTaula4);
+        }
+
+        private void ManejarClicMesa(Button botonMesa) // He creat el ManejarClicMesa ja que els 4 botons tenien parts de codi repetides
+        {
+            string nomTaula = botonMesa.Content.ToString();
+
+            if (reservaBD.EstaReservada(nomTaula))
+            {
+                MessageBox.Show("La mesa ya está reservada.");
+                botonMesa.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                FinestraReserva finestraReserva = new FinestraReserva(nomTaula, persona);
+                finestraReserva.Show();
+            }
+        }
+
+        private void ActualizarEstadoMesas()
+        {
+            ActualizarEstadoMesa(ButtonTaula1);
+            ActualizarEstadoMesa(ButtonTaula2);
+            ActualizarEstadoMesa(ButtonTaula3);
+            ActualizarEstadoMesa(ButtonTaula4);
+        }
+
+        private void ActualizarEstadoMesa(Button botonMesa) // He creat aquest mètode per canviar el color del text del botó quan la taula ja esta reservada
+        {
+            string nomTaula = botonMesa.Content.ToString();
+
+            if (reservaBD.EstaReservada(nomTaula))
+            {
+                botonMesa.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                botonMesa.Foreground = new SolidColorBrush(Colors.White);
+            }
         }
     }
 }

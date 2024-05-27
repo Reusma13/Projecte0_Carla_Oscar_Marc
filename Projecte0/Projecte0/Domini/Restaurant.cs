@@ -13,6 +13,7 @@ namespace Projecte0.Domini
     public class Restaurant
     {
         RestaurantBD restaurantBD;
+        FotoBD fotoBD;
         // -------- Atributs --------
         protected string nom;
         protected string direccio;
@@ -37,6 +38,7 @@ namespace Projecte0.Domini
             valoracio = new List<Valoracio>();
             reserves = new List<Reserva>();
             restaurantBD = new RestaurantBD();
+            fotoBD = new FotoBD();
         }
         public Restaurant(string nom, string direccio, string tipusCuina, int capacitat) : this()
 
@@ -115,86 +117,26 @@ namespace Projecte0.Domini
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
-        public bool InsertRestaurant(Restaurant restaurant, Administrador administrador)
+        public bool InsertRestaurant(Restaurant restaurant, Persona p)
         {
-            return restaurantBD.CrearRestaurantBD(restaurant, administrador);
+            return restaurantBD.CrearRestaurantBD(restaurant, p);
         }
         public bool DeleteRestaurant(string nom)
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
-        public bool UpdateRestaurant(Restaurant restaurant, Administrador admin)
+        public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom)
         {
-            return restaurantBD.UpdateRestaurantBD(restaurant,admin);
+            return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
         }
-        /// <summary>
-        /// Actualiza les reserves
-        /// </summary>
-        /// <param name="idReserva">Identificador de la reserva</param>
-        /// <param name="novaData">Nova data de la reserva</param>
-        /// <param name="novaHora">Nova hora de la reserva</param>
-        /// <param name="numComensals">Nou numero de comensals de la reserva</param>
-        /// <param name="preferencies">Noves preferencies de la reserva</param>
-        /// <returns>Retorna true si la reserva s'ha actualitzat correctament, si no, retorna false</returns>
-        public bool ActualitzarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
-         {
-            Reserva reservaActualitzar = reserves.Find(r => r.IdReserva == idReserva);
-            bool reservaActualitzada = false;
-            if (reservaActualitzar != null)
-            {
-                reservaActualitzar.Data = novaData;
-                reservaActualitzar.Hora = novaHora;
-                reservaActualitzar.NumComensals = numComensals;
-                reservaActualitzar.Preferencies = preferencies;
-                reservaActualitzada = true;
-            }
-            return reservaActualitzada;
-        }
-      
-      
-        /// <summary>
-        /// Modifica les reserves
-        /// </summary>
-        /// <param name="idReserva">Identificador de la reserva</param>
-        /// <param name="novaData">Nova data de la reserva</param>
-        /// <param name="novaHora">Nova hora de la reserva</param>
-        /// <param name="numComensals">Nou numero de comensals de la reserva</param>
-        /// <param name="preferencies">Noves preferencies de la reserva</param>
-        /// <returns>Retorna true si la reserva s'ha modificat correctament, si no, retorna false</returns>
-        public bool ModificarReserva(int idReserva, DateTime novaData, TimeSpan novaHora, int numComensals, string preferencies)
+        public List<string> SelectFotos(Restaurant r)
         {
-            Reserva reservaAModificar = reserves.Find(r => r.IdReserva == idReserva);
-            bool reservaModificada = false;
-            if (reservaAModificar != null)
-            {
-                reservaAModificar.Data = novaData;
-                reservaAModificar.Hora = novaHora;
-                reservaAModificar.NumComensals = numComensals;
-                reservaAModificar.Preferencies = preferencies;
-                reservaModificada = true;
-            }
-            return reservaModificada;
+            return fotoBD.SelectFotosBDD(r);
         }
-
-        /// <summary>
-        /// Retorna la llista de totes les reserves
-        /// </summary>
-        /// <returns>Llista d'objectes Reserva que conte totes les reserves</returns>
-        public List<Reserva> VisualitzarReserves()
+        public bool InsertFotos(List<string> fotos, Restaurant r)
         {
-            return reserves;
+            return fotoBD.InsertFotoBD(fotos,r);
         }
-
-        /// <summary>
-        /// Afegeix una nova reserva
-        /// </summary>
-        /// <param name="reserva">La reserva que es vol afegir</param>
-        public void AfegirReserva(Reserva reserva)
-        {
-            reserves.Add(reserva);
-            //Añadir a la base de datos tambien
-        }
-
         public override string ToString()
         {
             return nom;

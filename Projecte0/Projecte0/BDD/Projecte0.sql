@@ -5,17 +5,6 @@ CREATE OR REPLACE TABLE Persona (
     password VARCHAR(100),
     esAdmin VARCHAR (2)
 );
-
-CREATE OR REPLACE TABLE Valoracio (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    comentari VARCHAR(500),
-    puntuacio INT,
-    Dni VARCHAR(9),
-    idRestaurant INT,
-    FOREIGN KEY (Dni) REFERENCES Persona(Dni),
-    FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
-);
-
 CREATE OR REPLACE TABLE Restaurant (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
@@ -24,6 +13,15 @@ CREATE OR REPLACE TABLE Restaurant (
     capacitat INT,
     Dni VARCHAR(9),
     FOREIGN KEY (Dni) REFERENCES Persona(Dni) 
+);
+CREATE OR REPLACE TABLE Valoracio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    comentari VARCHAR(500),
+    puntuacio INT,
+    Dni VARCHAR(9),
+    idRestaurant INT,
+    FOREIGN KEY (Dni) REFERENCES Persona(Dni),
+    FOREIGN KEY (idRestaurant) REFERENCES Restaurant(id)
 );
 
 CREATE OR REPLACE TABLE Reserva (
@@ -46,7 +44,7 @@ CREATE OR REPLACE TABLE Fotos (
 );
 
 INSERT INTO Persona (Dni, nom, cognom,password,esAdmin)
-VALUES ('12345678A', 'Marc', 'Pérez', '12345', 'si');
+VALUES ('12345678B', 'Marc', 'Pérez', '12345', 'si');
 
 SELECT * FROM persona WHERE dni = '12345678A' AND password = '12345';
 SELECT * FROM persona;
@@ -57,15 +55,22 @@ VALUES ('HOLA','Joan 1','Grill',100,'12345678A');
 SELECT * FROM restaurant; 
 
 INSERT INTO valoracio (comentari,puntuacio,dni,idRestaurant)
-VALUES ('Bueno',7,'77924452S',1);
+VALUES ('Bueno',7,'12345678A',1);
 
 INSERT INTO fotos (url,idRestaurant)
 VALUES ('b',1);
 
+INSERT INTO fotos (url, idRestaurant)
+SELECT 'c', id
+FROM restaurant 
+WHERE nom = 'HOLA';
+
 INSERT INTO reserva (`data`,hora,numComensales,preferencies,Dni,idRestaurant,nomTaula)
 VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1, 'Taula 1')
 
+
 SELECT * FROM restaurant ;
+SELECT * FROM fotos f ;
 
 SELECT f.url 
 FROM fotos f 
@@ -75,9 +80,16 @@ WHERE r.nom = 'HOLA';
 SELECT id, r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni 
 FROM reserva r 
 JOIN restaurant r2 ON r.idRestaurant = r2.id
-WHERE r2.nom = 'HOLA';
+WHERE r2.nom = 'HOLA2';
+
+SELECT * FROM reserva WHERE dni = '77924452S';
 
 SELECT v.comentari, v.puntuacio, v.Dni
 FROM valoracio v 
 JOIN restaurant r ON v.idRestaurant = r.id
-WHERE r.nom = 'HOLA';
+WHERE r.nom = 'HOLA2';
+
+DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
+DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA2');
+
+
