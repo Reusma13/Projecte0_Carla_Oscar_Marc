@@ -55,7 +55,7 @@ VALUES ('HOLA','Joan 1','Grill',100,'12345678A');
 SELECT * FROM restaurant; 
 
 INSERT INTO valoracio (comentari,puntuacio,dni,idRestaurant)
-VALUES ('Bueno',7,'77924452S',1);
+VALUES ('Bueno',7,'12345678A',1);
 
 INSERT INTO fotos (url,idRestaurant)
 VALUES ('b',1);
@@ -80,14 +80,16 @@ WHERE r.nom = 'HOLA';
 SELECT id, r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni 
 FROM reserva r 
 JOIN restaurant r2 ON r.idRestaurant = r2.id
-WHERE r2.nom = 'HOLA';
+WHERE r2.nom = 'HOLA2';
+
+SELECT * FROM reserva WHERE dni = '77924452S';
 
 SELECT v.comentari, v.puntuacio, v.Dni
 FROM valoracio v 
 JOIN restaurant r ON v.idRestaurant = r.id
-WHERE r.nom = 'HOLA';
+WHERE r.nom = 'HOLA2';
 
 DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
-DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
+DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA2');
 
 

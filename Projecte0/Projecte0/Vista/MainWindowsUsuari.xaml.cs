@@ -24,18 +24,20 @@ namespace Projecte0
     public partial class MainWindowsUsuari : Window
     {
         Connexio connexio = new Connexio();
-        ReservaBD reservaBD = new ReservaBD(); // Creem una instància de ReservaBD
-        public MainWindowsUsuari()
+        Reserva reserva = new Reserva();
+        Persona persona = new Persona();
+        public MainWindowsUsuari(Persona p)
         {
             InitializeComponent();
             ActualitzarReserves();
+            persona = p;
             //dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
         }
 
         private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
-            FinestraMapa finestraMapa = new FinestraMapa();
+            FinestraMapa finestraMapa = new FinestraMapa(persona);
 
             finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
 
@@ -57,10 +59,10 @@ namespace Projecte0
             if (reservaSeleccionada != null)
             {
                 // Eliminar la reserva seleccionada
-                reservaBD.DeleteReservaBDD(reservaSeleccionada);
+                reserva.DeleteReserva(reservaSeleccionada);
 
                 // Actualitzar la vista de dades
-                //dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+                ActualitzarReserves();
             }
             else
             {
@@ -72,7 +74,7 @@ namespace Projecte0
         {
             // Actualizamos la lista de reservas
             dgReserves.ItemsSource = null;
-            //dgReserves.ItemsSource = reservaBD.ObtenirReserves();
+            dgReserves.ItemsSource = reserva.ObtenirReservaList(persona.Dni);
         }
     }
 }
