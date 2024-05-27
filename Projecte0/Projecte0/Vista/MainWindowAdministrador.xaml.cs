@@ -45,10 +45,10 @@ namespace Projecte0
 
         private void UpdateValoracions()
         {
-            if (cBoxRestaurant.SelectedItem != null)
+            if (cBoxRestaurants.SelectedItem != null)
             {
-                Restaurant selectedRestaurant = (Restaurant)cBoxRestaurant.SelectedItem;
-                List<Valoracio> valoracions = valoracio.ObtenirValoracions(selectedRestaurant.Nom);
+                string nomRestaurant = cBoxRestaurants.SelectedItem.ToString();
+                List<Valoracio> valoracions = valoracio.ObtenirValoracions(nomRestaurant);
                 dgValoracions.ItemsSource = valoracions;
             }
         }

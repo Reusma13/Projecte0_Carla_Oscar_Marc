@@ -36,7 +36,7 @@ namespace Projecte0.AccesDades
             return reserva;
         }
 
-        public bool InsertReservaBDD(Reserva reserva)
+        public bool InsertReservaBDD(Reserva reserva, string dni)
         {
             bool inseritReserva = false;
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -46,7 +46,7 @@ namespace Projecte0.AccesDades
                 string dataFormateada = reserva.Data.ToString("yyyy-MM-dd");
 
                 string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula) " +
-                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '12345678A',1,'{reserva.NomTaula}');";
+                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '{dni}',1,'{reserva.NomTaula}');";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 inseritReserva = 1 == sqlCommand.ExecuteNonQuery();
             }
@@ -94,12 +94,12 @@ namespace Projecte0.AccesDades
             return deleteReserva;
         }
 
-        public List<Reserva> ObtenirReserves(Restaurant restaurant)
+        public List<Reserva> ObtenirReserves(string dni)
         {
             List<Reserva> reserves = new List<Reserva>();
 
             // Creem la consulta SQL per obtenir totes les reserves de la base de dades
-            string sql = $"SELECT * FROM Reserva JOIN restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{restaurant.Nom}'";
+            string sql = $"SELECT * FROM reserva WHERE dni = '{dni}';";
 
             // Executem la consulta SQL
             MySqlConnection mySqlConnection = connexio.ConnexioBDD();
@@ -133,7 +133,6 @@ namespace Projecte0.AccesDades
         {
             using (MySqlConnection mySqlConnection = connexio.ConnexioBDD())
             {
-                mySqlConnection.Open();
 
                 string query = "SELECT COUNT(*) FROM Reserva WHERE nomTaula = @nomTaula";
 

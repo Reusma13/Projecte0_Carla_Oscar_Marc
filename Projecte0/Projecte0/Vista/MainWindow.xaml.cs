@@ -50,7 +50,7 @@ namespace Projecte0
                 }
                 else
                 {
-                    MainWindowsUsuari mainWindowsUsuari = new MainWindowsUsuari();
+                    MainWindowsUsuari mainWindowsUsuari = new MainWindowsUsuari(p);
                     mainWindowsUsuari.Show();
                     this.Close();
                 }
