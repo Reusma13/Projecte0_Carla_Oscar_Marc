@@ -21,6 +21,7 @@ namespace Projecte0.Vista
     /// </summary>
     public partial class FinestraMapa : Window
     {
+
         ReservaBD reservaBD = new ReservaBD();
         Persona persona; 
         public FinestraMapa(Persona p)
