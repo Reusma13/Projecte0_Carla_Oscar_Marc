@@ -92,6 +92,7 @@ WHERE r.nom = 'HOLA2';
 
 DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
 DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA2');
+DELETE FROM reserva WHERE idReserva = 7;
 
 
 INSERT INTO Reserva (data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula)

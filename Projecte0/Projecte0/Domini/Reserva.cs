@@ -108,9 +108,9 @@ namespace Projecte0.Domini
             return reservaBD.SelectReservaBDD(idReserva);
         }
 
-        public bool InsertReserva(Reserva reserva, string dni)
+        public bool InsertReserva(Reserva reserva, string dni,string nom)
         {
-            return reservaBD.InsertReservaBDD(reserva, dni);
+            return reservaBD.InsertReservaBDD(reserva, dni,nom);
         }
 
         public bool UpdateReserva(Reserva reserva)

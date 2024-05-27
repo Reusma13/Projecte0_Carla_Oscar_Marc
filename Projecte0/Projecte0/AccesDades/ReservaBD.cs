@@ -47,8 +47,6 @@ namespace Projecte0.AccesDades
         /// </summary>
         /// <param name="reserva">Reserva la qual es vol insertar</param>
         /// <returns>True si la reserva s'ha afegit correctament, si no, false</returns>
-        public bool InsertReservaBDD(Reserva reserva, string dni)
-
         public bool InsertReservaBDD(Reserva reserva, string dni, string nomRestaurant)
         {
             bool inseritReserva = false;

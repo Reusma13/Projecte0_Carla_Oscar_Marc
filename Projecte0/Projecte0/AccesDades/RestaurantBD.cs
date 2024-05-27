@@ -49,6 +49,29 @@ namespace Projecte0.AccesDades
             }
             return restaurants;
         }
+        public List<Restaurant> SelectRestaurantListBD( )
+        {
+            MySqlConnection connection = connexio.ConnexioBDD();
+            Restaurant restaurant = null;
+            List<Restaurant> restaurants = new List<Restaurant>();
+            if (connection != null)
+            {
+                string sql = $"SELECT * FROM restaurant;";
+                MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    restaurant = new Restaurant(reader["nom"].ToString(), reader["direccio"].ToString(), reader["tipusCuina"].ToString(), Convert.ToInt32(reader["capacitat"]));
+                    restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom);
+                    restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom);
+                    restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom);
+                    restaurants.Add(restaurant);
+                }
+                reader.Close();
+                connection.Close();
+            }
+            return restaurants;
+        }
 
         /// <summary>
         /// Busca a la base de dades quins Restaurant correspon al nom
@@ -137,10 +160,10 @@ namespace Projecte0.AccesDades
             List<Reserva> reservas = new List<Reserva>();
             if(connection != null)
             {
-                string sql = $"SELECT id, r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni FROM reserva r JOIN restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{nom}';"; 
+                string sql = $"SELECT id, r.`data` ,r.hora ,r.numComensales ,r.preferencies ,r.Dni, r.nomTaula, r.idRestaurant FROM reserva r JOIN restaurant r2 ON r.idRestaurant = r2.id WHERE r2.nom = '{nom}';"; 
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
                     Reserva reserva = new Reserva(Convert.ToInt32(reader["id"]),Convert.ToDateTime(reader["data"]), reader.GetTimeSpan(reader.GetOrdinal("hora")), Convert.ToInt32(reader["numComensales"]), reader["preferencies"].ToString(), reader["nomTaula"].ToString(), reader["Dni"].ToString(), Convert.ToInt32(reader["idRestaurant"]) );
                     reservas.Add(reserva);
