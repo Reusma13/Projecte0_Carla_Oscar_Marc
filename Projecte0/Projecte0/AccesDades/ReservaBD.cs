@@ -49,6 +49,7 @@ namespace Projecte0.AccesDades
         /// <returns>True si la reserva s'ha afegit correctament, si no, false</returns>
         public bool InsertReservaBDD(Reserva reserva, string dni)
 
+        public bool InsertReservaBDD(Reserva reserva, string dni, string nomRestaurant)
         {
             bool inseritReserva = false;
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -57,8 +58,8 @@ namespace Projecte0.AccesDades
                 // Formateja la data al format 'YYYY-MM-DD'
                 string dataFormateada = reserva.Data.ToString("yyyy-MM-dd");
 
-                string sql = $"INSERT INTO Reserva (idReserva, data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula) " +
-                            $"VALUES('{reserva.IdReserva}','{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}', '{dni}',1,'{reserva.NomTaula}');";
+                string sql = $"INSERT INTO Reserva (data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula) " +
+                            $"VALUES('{dataFormateada}','{reserva.Hora}','{reserva.NumComensals}','{reserva.Preferencies}','{dni}',(SELECT id FROM Restaurant WHERE nom = '{nomRestaurant}'),'{reserva.NomTaula}');";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 inseritReserva = 1 == sqlCommand.ExecuteNonQuery();
             }

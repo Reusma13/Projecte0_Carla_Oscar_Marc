@@ -71,6 +71,7 @@ VALUES ('2024-05-20', '19:00:00', 3, 'Ninguna', '12345678A', 1, 'Taula 1')
 
 SELECT * FROM restaurant ;
 SELECT * FROM fotos f ;
+SELECT * FROM reserva r ;
 
 SELECT f.url 
 FROM fotos f 
@@ -91,5 +92,10 @@ WHERE r.nom = 'HOLA2';
 
 DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
 DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA2');
+
+
+INSERT INTO Reserva (data, hora, numComensales, preferencies, Dni, idRestaurant,nomTaula)
+VALUES('2024-05-20','19:00:00',4,'','77924452S',(SELECT id FROM Restaurant WHERE nom = 'HOLA2'),'taula 1');
+
 
 
