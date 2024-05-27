@@ -103,7 +103,7 @@ namespace Projecte0.Domini
             set { idRestaurant = value;}
         }
 
-        // Mètodes per interactuar amb la base de dades.
+        // -------- Metodes --------
         public Reserva SelectReserva(int idReserva) // Retorna una reserva específica de la base de dades.
         {
             return reservaBD.SelectReservaBDD(idReserva);

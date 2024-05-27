@@ -109,35 +109,35 @@ namespace Projecte0.Domini
         } 
 
         // -------- Metodes --------
-        public Restaurant SelectRestaurant(string nom)
+        public Restaurant SelectRestaurant(string nom) // Retorna un restaurante específico de la base de datos.
         {
             return restaurantBD.SelectRestaurantBD(nom);
         }
-        public List<Restaurant> SelectRestaurantList(string dni)
+        public List<Restaurant> SelectRestaurantList(string dni) // Retorna una lista de restaurantes de un cliente específico.
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
-        public bool InsertRestaurant(Restaurant restaurant, Persona p)
+        public bool InsertRestaurant(Restaurant restaurant, Persona p) // Inserta un nuevo restaurante en la base de datos.
         {
             return restaurantBD.CrearRestaurantBD(restaurant, p);
         }
-        public bool DeleteRestaurant(string nom)
+        public bool DeleteRestaurant(string nom) // Elimina un restaurante de la base de datos.
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
-        public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom)
+        public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom) // Actualiza un restaurante existente en la base de datos.
         {
             return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
         }
-        public List<string> SelectFotos(Restaurant r)
+        public List<string> SelectFotos(Restaurant r) // Retorna una lista de fotos de un restaurante específico.
         {
             return fotoBD.SelectFotosBDD(r);
         }
-        public bool InsertFotos(List<string> fotos, Restaurant r)
+        public bool InsertFotos(List<string> fotos, Restaurant r) // Inserta nuevas fotos en la base de datos para un restaurante específico.
         {
             return fotoBD.InsertFotoBD(fotos,r);
         }
-        public override string ToString()
+        public override string ToString() // Retorna el nombre del restaurante.
         {
             return nom;
         }

@@ -55,32 +55,32 @@ namespace Projecte0.Domini
             set { dni = value; }
         }
 
-        public List<Valoracio> SelectValoracio()
+        public List<Valoracio> SelectValoracio() // Método para obtener todas las valoraciones de la base de datos.
         {
             return valoracioBD.SelectValoracioBDD();
         }
 
-        public bool InsertValoracio(Valoracio valoracio)
+        public bool InsertValoracio(Valoracio valoracio)  // Método para insertar una nueva valoración en la base de datos.
         {
             return valoracioBD.InsertValoracioBDD(valoracio);
         }
 
-        public bool UpdateValoracio(Valoracio valoracio)
+        public bool UpdateValoracio(Valoracio valoracio) // Método para actualizar una valoración existente en la base de datos.
         {
             return valoracioBD.UpdateValoracioBDD(valoracio);
         }
 
-        public bool DeleteValoracio(string dni)
+        public bool DeleteValoracio(string dni)  // Método para eliminar una valoración de la base de datos utilizando el DNI del cliente.
         {
             return valoracioBD.DeleteValoracioBDD(dni);
         }
 
-        public List<Valoracio> ObtenirValoracions(string nom)
+        public List<Valoracio> ObtenirValoracions(string nom) // Método para obtener todas las valoraciones de un restaurante específico.
         {
             return valoracioBD.ObtenirValoracionsBDD(nom);
         }
 
-        public bool EliminarValoracionsPorRestaurante(string nom)
+        public bool EliminarValoracionsPorRestaurante(string nom) // Método para eliminar todas las valoraciones de un restaurante específico.
         {
             return valoracioBD.EliminarValoracionsPorRestauranteBDD(nom);
         }

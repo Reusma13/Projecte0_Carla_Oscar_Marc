@@ -27,6 +27,10 @@ namespace Projecte0
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Manejador del evento de clic en el botón de registrar.
+        /// Si el usuario y la contraseña son correctos, crea una nueva persona, la inserta en la base de datos, abre la ventana principal y cierra la ventana actual.
+        /// </summary>
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             if (txBoxDniUsuari.Text != "" && txBoxNomUsuari.Text != "" && txBoxCognom.Text != "" && pwdUsuari.Password != "")
