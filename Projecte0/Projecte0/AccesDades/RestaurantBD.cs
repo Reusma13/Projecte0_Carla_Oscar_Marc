@@ -28,47 +28,55 @@ namespace Projecte0.AccesDades
         /// <returns>Una llista d'objectes Restaurant associats al DNI especificat</returns>
         public List<Restaurant> SelectRestaurantListBD(string dni)
         {
-            MySqlConnection connection = connexio.ConnexioBDD();
+            MySqlConnection connection = connexio.ConnexioBDD(); // Fem la conexio
             Restaurant restaurant = null;
-            List<Restaurant> restaurants = new List<Restaurant>();
+            List<Restaurant> restaurants = new List<Restaurant>(); // Creem la llista de restaurant
             if (connection != null)
             {
+                // Comanda sql per fer el select de tots els restaurants quan el dni es igual al dni que le hem pasat
                 string sql = $"SELECT * FROM restaurant WHERE dni = '{dni}';";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
-                MySqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
+                MySqlDataReader reader = sqlCommand.ExecuteReader(); // Executem la comanda
+                while (reader.Read()) // Llegim els restaurants
                 {
+                    // Creem el restaurant
                     restaurant = new Restaurant(reader["nom"].ToString(), reader["direccio"].ToString(), reader["tipusCuina"].ToString(), Convert.ToInt32(reader["capacitat"]));
-                    restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom);
-                    restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom);
-                    restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom);
-                    restaurants.Add(restaurant);
+                    restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom); // Fem el select de les fotos
+                    restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom); // Fem el select de reserves
+                    restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom); // Fem el select de valoracio
+                    restaurants.Add(restaurant); // Afegim el restaurant a la llista
                 }
-                reader.Close();
-                connection.Close();
+                reader.Close(); // Tanquem el reader
+                connection.Close(); // Tanquem la conexio
             }
             return restaurants;
         }
-        public List<Restaurant> SelectRestaurantListBD( )
+        /// <summary>
+        /// Fa el mateix que l'anterior per directament agafa tots els restaurants, necessitem aquest metode per utilizar-lo a l'apartat d'usuari
+        /// </summary>
+        /// <returns>Retorna un list de restaurant</returns>
+        public List<Restaurant> SelectRestaurantListBD()
         {
-            MySqlConnection connection = connexio.ConnexioBDD();
+            MySqlConnection connection = connexio.ConnexioBDD(); // Fem la conexio
             Restaurant restaurant = null;
-            List<Restaurant> restaurants = new List<Restaurant>();
+            List<Restaurant> restaurants = new List<Restaurant>(); 
             if (connection != null)
             {
+                // Comanda sql per fer el select de tots els restaurants
                 string sql = $"SELECT * FROM restaurant;";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
-                MySqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
+                MySqlDataReader reader = sqlCommand.ExecuteReader();  // Executem la comanda
+                while (reader.Read()) // Llegim els restaurants
                 {
+                    // Creem el restaurant
                     restaurant = new Restaurant(reader["nom"].ToString(), reader["direccio"].ToString(), reader["tipusCuina"].ToString(), Convert.ToInt32(reader["capacitat"]));
-                    restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom);
-                    restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom);
-                    restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom);
-                    restaurants.Add(restaurant);
+                    restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom); // Fem el select de les fotos
+                    restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom); // Fem el select de reserves
+                    restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom); // Fem el select de valoracio
+                    restaurants.Add(restaurant); // Afegim el restaurant a la llista
                 }
-                reader.Close();
-                connection.Close();
+                reader.Close(); // Tanquem el reader
+                connection.Close(); // Tanquem la conexio
             }
             return restaurants;
         }
@@ -80,22 +88,24 @@ namespace Projecte0.AccesDades
         /// <returns>L'objecte Restaurant corresponent al nom especificat, o null si no es troba</returns>
         public Restaurant SelectRestaurantBD(string nom)
         {
-            MySqlConnection connection = connexio.ConnexioBDD();
+            MySqlConnection connection = connexio.ConnexioBDD(); // Fem conexio
             Restaurant restaurant = null;
             if (connection != null)
             {
+                // Comanda sql per fer el select de restaurant quan el nom sigui igual al nom que l'ha pasat l'usuari
                 string sql = $"SELECT * FROM restaurant WHERE nom = '{nom}';";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
-                MySqlDataReader reader = sqlCommand.ExecuteReader();
-                if (reader.Read())
+                MySqlDataReader reader = sqlCommand.ExecuteReader(); // Executem comanda
+                if (reader.Read()) // Mirem el resultat
                 {
+                    // Creem el restaurant + afegir fotos, reserves i valoracions
                     restaurant = new Restaurant(reader["nom"].ToString(), reader["direccio"].ToString(), reader["tipusCuina"].ToString(), Convert.ToInt32(reader["capacitat"]));
                     restaurant.Fotos = SelectFotosRestaurant(restaurant.Nom);
                     restaurant.Reserves = SelectReservasRestaurant(restaurant.Nom);
                     restaurant.Valoracio = SelectValoracioRestaurant(restaurant.Nom);
                 }
-                reader.Close();
-                connection.Close();
+                reader.Close(); // Tanquem el reader
+                connection.Close(); // Tanquem la conexio
             }
             return restaurant;
         }

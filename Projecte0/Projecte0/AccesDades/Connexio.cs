@@ -24,7 +24,8 @@ namespace Projecte0.AccesDades
         public MySqlConnection ConnexioBDD()
         {
             string connexio = $"server={server};user={user};database={database};port={port};password={password}";
-            MySqlConnection connection = new MySqlConnection(connexio);
+            MySqlConnection connection = new MySqlConnection(connexio); // Creem per fer la conexio en la base de dades
+            // Utilizem try catch per probar que funcioni, si dona error retorna conexio nula
             try
             {
                 connection.Open();
