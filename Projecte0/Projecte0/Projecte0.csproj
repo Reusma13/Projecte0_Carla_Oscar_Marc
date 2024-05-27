@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+=======
 
     <None Remove="Vista\Imagenes\GironaBrasa.PNG" />
+>>>>>>> 20deaea934ec4c39ed74b0d394bdf08542bac94b
     <None Remove="Vista\Imagenes\MapaRestaurant2.png" />
     <None Remove="Vista\Imagenes\Taula1.PNG" />
     <None Remove="Vista\Imagenes\taula2.PNG" />
@@ -28,10 +31,6 @@
     <Resource Include="Vista\Imagenes\taula2.PNG" />
     <Resource Include="Vista\Imagenes\taula3.PNG" />
     <Resource Include="Vista\Imagenes\taula4.PNG" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <SplashScreen Include="SplashScreen1.png" />
   </ItemGroup>
 
 </Project>
