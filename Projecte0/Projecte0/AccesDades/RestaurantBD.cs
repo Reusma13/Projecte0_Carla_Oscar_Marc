@@ -166,6 +166,7 @@ namespace Projecte0.AccesDades
             {
                 fotoBD.DeleteFotoBD(nom);
                 reservaBD.DeleteReservaBDD(nom);
+                valoracioBD.DeleteValoracioBDD(nom);
                 string sql = $"DELETE FROM restaurant WHERE nom = '{nom}';";
                 MySqlCommand sqlCommand = new MySqlCommand (sql, connection);
                 deleteRestaurant = 1 == sqlCommand.ExecuteNonQuery();
@@ -178,7 +179,7 @@ namespace Projecte0.AccesDades
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null) 
             {
-                string sql = $"UPDATE restaurant SET direccio = '{restaurant.Direccio}', tipusCuina = '{restaurant.TipusCuina}', capacitat = '{restaurant.Capacitat}', Dni = '{p.Dni}';";
+                string sql = $"UPDATE restaurant SET nom = '{restaurant.Nom}',direccio = '{restaurant.Direccio}', tipusCuina = '{restaurant.TipusCuina}', capacitat = '{restaurant.Capacitat}', Dni = '{p.Dni}' WHERE nom = '{nomAnterior}';";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 updateRestaurant = 1 == sqlCommand.ExecuteNonQuery();
             }

@@ -41,6 +41,7 @@ namespace Projecte0.Vista
             {
                 Restaurant r = new Restaurant(txBoxNomRestaurant.Text, txBoxDireccioRestaurant.Text, txBoxTipusCuina.Text, Convert.ToInt32(txBoxCapacitatRestaurant.Text));
                 restaurant.UpdateRestaurant(r,persona,nomAnterior);
+                this.Close();
             }
         }
     }

@@ -13,7 +13,8 @@
                     <ComboBox Name="cBoxRestaurant" HorizontalAlignment="Left" Margin="68,43,0,0" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Selecciona el restaurant" HorizontalAlignment="Left" Margin="60,17,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
                     <Button Name="btnModificarRestaurant" Content="Modificar restaurant" HorizontalAlignment="Left" Margin="68,84,0,0" VerticalAlignment="Top" Background="DarkRed" Foreground="White" Click="btnModificarRestaurant_Click"/>
-                    <Button Name="btnEliminarRestaurant" Content="Eliminar restaurant" HorizontalAlignment="Left" Margin="68,125,0,0" VerticalAlignment="Top" Width="111" Foreground="Red" Background="DarkRed"/>
+                    <Button Name="btnEliminarRestaurant" Content="Eliminar restaurant" HorizontalAlignment="Left" Margin="68,125,0,0" VerticalAlignment="Top" Width="111" Foreground="Red" Background="DarkRed" Click="btnEliminarRestaurant_Click_1"/>
+                    <Button Name="btnActualizarRestaurant" Content="Actualizar informacio " HorizontalAlignment="Left" Margin="203,84,0,0" VerticalAlignment="Top" Width="131" Background="DarkRed" Foreground="White" Click="btnActualizarRestaurant_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Inserir restaurant">

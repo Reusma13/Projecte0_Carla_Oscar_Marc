@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projecte0.Vista"
         mc:Ignorable="d"
         Title="FinestraModificarRestaurant" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Wheat">
         <Label Content="Nom restaurant:" HorizontalAlignment="Left" Margin="52,34,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
         <TextBox Name="txBoxNomRestaurant" HorizontalAlignment="Left" Margin="148,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="txBoxDireccioRestaurant" HorizontalAlignment="Left" Margin="112,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>

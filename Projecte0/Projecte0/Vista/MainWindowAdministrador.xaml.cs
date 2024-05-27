@@ -116,5 +116,18 @@ namespace Projecte0
             FinestraModificarRestaurant finestraModificarRestaurant = new FinestraModificarRestaurant(nom, p);
             finestraModificarRestaurant.Show();
         }
+
+        private void btnActualizarRestaurant_Click(object sender, RoutedEventArgs e)
+        {
+            restaurants = restaurant.SelectRestaurantList(p.Dni);
+            cBoxRestaurant.ItemsSource = restaurants;
+            cBoxRestaurant.DisplayMemberPath = "Nom";
+        }
+
+        private void btnEliminarRestaurant_Click_1(object sender, RoutedEventArgs e)
+        {
+            string nom = cBoxRestaurant.SelectedItem.ToString();
+            restaurant.DeleteRestaurant(nom);
+        }
     }
 }
