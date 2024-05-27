@@ -12,11 +12,20 @@ namespace Projecte0.AccesDades
 {
     public class RestaurantBD
     {
+        // -------- Atribut --------
         Connexio connexio = new Connexio();
         PersonaBD personaBD = new PersonaBD();
         FotoBD fotoBD = new FotoBD();
         ReservaBD reservaBD = new ReservaBD();
         ValoracioBD valoracioBD = new ValoracioBD();
+
+
+        // -------- Mètodes --------
+        /// <summary>
+        /// Busca a la base de dades quins Restaurants corresponen al dni
+        /// </summary>
+        /// <param name="dni">El DNI de l'usuari els restaurants del qual es volen obtenir</param>
+        /// <returns>Una llista d'objectes Restaurant associats al DNI especificat</returns>
         public List<Restaurant> SelectRestaurantListBD(string dni)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -41,6 +50,11 @@ namespace Projecte0.AccesDades
             return restaurants;
         }
 
+        /// <summary>
+        /// Busca a la base de dades quins Restaurant correspon al nom
+        /// </summary>
+        /// <param name="nom">Nom del restaurant que es vol obtenir</param>
+        /// <returns>L'objecte Restaurant corresponent al nom especificat, o null si no es troba</returns>
         public Restaurant SelectRestaurantBD(string nom)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -62,10 +76,16 @@ namespace Projecte0.AccesDades
             }
             return restaurant;
         }
+
+        /// <summary>
+        /// Busca a la base de dades quines Valoracions corresponen al nom del restaurant
+        /// </summary>
+        /// <param name="nom">Nom del restaurant que es volen obtenir les valoracions</param>
+        /// <returns>Una llista de valoracions que correspon al restaurant</returns>
         public List<Valoracio> SelectValoracioRestaurant(string nom)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
-            List<Valoracio> valoracios = new List<Valoracio>();
+            List<Valoracio> valoracions = new List<Valoracio>();
             if (connection != null)
             {
                 string sql = $"SELECT v.comentari, v.puntuacio, v.Dni FROM valoracio v JOIN restaurant r ON v.idRestaurant = r.id WHERE r.nom = '{nom}';";
@@ -74,13 +94,19 @@ namespace Projecte0.AccesDades
                 while (reader.Read())
                 {
                     Valoracio valoracio = new Valoracio(reader["comentari"].ToString(), Convert.ToInt32(reader["puntuacio"]), reader["Dni"].ToString());
-                    valoracios.Add(valoracio);
+                    valoracions.Add(valoracio);
                 }
                 reader.Close();
                 connection.Close();
             }
-            return valoracios;
+            return valoracions;
         }
+
+        /// <summary>
+        /// Busca a la base de dades quines Fotos corresponen al nom del restaurant
+        /// </summary>
+        /// <param name="nom">El nom del restaurant que es vol obtenir les fotos</param>
+        /// <returns>Una llista de fotos del restaurant especificat</returns>
         public List<string> SelectFotosRestaurant(string nom)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -99,6 +125,12 @@ namespace Projecte0.AccesDades
             }
             return list;
         }
+
+        /// <summary>
+        /// Busca a la base de dades quines Reserves corresponen al nom del restaurant
+        /// </summary>
+        /// <param name="nom">El nom del restaurant que es vol obtenir les reserves</param>
+        /// <returns>Una llista de reserves del restaurant especificat</returns>
         public List<Reserva> SelectReservasRestaurant(string nom)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -118,6 +150,14 @@ namespace Projecte0.AccesDades
             }
             return reservas;
         }
+
+
+        /// <summary>
+        /// Crea un nou restaurant a la base de dades associat a un administrador específic
+        /// </summary>
+        /// <param name="restaurant">L'objecte Restaurant que voleu inserir a la base de dades</param>
+        /// <param name="admin">L'objecte Administrador al qual s'associarà el restaurant</param>
+        /// <returns>True si el restaurant s'ha afegit correctament, si no, false</returns>
         public bool CrearRestaurantBD(Restaurant restaurant, Persona p)
         {
             bool insertRestaurant = false;
@@ -158,6 +198,12 @@ namespace Projecte0.AccesDades
             }
             return insertRestaurant;
         }
+
+        /// <summary>
+        /// Elimina un restaurant de la base de dades
+        /// </summary>
+        /// <param name="nom">El nom del restaurant que es vol eliminar</param>
+        /// <returns>True si el restaurant s'ha eliminat correctament, si no, false</returns>
         public bool DeleteRestaurantBD(string nom)
         {
             bool deleteRestaurant = false;
@@ -173,6 +219,13 @@ namespace Projecte0.AccesDades
             }
             return deleteRestaurant;
         }
+
+        /// <summary>
+        /// Actualitza la informació d'un restaurant a la base de dades
+        /// </summary>
+        /// <param name="restaurant">L'objecte Restaurant amb la informació actualitzada</param>
+        /// <param name="admin">L'objecte Administrador associat al restaurant</param>
+        /// <returns>True si el restaurant s'ha actualitzat correctament, si no, false</returns>
         public bool UpdateRestaurantBD(Restaurant restaurant, Persona p, string nomAnterior)
         {
             bool updateRestaurant = false;

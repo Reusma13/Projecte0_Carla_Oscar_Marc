@@ -57,6 +57,12 @@ namespace Projecte0.AccesDades
             }
             return inseritPersona;
         }
+
+        /// <summary>
+        /// Eliminar una persona a la base de dades
+        /// </summary>
+        /// <param name="dni">dni de la persona la qual es vol eliminar</param>
+        /// <returns>True si la persona s'ha eliminat correctament, si no, false</returns>
         public bool DeletePersonaBDD(string dni)
         {
             bool deletePersona = false;
@@ -69,6 +75,12 @@ namespace Projecte0.AccesDades
             }
             return deletePersona;
         }
+
+        /// <summary>
+        /// Actualitza una persona a la base de dades
+        /// </summary>
+        /// <param name="persona">Persona la qual es vol actualitzar</param>
+        /// <returns>True si la persona s'ha actualitzat correctament, si no, false</returns>>
         public bool UpdatePersonaBDD(Persona persona)
         {
             bool updatePersona = false;

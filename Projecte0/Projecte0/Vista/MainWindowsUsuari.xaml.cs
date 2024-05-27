@@ -40,9 +40,11 @@ namespace Projecte0
             FinestraMapa finestraMapa = new FinestraMapa(persona);
 
             finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
+        }
 
-            // Obrim la finestra de reserva
-            finestraMapa.Show();
+        private void dgReserves_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void FinestraMapa_Closed(object sender, EventArgs e)
