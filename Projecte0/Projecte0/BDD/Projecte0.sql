@@ -88,3 +88,6 @@ JOIN restaurant r ON v.idRestaurant = r.id
 WHERE r.nom = 'HOLA';
 
 DELETE FROM fotos WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
+DELETE FROM reserva WHERE idRestaurant = (SELECT id FROM restaurant WHERE nom = 'HOLA');
+
+

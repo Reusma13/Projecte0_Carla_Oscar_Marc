@@ -125,9 +125,9 @@ namespace Projecte0.Domini
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
-        public bool UpdateRestaurant(Restaurant restaurant, Administrador admin)
+        public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom)
         {
-            return restaurantBD.UpdateRestaurantBD(restaurant,admin);
+            return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
         }
         public List<string> SelectFotos(Restaurant r)
         {

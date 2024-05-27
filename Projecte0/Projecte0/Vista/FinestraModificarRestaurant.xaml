@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:Projecte0.Vista"
         mc:Ignorable="d"
         Title="FinestraModificarRestaurant" Height="450" Width="800">
-    <Grid>
-        <Label Content="Nom Restaurant:" HorizontalAlignment="Left" Margin="76,66,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txBoxNomRestaurant" HorizontalAlignment="Left" Margin="180,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Direccio:" HorizontalAlignment="Left" Margin="76,97,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="91,128,0,0" VerticalAlignment="Top"/>
+    <Grid Background="Wheat">
+        <Label Content="Nom restaurant:" HorizontalAlignment="Left" Margin="52,34,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox Name="txBoxNomRestaurant" HorizontalAlignment="Left" Margin="148,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txBoxDireccioRestaurant" HorizontalAlignment="Left" Margin="112,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+        <Label Content="Direccio:" HorizontalAlignment="Left" Margin="52,65,0,0" VerticalAlignment="Top"  Foreground="DarkRed"/>
+        <Label Content="Tipus de cuina:" HorizontalAlignment="Left" Margin="52,96,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox Name="txBoxTipusCuina" HorizontalAlignment="Left" Margin="146,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Capacitat:" HorizontalAlignment="Left" Margin="299,34,0,0" VerticalAlignment="Top" Foreground="DarkRed"/>
+        <TextBox Name="txBoxCapacitatRestaurant" HorizontalAlignment="Left" Margin="366,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnCrearRestaurant" Content="ACTUALIZAR RESTAURANT" HorizontalAlignment="Left" Margin="299,71,0,0" VerticalAlignment="Top" Width="187" Click="btnUpdateRestaurant_Click"/>
 
     </Grid>
 </Window>

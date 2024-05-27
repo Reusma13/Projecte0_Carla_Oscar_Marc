@@ -15,7 +15,8 @@ namespace Projecte0.AccesDades
         Connexio connexio = new Connexio();
         PersonaBD personaBD = new PersonaBD();
         FotoBD fotoBD = new FotoBD();
-
+        ReservaBD reservaBD = new ReservaBD();
+        ValoracioBD valoracioBD = new ValoracioBD();
         public List<Restaurant> SelectRestaurantListBD(string dni)
         {
             MySqlConnection connection = connexio.ConnexioBDD();
@@ -164,19 +165,21 @@ namespace Projecte0.AccesDades
             if (connection != null) 
             {
                 fotoBD.DeleteFotoBD(nom);
+                reservaBD.DeleteReservaBDD(nom);
+                valoracioBD.DeleteValoracioBDD(nom);
                 string sql = $"DELETE FROM restaurant WHERE nom = '{nom}';";
                 MySqlCommand sqlCommand = new MySqlCommand (sql, connection);
                 deleteRestaurant = 1 == sqlCommand.ExecuteNonQuery();
             }
             return deleteRestaurant;
         }
-        public bool UpdateRestaurantBD(Restaurant restaurant, Administrador admin)
+        public bool UpdateRestaurantBD(Restaurant restaurant, Persona p, string nomAnterior)
         {
             bool updateRestaurant = false;
             MySqlConnection connection = connexio.ConnexioBDD();
             if (connection != null) 
             {
-                string sql = $"UPDATE restaurant SET direccio = '{restaurant.Direccio}', tipusCuina = '{restaurant.TipusCuina}', capacitat = '{restaurant.Capacitat}', Dni = '{admin.Dni}';";
+                string sql = $"UPDATE restaurant SET nom = '{restaurant.Nom}',direccio = '{restaurant.Direccio}', tipusCuina = '{restaurant.TipusCuina}', capacitat = '{restaurant.Capacitat}', Dni = '{p.Dni}' WHERE nom = '{nomAnterior}';";
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
                 updateRestaurant = 1 == sqlCommand.ExecuteNonQuery();
             }
