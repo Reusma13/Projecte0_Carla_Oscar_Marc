@@ -190,6 +190,12 @@ namespace Projecte0.AccesDades
             }
             return deleteValoracio;
         }
+
+        /// <summary>
+        /// Serveix per obtenir les valoracions que ha fet un client.
+        /// </summary>
+        /// <param name="dni">Li passem el dni del client que volem veure que ha fet les valoracions.</param>
+        /// <returns>Retorna un List<> de totes les valoracions creades per el client.</returns>
         public List<Valoracio> ObtenirValoracioClient(string dni)
         {
             List<Valoracio> valoracions = new List<Valoracio>();
