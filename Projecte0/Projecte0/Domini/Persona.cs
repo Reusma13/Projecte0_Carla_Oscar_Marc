@@ -98,8 +98,7 @@ namespace Projecte0.Domini
         /// <returns>Retorna la persona seleccionada si existeix a la base de dades, si no existeix, retorna null.</returns>
         public Persona SelectPersona(string dni, string password)
         {
-            Persona p = personaBD.SelectPersonesBDD(dni, password);
-            return p;
+            return personaBD.SelectPersonesBDD(dni, password);
         }
 
         /// <summary>
@@ -111,6 +110,11 @@ namespace Projecte0.Domini
         {
             return personaBD.InsertPersonaBDD(persona);
         }
+        /// <summary>
+        /// Serveix per cridar al metode DeletePersonaBDD
+        /// </summary>
+        /// <param name="dni">Li pasem el dni de la persona que volem eliminar</param>
+        /// <returns>Ens retorna true si la eliminat, sino retorna false</returns>
         public bool DeletePersona(string dni)
         {
             return personaBD.DeletePersonaBDD(dni);

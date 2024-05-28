@@ -109,38 +109,85 @@ namespace Projecte0.Domini
         } 
 
         // -------- Metodes --------
+        /// <summary>
+        /// Serviex per cridar al metode SelectRestaurantBD
+        /// </summary>
+        /// <param name="nom">Li pasem el nom del restaurant</param>
+        /// <returns>Ens retorna el restaurant</returns>
         public Restaurant SelectRestaurant(string nom)
         {
             return restaurantBD.SelectRestaurantBD(nom);
         }
+        /// <summary>
+        /// Serveix per cridar al metode SelectRestaurantList
+        /// </summary>
+        /// <param name="dni">Li pasem el dni de la persona que es encarregada dels restaurants</param>
+        /// <returns>Ens retorna una llista de restaurant</returns>
         public List<Restaurant> SelectRestaurantList(string dni)
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
+        /// <summary>
+        /// Serviex per cridar al metode SelectRestaurantListBD
+        /// </summary>
+        /// <returns>Ens retorna una llista de restaurant</returns>
         public List<Restaurant> SelectRstaurantList()
         {
             return restaurantBD.SelectRestaurantListBD();
         }
+        /// <summary>
+        /// Serveix per cridar al metode CrearRestaurantBD
+        /// </summary>
+        /// <param name="restaurant">Li pasem el restaurant que volem insertar</param>
+        /// <param name="p">Li pasem la persona encarregada</param>
+        /// <returns>Ens retorna true si l'ha afegit, sino ens retorna false</returns>
         public bool InsertRestaurant(Restaurant restaurant, Persona p)
         {
             return restaurantBD.CrearRestaurantBD(restaurant, p);
         }
+        /// <summary>
+        /// Serveix per cridar al metode DeleteRestaurantBD
+        /// </summary>
+        /// <param name="nom">Li pasem el nom del restaurant</param>
+        /// <returns>Ens retorna true si l'ha eliminat, sino ens retorna false</returns>
         public bool DeleteRestaurant(string nom)
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
+        /// <summary>
+        /// Serviex per cridar al metode UpdateRestaurantBD
+        /// </summary>
+        /// <param name="restaurant">Li pasem el nou restaurant</param>
+        /// <param name="p">Li pasem la persona encarregada</param>
+        /// <param name="nom">Li pasem el nom del antic restaurant</param>
+        /// <returns>Ens retorna true si l'ha modificat, sino ens retorna false</returns>
         public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom)
         {
             return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
         }
+        /// <summary>
+        /// Serveix per cridar al metode SelectFotosBDD
+        /// </summary>
+        /// <param name="r">Li pasem el restaurant que volem agafar les fotos</param>
+        /// <returns>Ens retorna una llista de string amb les urls de les fotos</returns>
         public List<string> SelectFotos(Restaurant r)
         {
             return fotoBD.SelectFotosBDD(r);
         }
+        /// <summary>
+        /// Serviex per cridar al metode InsertFotoBD
+        /// </summary>
+        /// <param name="fotos">Li pasem una llista de string amb les urls de les fotos</param>
+        /// <param name="r">Li pasem el restaurant que volem afegir les fotos</param>
+        /// <returns>Ens retorna true si ha afegit les fotos, sino retorna false</returns>
         public bool InsertFotos(List<string> fotos, Restaurant r)
         {
             return fotoBD.InsertFotoBD(fotos,r);
         }
+        /// <summary>
+        /// Sobreescribim el metode ToString per aixi en doni el nom del restaurant
+        /// </summary>
+        /// <returns>Retorna el nom del restaurant</returns>
         public override string ToString()
         {
             return nom;

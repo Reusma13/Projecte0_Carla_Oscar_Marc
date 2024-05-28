@@ -48,6 +48,8 @@ namespace Projecte0.Domini
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
         /// <param name="nomTaula">El nom de la taula reservada</param>
+        /// <param name="dni">Es el dni de la persona</param>
+        /// <param name="idRestaurant">Es el id del restaurant escogido</param>
         public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula, string dni, int idRestaurant): this()
         {
             this.idReserva = idReserva;
@@ -103,25 +105,51 @@ namespace Projecte0.Domini
             set { idRestaurant = value;}
         }
 
+        // -------- Metodes --------
+
+        /// <summary>
+        /// Serveix per cridar al metode SelectReservaBDD
+        /// </summary>
+        /// <param name="idReserva">Es un numero enter que serveix com a identificador</param>
+        /// <returns>Retorna la reserva</returns>
         public Reserva SelectReserva(int idReserva)
         {
             return reservaBD.SelectReservaBDD(idReserva);
         }
-
+        /// <summary>
+        /// Serveix per cridar al metode InsertReservaBDD
+        /// </summary>
+        /// <param name="reserva">Li pasem la reserva que vol afegir</param>
+        /// <param name="dni">Li pasem el dni de la persona que fa la reserva</param>
+        /// <param name="nom">Li pasem el nom del restaurant que vol fer la reserva</param>
+        /// <returns>Ens retorna true si l'ha afegit, false si no ho ha fet</returns>
         public bool InsertReserva(Reserva reserva, string dni,string nom)
         {
             return reservaBD.InsertReservaBDD(reserva, dni,nom);
         }
-
+        /// <summary>
+        /// Serveix per cridar al metode UpdateReservaBDD
+        /// </summary>
+        /// <param name="reserva">Li pasem la reserva</param>
+        /// <returns>Ens retorna true si la modificat, false si no ho ha fet</returns>
         public bool UpdateReserva(Reserva reserva)
         {
             return reservaBD.UpdateReservaBDD(reserva);
         }
-
+        /// <summary>
+        /// Serveix per cridar al metode DeleteReservaBDD
+        /// </summary>
+        /// <param name="reserva">Li pasem la reserva per eliminar</param>
+        /// <returns>Ens retorna true si la ha eliminat, ens retorna false si no ho ha fet</returns>
         public bool DeleteReserva(Reserva reserva)
         {
             return reservaBD.DeleteReservaBDD(reserva);
         }
+        /// <summary>
+        /// Serveix per cridar al metode ObtenirReserves
+        /// </summary>
+        /// <param name="dni">Li pasem el dni de la persona que volem saber las reserves que te</param>
+        /// <returns>Ens retorna la llista de reserva</returns>
         public List<Reserva> ObtenirReservaList(string dni)
         {
             return reservaBD.ObtenirReserves(dni);
