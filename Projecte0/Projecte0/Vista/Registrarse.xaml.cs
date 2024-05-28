@@ -35,6 +35,7 @@ namespace Projecte0
         {
             if (txBoxDniUsuari.Text != "" && txBoxNomUsuari.Text != "" && txBoxCognom.Text != "" && pwdUsuari.Password != "")
             {
+                // Intenta seleccionar una persona existente con el DNI y la contraseña proporcionados.
                 Persona p = persona.SelectPersona(txBoxDniUsuari.Text, pwdUsuari.Password);
                 if (p is not null)
                 {
@@ -42,11 +43,12 @@ namespace Projecte0
                 }
                 else
                 {
-                    p = new Persona(txBoxDniUsuari.Text,txBoxNomUsuari.Text,txBoxCognom.Text,pwdUsuari.Password);
-                    persona.InsertPersona(p);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+                    // Si la persona no existe, crea una nueva instancia y la inserta en la base de datos.
+                    p = new Persona(txBoxDniUsuari.Text,txBoxNomUsuari.Text,txBoxCognom.Text,pwdUsuari.Password); 
+                    persona.InsertPersona(p); // Inserta la nueva persona en la base de datos.
+                    MainWindow mainWindow = new MainWindow(); // Crea una nueva ventana principal.
+                    mainWindow.Show();// Muestra la ventana principal.
+                    this.Close(); // Cierra la ventana de registro.
                 }
             }
         }

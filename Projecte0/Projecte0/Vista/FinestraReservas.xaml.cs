@@ -24,6 +24,13 @@ namespace Projecte0.Vista
         private string _nomTaula;
         Persona persona;
         string nom;
+
+        /// <summary>
+        /// Constructor de la ventana de reserva.
+        /// </summary>
+        /// <param name="nomTaula">Nombre de la mesa para la reserva.</param>
+        /// <param name="p">Usuario que realiza la reserva.</param>
+        /// <param name="nom">Nombre del restaurante donde se realiza la reserva.</param>
         public FinestraReserva(string nomTaula, Persona p, string nom)
         {
             InitializeComponent();
@@ -33,6 +40,10 @@ namespace Projecte0.Vista
             this.nom = nom;
         }
 
+        /// <summary>
+        /// Evento de clic para el botón de reservar.
+        /// Recoge los datos de la reserva y los guarda en la base de datos.
+        /// </summary>
         private void btnReservar_Click(object sender, RoutedEventArgs e)
         {
             // Recollim les dades de la reserva dels controls
