@@ -109,11 +109,11 @@ namespace Projecte0.Domini
         } 
 
         // -------- Metodes --------
-        public Restaurant SelectRestaurant(string nom) // Retorna un restaurante específico de la base de datos.
+        public Restaurant SelectRestaurant(string nom) // Retorna un restaurante especï¿½fico de la base de datos.
         {
             return restaurantBD.SelectRestaurantBD(nom);
         }
-        public List<Restaurant> SelectRestaurantList(string dni) // Retorna una lista de restaurantes de un cliente específico.
+        public List<Restaurant> SelectRestaurantList(string dni) // Retorna una lista de restaurantes de un cliente especï¿½fico.
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
@@ -129,11 +129,11 @@ namespace Projecte0.Domini
         {
             return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
         }
-        public List<string> SelectFotos(Restaurant r) // Retorna una lista de fotos de un restaurante específico.
+        public List<string> SelectFotos(Restaurant r) // Retorna una lista de fotos de un restaurante especï¿½fico.
         {
             return fotoBD.SelectFotosBDD(r);
         }
-        public bool InsertFotos(List<string> fotos, Restaurant r) // Inserta nuevas fotos en la base de datos para un restaurante específico.
+        public bool InsertFotos(List<string> fotos, Restaurant r) // Inserta nuevas fotos en la base de datos para un restaurante especï¿½fico.
         {
             return fotoBD.InsertFotoBD(fotos,r);
         }

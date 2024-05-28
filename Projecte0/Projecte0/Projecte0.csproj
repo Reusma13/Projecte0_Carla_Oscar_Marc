@@ -30,8 +30,4 @@
     <Resource Include="Vista\Imagenes\taula4.PNG" />
   </ItemGroup>
 
-  <ItemGroup>
-    <SplashScreen Include="SplashScreen1.png" />
-  </ItemGroup>
-
 </Project>

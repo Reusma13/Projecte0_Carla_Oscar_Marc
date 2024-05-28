@@ -10,6 +10,7 @@ namespace Projecte0.Domini
     public class Valoracio
     {
         // -------- Atributs --------
+        protected int id;
         protected string comentari;
         protected int puntuacio;
         protected string dni;
@@ -21,6 +22,7 @@ namespace Projecte0.Domini
         /// </summary>
         public Valoracio()
         {
+            id = 0;
             comentari = "";
             puntuacio = 0;
             dni = "";
@@ -37,8 +39,19 @@ namespace Projecte0.Domini
             this.puntuacio = puntuacio;
             this.dni = dni;
         }
-
+        public Valoracio(int id, string comentari, int puntuacio, string dni)
+        {
+            this.id = id;
+            this.comentari = comentari;
+            this.puntuacio = puntuacio;
+            this.dni = dni;
+        }
         // -------- Propietats --------
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Comentari
         {
             get { return comentari; }
@@ -55,34 +68,42 @@ namespace Projecte0.Domini
             set { dni = value; }
         }
 
-        public List<Valoracio> SelectValoracio() // Método para obtener todas las valoraciones de la base de datos.
+        public List<Valoracio> SelectValoracio() // Mï¿½todo para obtener todas las valoraciones de la base de datos.
         {
             return valoracioBD.SelectValoracioBDD();
         }
 
-        public bool InsertValoracio(Valoracio valoracio)  // Método para insertar una nueva valoración en la base de datos.
+        public bool InsertValoracio(Valoracio valoracio, string nomRestaurant)
         {
-            return valoracioBD.InsertValoracioBDD(valoracio);
+            return valoracioBD.InsertValoracioBDD(valoracio, nomRestaurant);
         }
 
-        public bool UpdateValoracio(Valoracio valoracio) // Método para actualizar una valoración existente en la base de datos.
+        public bool UpdateValoracio(Valoracio valoracio) // Mï¿½todo para actualizar una valoraciï¿½n existente en la base de datos.
         {
             return valoracioBD.UpdateValoracioBDD(valoracio);
         }
 
-        public bool DeleteValoracio(string dni)  // Método para eliminar una valoración de la base de datos utilizando el DNI del cliente.
+        public bool DeleteValoracio(string dni)  // Mï¿½todo para eliminar una valoraciï¿½n de la base de datos utilizando el DNI del cliente.
         {
             return valoracioBD.DeleteValoracioBDD(dni);
         }
+        public bool DeleteValoracio(Valoracio valoracio)
+        {
+            return valoracioBD.DeleteValoracioBDD(valoracio);
+        }
 
-        public List<Valoracio> ObtenirValoracions(string nom) // Método para obtener todas las valoraciones de un restaurante específico.
+        public List<Valoracio> ObtenirValoracions(string nom) // Mï¿½todo para obtener todas las valoraciones de un restaurante especï¿½fico.
         {
             return valoracioBD.ObtenirValoracionsBDD(nom);
         }
 
-        public bool EliminarValoracionsPorRestaurante(string nom) // Método para eliminar todas las valoraciones de un restaurante específico.
+        public bool EliminarValoracionsPorRestaurante(string nom) // Mï¿½todo para eliminar todas las valoraciones de un restaurante especï¿½fico.
         {
             return valoracioBD.EliminarValoracionsPorRestauranteBDD(nom);
+        }
+        public List<Valoracio> ObtenirValoracioClient(string dni)
+        {
+            return valoracioBD.ObtenirValoracioClient(dni);
         }
     }
 }

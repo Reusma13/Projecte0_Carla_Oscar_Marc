@@ -99,6 +99,10 @@ namespace Projecte0
                     }
                     restaurant.InsertRestaurant(r, p);
                 }
+                else
+                {
+                    MessageBox.Show("Restaurant ja existent.");
+                }
             }
         }
 

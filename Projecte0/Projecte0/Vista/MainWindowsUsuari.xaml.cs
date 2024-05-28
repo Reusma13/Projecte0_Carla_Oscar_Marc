@@ -23,28 +23,24 @@ namespace Projecte0
     /// </summary>
     public partial class MainWindowsUsuari : Window
     {
-        Connexio connexio = new Connexio();
         Reserva reserva = new Reserva();
+        Valoracio valoracio = new Valoracio();
         Persona persona = new Persona();
         public MainWindowsUsuari(Persona p)
         {
             InitializeComponent();
             ActualitzarReserves();
             persona = p;
-            //dgReserves.ItemsSource = reservaBD.ObtenirReserves(); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
+            dgReserves.ItemsSource = reserva.ObtenirReservaList(persona.Dni); // Cridem al mètode ObtenirReserves() de la instància de ReservaBD
+            dgValoracions.ItemsSource = valoracio.ObtenirValoracioClient(persona.Dni);
         }
 
         private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
             FinestraMapa finestraMapa = new FinestraMapa(persona);
-
+            finestraMapa.Show();
             finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
-        }
-
-        private void dgReserves_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void FinestraMapa_Closed(object sender, EventArgs e)
@@ -77,6 +73,42 @@ namespace Projecte0
             // Actualizamos la lista de reservas
             dgReserves.ItemsSource = null;
             dgReserves.ItemsSource = reserva.ObtenirReservaList(persona.Dni);
+        }
+
+        private void btnNovaValoracio_Click(object sender, RoutedEventArgs e)
+        {
+            FerValoracio ferValoracio = new FerValoracio(persona);
+            ferValoracio.Show();
+            ferValoracio.Closed += FinestraValoracio_Closed;
+        }
+
+        private void FinestraValoracio_Closed(object sender, EventArgs e) 
+        {
+            ActualizarValoracions();
+        }
+
+        private void ActualizarValoracions()
+        {
+            dgValoracions.ItemsSource = null;
+            dgValoracions.ItemsSource = valoracio.ObtenirValoracioClient(persona.Dni);
+        }
+        private void btnEliminarValoracio_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtenir la valoracio seleccionada
+            var valoracioSeleccionada = dgValoracions.SelectedItem as Valoracio;
+
+            if (valoracioSeleccionada != null)
+            {
+                // Eliminar la valoracio seleccionada
+                valoracio.DeleteValoracio(valoracioSeleccionada);
+
+                // Actualitzar la vista de dades
+                ActualizarValoracions();
+            }
+            else
+            {
+                MessageBox.Show("Si us plau, selecciona una valoracio per eliminar.");
+            }
         }
     }
 }

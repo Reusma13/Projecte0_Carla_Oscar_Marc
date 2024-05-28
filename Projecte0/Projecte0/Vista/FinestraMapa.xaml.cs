@@ -23,12 +23,17 @@ namespace Projecte0.Vista
     {
 
         ReservaBD reservaBD = new ReservaBD();
-        Persona persona; 
+        Persona persona;
+        Restaurant restaurant;
         public FinestraMapa(Persona p)
         {
             InitializeComponent();
             ActualizarEstadoMesas();
             persona = p;
+            restaurant = new Restaurant();
+            List<Restaurant> restaurants = restaurant.SelectRstaurantList();
+            comboBoxRestaurant.ItemsSource = restaurants;
+            comboBoxRestaurant.DisplayMemberPath = "Nom";
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace Projecte0.Vista
             }
             else
             {
-                FinestraReserva finestraReserva = new FinestraReserva(nomTaula, persona);
+                FinestraReserva finestraReserva = new FinestraReserva(nomTaula, persona, comboBoxRestaurant.SelectedItem.ToString());
                 finestraReserva.Show();
             }
         } 

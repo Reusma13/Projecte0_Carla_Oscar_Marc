@@ -23,12 +23,14 @@ namespace Projecte0.Vista
     {
         private string _nomTaula;
         Persona persona;
-        public FinestraReserva(string nomTaula, Persona p)
+        string nom;
+        public FinestraReserva(string nomTaula, Persona p, string nom)
         {
             InitializeComponent();
 
             _nomTaula = nomTaula;
             persona = p;
+            this.nom = nom;
         }
 
         private void btnReservar_Click(object sender, RoutedEventArgs e)
@@ -51,8 +53,8 @@ namespace Projecte0.Vista
             };
 
             // Guardem la nova reserva a la base de dades
-            ReservaBD reservaBD = new ReservaBD();
-            reservaBD.InsertReservaBDD(novaReserva, persona.Dni);
+            Reserva reserva = new Reserva();
+            reserva.InsertReserva(novaReserva, persona.Dni,nom);
 
             // Tanquem la finestra de reserva
             this.Close();
