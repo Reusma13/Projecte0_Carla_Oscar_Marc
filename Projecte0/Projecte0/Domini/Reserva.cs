@@ -104,27 +104,56 @@ namespace Projecte0.Domini
         }
 
         // -------- Metodes --------
-        public Reserva SelectReserva(int idReserva) // Retorna una reserva espec�fica de la base de dades.
+
+        /// <summary>
+        /// Mostra una reserva especifica de la base de dades
+        /// </summary>
+        /// <param name="idReserva">Li passem el id de la reserva que volem veure</param>
+        /// <returns>Ens retorna la reserva</returns>
+        public Reserva SelectReserva(int idReserva) 
         {
             return reservaBD.SelectReservaBDD(idReserva);
         }
       
+        /// <summary>
+        /// Serveix per inserir una reserva a la base de dades
+        /// </summary>
+        /// <param name="reserva">Li passem la nova reserva</param>
+        /// <param name="dni">Li passem el dni de la persona que la insereix</param>
+        /// <param name="nom">Li passem el nom del restaurant</param>
+        /// <returns>Retorna true si s'ha pogut inserir la reserva, sino retorna false.</returns>
         public bool InsertReserva(Reserva reserva, string dni,string nom)
 
         {
             return reservaBD.InsertReservaBDD(reserva, dni,nom);
         }
 
-        public bool UpdateReserva(Reserva reserva) // Actualitza una reserva existent a la base de dades.
+        /// <summary>
+        /// Serveix per actualitzar una reserva existent a la base de dades.
+        /// </summary>
+        /// <param name="reserva">Li passem una nova reserva.</param>
+        /// <returns>Retorna true si es pot actualitzar la reserva, sino retorna false</returns>
+        public bool UpdateReserva(Reserva reserva) 
         {
             return reservaBD.UpdateReservaBDD(reserva);
         }
 
-        public bool DeleteReserva(Reserva reserva) // Elimina una reserva de la base de dades.
+        /// <summary>
+        /// Serveix per eliminar una reserva de la base de dades.
+        /// </summary>
+        /// <param name="reserva">Li passem una reserva</param>
+        /// <returns>Retorna true si pot eliminar la reserva, sino retorna false.</returns>
+        public bool DeleteReserva(Reserva reserva) 
         {
             return reservaBD.DeleteReservaBDD(reserva);
         }
-        public List<Reserva> ObtenirReservaList(string dni) // Retorna una llista de reserves d'un client específic.
+
+        /// <summary>
+        /// Serveix per mostrar una llista de reserves d'un client específic.
+        /// </summary>
+        /// <param name="dni">Li passem el dni de la persona que volem veure les reserves</param>
+        /// <returns>Retorna una List<> de les reserves de un client.</returns>
+        public List<Reserva> ObtenirReservaList(string dni) 
         {
             return reservaBD.ObtenirReserves(dni);
         }
