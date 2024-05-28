@@ -103,26 +103,28 @@ namespace Projecte0.Domini
             set { idRestaurant = value;}
         }
 
-        public Reserva SelectReserva(int idReserva)
+        // Mètodes per interactuar amb la base de dades.
+        public Reserva SelectReserva(int idReserva) // Retorna una reserva específica de la base de dades.
         {
             return reservaBD.SelectReservaBDD(idReserva);
         }
-
+      
         public bool InsertReserva(Reserva reserva, string dni,string nom)
+
         {
             return reservaBD.InsertReservaBDD(reserva, dni,nom);
         }
 
-        public bool UpdateReserva(Reserva reserva)
+        public bool UpdateReserva(Reserva reserva) // Actualitza una reserva existent a la base de dades.
         {
             return reservaBD.UpdateReservaBDD(reserva);
         }
 
-        public bool DeleteReserva(Reserva reserva)
+        public bool DeleteReserva(Reserva reserva) // Elimina una reserva de la base de dades.
         {
             return reservaBD.DeleteReservaBDD(reserva);
         }
-        public List<Reserva> ObtenirReservaList(string dni)
+        public List<Reserva> ObtenirReservaList(string dni) // Retorna una llista de reserves d'un client específic.
         {
             return reservaBD.ObtenirReserves(dni);
         }
