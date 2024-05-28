@@ -111,6 +111,12 @@ namespace Projecte0.AccesDades
             }
             return eliminadaValoracio;
         }
+
+        /// <summary>
+        /// Elimina la valoració havent-li passat el id de la valoració 
+        /// </summary>
+        /// <param name="valoracio">Li passem la valoració</param>
+        /// <returns>Retrna true si s'ha eliminat la valoració especificada, sino retorna false</returns>
         public bool DeleteValoracioBDD(Valoracio valoracio)
         {
             bool eliminadaValoracio = false;

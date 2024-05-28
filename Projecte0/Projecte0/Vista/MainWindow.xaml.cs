@@ -23,24 +23,36 @@ namespace Projecte0
     public partial class MainWindow : Window
     {
         Persona p;
-        
+
+        /// <summary>
+        /// Constructor de la ventana principal.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             p = new Persona();
         }
 
+        /// <summary>
+        /// Evento de clic para el botón de registro.
+        /// Abre la ventana de registro y cierra la ventana actual.
+        /// </summary>
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            Registrarse ventanaRegistrar = new Registrarse();
-            ventanaRegistrar.Show();
-            this.Close();
+            Registrarse ventanaRegistrar = new Registrarse(); // Crea una nueva ventana de registro
+            ventanaRegistrar.Show(); // Muestra la ventana de registro
+            this.Close(); // Cierra la ventana principal
         }
 
+        /// <summary>
+        /// Evento de clic para el botón de inicio de sesión.
+        /// Verifica las credenciales y abre la ventana correspondiente al tipo de usuario.
+        /// </summary>
         private void btnIniciarSessio_Click(object sender, RoutedEventArgs e)
         {
             if (txBoxUsuari.Text != "" && pwdBoxUsuari.Password != "")
             {
+                // Selecciona la persona de la base de datos con las credenciales proporcionadas.
                 p = p.SelectPersona(txBoxUsuari.Text, pwdBoxUsuari.Password);
                 if(p.EsAdmin.ToLower() == "si")
                 {
