@@ -117,6 +117,10 @@ namespace Projecte0.Domini
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
+        public List<Restaurant> SelectRstaurantList()
+        {
+            return restaurantBD.SelectRestaurantListBD();
+        }
         public bool InsertRestaurant(Restaurant restaurant, Persona p)
         {
             return restaurantBD.CrearRestaurantBD(restaurant, p);

@@ -10,6 +10,7 @@ namespace Projecte0.Domini
     public class Valoracio
     {
         // -------- Atributs --------
+        protected int id;
         protected string comentari;
         protected int puntuacio;
         protected string dni;
@@ -21,6 +22,7 @@ namespace Projecte0.Domini
         /// </summary>
         public Valoracio()
         {
+            id = 0;
             comentari = "";
             puntuacio = 0;
             dni = "";
@@ -37,8 +39,19 @@ namespace Projecte0.Domini
             this.puntuacio = puntuacio;
             this.dni = dni;
         }
-
+        public Valoracio(int id, string comentari, int puntuacio, string dni)
+        {
+            this.id = id;
+            this.comentari = comentari;
+            this.puntuacio = puntuacio;
+            this.dni = dni;
+        }
         // -------- Propietats --------
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Comentari
         {
             get { return comentari; }
@@ -60,9 +73,9 @@ namespace Projecte0.Domini
             return valoracioBD.SelectValoracioBDD();
         }
 
-        public bool InsertValoracio(Valoracio valoracio)
+        public bool InsertValoracio(Valoracio valoracio, string nomRestaurant)
         {
-            return valoracioBD.InsertValoracioBDD(valoracio);
+            return valoracioBD.InsertValoracioBDD(valoracio, nomRestaurant);
         }
 
         public bool UpdateValoracio(Valoracio valoracio)
@@ -74,6 +87,10 @@ namespace Projecte0.Domini
         {
             return valoracioBD.DeleteValoracioBDD(dni);
         }
+        public bool DeleteValoracio(Valoracio valoracio)
+        {
+            return valoracioBD.DeleteValoracioBDD(valoracio);
+        }
 
         public List<Valoracio> ObtenirValoracions(string nom)
         {
@@ -83,6 +100,10 @@ namespace Projecte0.Domini
         public bool EliminarValoracionsPorRestaurante(string nom)
         {
             return valoracioBD.EliminarValoracionsPorRestauranteBDD(nom);
+        }
+        public List<Valoracio> ObtenirValoracioClient(string dni)
+        {
+            return valoracioBD.ObtenirValoracioClient(dni);
         }
     }
 }

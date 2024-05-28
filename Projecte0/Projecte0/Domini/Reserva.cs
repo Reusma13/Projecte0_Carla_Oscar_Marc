@@ -103,15 +103,16 @@ namespace Projecte0.Domini
             set { idRestaurant = value;}
         }
 
-        // Mètodes per interactuar amb la base de dades.
-        public Reserva SelectReserva(int idReserva) // Retorna una reserva específica de la base de dades.
+        // MÃ¨todes per interactuar amb la base de dades.
+        public Reserva SelectReserva(int idReserva) // Retorna una reserva especÃ­fica de la base de dades.
         {
             return reservaBD.SelectReservaBDD(idReserva);
         }
+      
+        public bool InsertReserva(Reserva reserva, string dni,string nom)
 
-        public bool InsertReserva(Reserva reserva, string dni) // Insereix una nova reserva a la base de dades.
         {
-            return reservaBD.InsertReservaBDD(reserva, dni);
+            return reservaBD.InsertReservaBDD(reserva, dni,nom);
         }
 
         public bool UpdateReserva(Reserva reserva) // Actualitza una reserva existent a la base de dades.
@@ -123,7 +124,7 @@ namespace Projecte0.Domini
         {
             return reservaBD.DeleteReservaBDD(reserva);
         }
-        public List<Reserva> ObtenirReservaList(string dni) // Retorna una llista de reserves d'un client específic.
+        public List<Reserva> ObtenirReservaList(string dni) // Retorna una llista de reserves d'un client especÃ­fic.
         {
             return reservaBD.ObtenirReserves(dni);
         }

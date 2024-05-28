@@ -8,10 +8,11 @@
         Title="FinestraMapa" Height="450" Width="800">
     <Grid Background="Wheat">
         <Image Margin="106,91,106,62" Source="/Vista/Imagenes/MapaRestaurant2.png" Stretch="Fill"/>
-        <Label Content="SELECCIONA LA TAULA QUE VOLS RESERVAR" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Source Serif Pro" Foreground="DarkRed"/>
-        <Button Name="ButtonTaula1" Content="Taula 1" HorizontalAlignment="Left" Margin="464,190,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula1_Click" Background="DarkRed" Foreground="White"/>
-        <Button Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="565,238,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click" Background="DarkRed" Foreground="White"/>
-        <Button Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="464,289,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click" Background="DarkRed" Foreground="White"/>
-        <Button Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="565,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click" Background="DarkRed" Foreground="White"/>
+        <Label Content="SELECCIONA LA TAULA QUE VOLS RESERVAR" HorizontalAlignment="Left" Margin="208,10,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Source Serif Pro" Foreground="DarkRed"/>
+        <Button Name="ButtonTaula1" Content="Taula 1" HorizontalAlignment="Left" Margin="454,186,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula1_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="ButtonTaula2" Content="Taula 2" HorizontalAlignment="Left" Margin="555,232,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula2_Click" Background="DarkRed" Foreground="White" RenderTransformOrigin="0.541,0.097"/>
+        <Button Name="ButtonTaula3" Content="Taula 3" HorizontalAlignment="Left" Margin="454,283,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula3_Click" Background="DarkRed" Foreground="White"/>
+        <Button Name="ButtonTaula4" Content="Taula 4" HorizontalAlignment="Left" Margin="555,335,0,0" VerticalAlignment="Top" Height="19" Width="68" Click="ButtonTaula4_Click" Background="DarkRed" Foreground="White"/>
+        <ComboBox Name="comboBoxRestaurant" HorizontalAlignment="Left" Margin="347,50,0,0" VerticalAlignment="Top" Width="103"/>
     </Grid>
 </Window>
