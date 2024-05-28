@@ -106,40 +106,91 @@ namespace Projecte0.Domini
         {
             get { return reserves; }
             set { reserves = value; }
-        } 
+        }
 
         // -------- Metodes --------
-        public Restaurant SelectRestaurant(string nom) // Retorna un restaurante espec�fico de la base de datos.
+        /// <summary>
+        /// Retorna un restaurant específic de la base de dades.
+        /// </summary>
+        /// <param name="nom">El nom del restaurant a retornar.</param>
+        /// <returns>Retorna l'objecte Restaurant.</returns>
+        public Restaurant SelectRestaurant(string nom)
         {
             return restaurantBD.SelectRestaurantBD(nom);
         }
-        public List<Restaurant> SelectRestaurantList(string dni) // Retorna una lista de restaurantes de un cliente espec�fico.
+
+        /// <summary>
+        /// Retorna una llista de restaurants d'un client específic.
+        /// </summary>
+        /// <param name="dni">El DNI del client per al qual es volen obtenir els restaurants.</param>
+        /// <returns>Retorna una llista de restaurants.</returns>
+        public List<Restaurant> SelectRestaurantList(string dni)
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
-        public bool InsertRestaurant(Restaurant restaurant, Persona p) // Inserta un nuevo restaurante en la base de datos.
+
+        /// <summary>
+        /// Inserta un nou restaurant a la base de dades.
+        /// </summary>
+        /// <param name="restaurant">L'objecte Restaurant a inserir.</param>
+        /// <param name="p">L'objecte Persona associat al restaurant.</param>
+        /// <returns>Retorna true si la inserció és exitosa.</returns>
+        public bool InsertRestaurant(Restaurant restaurant, Persona p)
         {
             return restaurantBD.CrearRestaurantBD(restaurant, p);
         }
-        public bool DeleteRestaurant(string nom) // Elimina un restaurante de la base de datos.
+
+        /// <summary>
+        /// Elimina un restaurant de la base de dades.
+        /// </summary>
+        /// <param name="nom">El nom del restaurant a eliminar.</param>
+        /// <returns>Retorna true si l'eliminació és exitosa.</returns>
+        public bool DeleteRestaurant(string nom)
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
-        public bool UpdateRestaurant(Restaurant restaurant,Persona p,string nom) // Actualiza un restaurante existente en la base de datos.
+
+        /// <summary>
+        /// Actualitza un restaurant existent a la base de dades.
+        /// </summary>
+        /// <param name="restaurant">L'objecte Restaurant a actualitzar.</param>
+        /// <param name="p">L'objecte Persona associat al restaurant.</param>
+        /// <param name="nom">El nom del restaurant a actualitzar.</param>
+        /// <returns>Retorna true si l'actualització és exitosa.</returns>
+        public bool UpdateRestaurant(Restaurant restaurant, Persona p, string nom)
         {
-            return restaurantBD.UpdateRestaurantBD(restaurant,p,nom);
+            return restaurantBD.UpdateRestaurantBD(restaurant, p, nom);
         }
-        public List<string> SelectFotos(Restaurant r) // Retorna una lista de fotos de un restaurante espec�fico.
+
+        /// <summary>
+        /// Retorna una llista de fotos d'un restaurant específic.
+        /// </summary>
+        /// <param name="r">L'objecte Restaurant del qual es volen obtenir les fotos.</param>
+        /// <returns>Retorna una llista de cadenes de text que representen les fotos.</returns>
+        public List<string> SelectFotos(Restaurant r)
         {
             return fotoBD.SelectFotosBDD(r);
         }
-        public bool InsertFotos(List<string> fotos, Restaurant r) // Inserta nuevas fotos en la base de datos para un restaurante espec�fico.
+
+        /// <summary>
+        /// Inserta noves fotos a la base de dades per a un restaurant específic.
+        /// </summary>
+        /// <param name="fotos">Una llista de cadenes de text que representen les fotos a inserir.</param>
+        /// <param name="r">L'objecte Restaurant associat a les fotos.</param>
+        /// <returns>Retorna true si la inserció de les fotos és exitosa.</returns>
+        public bool InsertFotos(List<string> fotos, Restaurant r)
         {
-            return fotoBD.InsertFotoBD(fotos,r);
+            return fotoBD.InsertFotoBD(fotos, r);
         }
-        public override string ToString() // Retorna el nombre del restaurante.
+
+        /// <summary>
+        /// Retorna el nom del restaurant.
+        /// </summary>
+        /// <returns>Retorna una cadena de text que representa el nom del restaurant.</returns>
+        public override string ToString()
         {
             return nom;
         }
+
     }
 }
