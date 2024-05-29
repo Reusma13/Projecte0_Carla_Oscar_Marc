@@ -28,8 +28,13 @@ namespace Projecte0
         private Valoracio valoracio;
         Restaurant restaurant;
         Persona p;
-        List<string> lineas;
-        string[] lineas2;
+        List<string> lineas; // Lista para almacenar las líneas de un archivo, como las URLs de las fotos de los restaurantes.
+        string[] lineas2;  // Array para almacenar temporalmente las líneas leídas de un archivo.
+
+        /// <summary>
+        /// Constructor de la ventana de administrador.
+        /// </summary>
+        /// <param name="p">Objeto Persona que representa al administrador.</param>
         public MainWindowAdministrador(Persona p)
         {
             this.p = p;
@@ -43,6 +48,9 @@ namespace Projecte0
             cBoxRestaurants.DisplayMemberPath = "Nom";
         }
 
+        /// <summary>
+        /// Actualiza la lista de valoraciones mostradas en la interfaz.
+        /// </summary>
         private void UpdateValoracions()
         {
             if (cBoxRestaurants.SelectedItem != null)
@@ -53,11 +61,17 @@ namespace Projecte0
             }
         }
 
+        /// <summary>
+        /// Actualiza la lista de valoraciones del restaurante seleccionado.
+        /// </summary>
         private void btnActualizarValoracions_Click(object sender, RoutedEventArgs e)
         {
             UpdateValoracions();
         }
 
+        /// <summary>
+        /// Maneja el cambio de selección en el ComboBox de restaurantes, actualizando las valoraciones correspondientes.
+        /// </summary>
         private void cBoxRestaurant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cBoxRestaurant.SelectedItem != null)
@@ -66,6 +80,9 @@ namespace Projecte0
             }
         }
 
+        /// <summary>
+        /// Abre un cuadro de diálogo para cargar fotos desde un archivo.
+        /// </summary>
         private void btnCargarFotos_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog(); // Creamos la ventana para seleccionar un fichero
@@ -80,6 +97,9 @@ namespace Projecte0
             }
         }
 
+        /// <summary>
+        /// Crea un nuevo restaurante con la información proporcionada y lo añade a la base de datos si no existe previamente.
+        /// </summary>
         private void btnCrearRestaurant_Click(object sender, RoutedEventArgs e)
         {
             Restaurant r;
@@ -106,14 +126,9 @@ namespace Projecte0
             }
         }
 
-        private void btnEliminarRestaurant_Click(object sender, RoutedEventArgs e)
-        {
-            if (cBoxRestaurant.SelectedItem.ToString() != null)
-            {
-                restaurant.DeleteRestaurant(cBoxRestaurant.SelectedItem.ToString());
-            }
-        }
-
+        /// <summary>
+        /// Abre la ventana para modificar la información del restaurante seleccionado.
+        /// </summary>
         private void btnModificarRestaurant_Click(object sender, RoutedEventArgs e)
         {
             string nom = cBoxRestaurant.SelectedItem.ToString();
@@ -121,6 +136,9 @@ namespace Projecte0
             finestraModificarRestaurant.Show();
         }
 
+        /// <summary>
+        /// Actualiza la lista de restaurantes mostrada en el ComboBox.
+        /// </summary>
         private void btnActualizarRestaurant_Click(object sender, RoutedEventArgs e)
         {
             restaurants = restaurant.SelectRestaurantList(p.Dni);
@@ -128,6 +146,9 @@ namespace Projecte0
             cBoxRestaurant.DisplayMemberPath = "Nom";
         }
 
+        /// <summary>
+        /// Elimina el restaurante seleccionado de la base de datos.
+        /// </summary>
         private void btnEliminarRestaurant_Click_1(object sender, RoutedEventArgs e)
         {
             string nom = cBoxRestaurant.SelectedItem.ToString();

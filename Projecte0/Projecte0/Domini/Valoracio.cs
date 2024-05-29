@@ -68,7 +68,7 @@ namespace Projecte0.Domini
             set { dni = value; }
         }
 
-        public List<Valoracio> SelectValoracio()
+        public List<Valoracio> SelectValoracio() // M�todo para obtener todas las valoraciones de la base de datos.
         {
             return valoracioBD.SelectValoracioBDD();
         }
@@ -78,12 +78,12 @@ namespace Projecte0.Domini
             return valoracioBD.InsertValoracioBDD(valoracio, nomRestaurant);
         }
 
-        public bool UpdateValoracio(Valoracio valoracio)
+        public bool UpdateValoracio(Valoracio valoracio) // M�todo para actualizar una valoraci�n existente en la base de datos.
         {
             return valoracioBD.UpdateValoracioBDD(valoracio);
         }
 
-        public bool DeleteValoracio(string dni)
+        public bool DeleteValoracio(string dni)  // M�todo para eliminar una valoraci�n de la base de datos utilizando el DNI del cliente.
         {
             return valoracioBD.DeleteValoracioBDD(dni);
         }
@@ -92,12 +92,12 @@ namespace Projecte0.Domini
             return valoracioBD.DeleteValoracioBDD(valoracio);
         }
 
-        public List<Valoracio> ObtenirValoracions(string nom)
+        public List<Valoracio> ObtenirValoracions(string nom) // M�todo para obtener todas las valoraciones de un restaurante espec�fico.
         {
             return valoracioBD.ObtenirValoracionsBDD(nom);
         }
 
-        public bool EliminarValoracionsPorRestaurante(string nom)
+        public bool EliminarValoracionsPorRestaurante(string nom) // M�todo para eliminar todas las valoraciones de un restaurante espec�fico.
         {
             return valoracioBD.EliminarValoracionsPorRestauranteBDD(nom);
         }

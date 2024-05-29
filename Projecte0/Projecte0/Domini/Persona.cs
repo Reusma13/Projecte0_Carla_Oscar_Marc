@@ -111,6 +111,12 @@ namespace Projecte0.Domini
         {
             return personaBD.InsertPersonaBDD(persona);
         }
+
+        /// <summary>
+        /// Elimina una persona de la base de dades
+        /// </summary>
+        /// <param name="dni">Li passem el dni de la persona que volem eiminar.</param>
+        /// <returns>Retorna true si s'ha eliminat la persona, sino retorna false.</returns>
         public bool DeletePersona(string dni)
         {
             return personaBD.DeletePersonaBDD(dni);

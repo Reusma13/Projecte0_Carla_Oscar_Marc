@@ -27,10 +27,15 @@ namespace Projecte0
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Manejador del evento de clic en el botón de registrar.
+        /// Si el usuario y la contraseña son correctos, crea una nueva persona, la inserta en la base de datos, abre la ventana principal y cierra la ventana actual.
+        /// </summary>
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             if (txBoxDniUsuari.Text != "" && txBoxNomUsuari.Text != "" && txBoxCognom.Text != "" && pwdUsuari.Password != "")
             {
+                // Intenta seleccionar una persona existente con el DNI y la contraseña proporcionados.
                 Persona p = persona.SelectPersona(txBoxDniUsuari.Text, pwdUsuari.Password);
                 if (p is not null)
                 {
@@ -38,11 +43,12 @@ namespace Projecte0
                 }
                 else
                 {
-                    p = new Persona(txBoxDniUsuari.Text,txBoxNomUsuari.Text,txBoxCognom.Text,pwdUsuari.Password);
-                    persona.InsertPersona(p);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+                    // Si la persona no existe, crea una nueva instancia y la inserta en la base de datos.
+                    p = new Persona(txBoxDniUsuari.Text,txBoxNomUsuari.Text,txBoxCognom.Text,pwdUsuari.Password); 
+                    persona.InsertPersona(p); // Inserta la nueva persona en la base de datos.
+                    MainWindow mainWindow = new MainWindow(); // Crea una nueva ventana principal.
+                    mainWindow.Show();// Muestra la ventana principal.
+                    this.Close(); // Cierra la ventana de registro.
                 }
             }
         }
