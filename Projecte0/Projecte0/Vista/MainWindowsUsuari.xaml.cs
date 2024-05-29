@@ -26,6 +26,11 @@ namespace Projecte0
         Reserva reserva = new Reserva();
         Valoracio valoracio = new Valoracio();
         Persona persona = new Persona();
+
+        /// <summary>
+        /// Constructor de la ventana principal del usuario.
+        /// </summary>
+        /// <param name="p">Objeto Persona que representa al usuario actual.</param>
         public MainWindowsUsuari(Persona p)
         {
             InitializeComponent();
@@ -35,20 +40,29 @@ namespace Projecte0
             dgValoracions.ItemsSource = valoracio.ObtenirValoracioClient(persona.Dni);
         }
 
+        /// <summary>
+        /// Evento de clic para crear una nueva reserva.
+        /// </summary>
         private void btnNovaReserva_Click(object sender, RoutedEventArgs e)
         {
             // Creem una nova instància de la finestra de reserva
             FinestraMapa finestraMapa = new FinestraMapa(persona);
             finestraMapa.Show();
-            finestraMapa.Closed += FinestraMapa_Closed; // Añadimos un manejador de eventos para cuando se cierre la ventana
+            finestraMapa.Closed += FinestraMapa_Closed; // Suscribe el evento de cierre para actualizar las reservas.
         }
 
+        /// <summary>
+        /// Evento que se dispara cuando la ventana de mapa se cierra.
+        /// </summary>
         private void FinestraMapa_Closed(object sender, EventArgs e)
         {
             // Cuando se cierre la ventana de reserva, actualizamos la lista de reservas
             ActualitzarReserves();
         }
 
+        /// <summary>
+        /// Evento de clic para eliminar una reserva seleccionada.
+        /// </summary>
         private void btnEliminarReserva_Click(object sender, RoutedEventArgs e)
         {
             // Obtenir la reserva seleccionada
@@ -68,34 +82,51 @@ namespace Projecte0
             }
         }
 
+        /// <summary>
+        /// Actualiza la lista de reservas del usuario.
+        /// </summary>
         private void ActualitzarReserves()
         {
             // Actualizamos la lista de reservas
-            dgReserves.ItemsSource = null;
-            dgReserves.ItemsSource = reserva.ObtenirReservaList(persona.Dni);
+            dgReserves.ItemsSource = null; // Limpia la lista actual.
+            dgReserves.ItemsSource = reserva.ObtenirReservaList(persona.Dni); // Obtiene y muestra la lista actualizada de reservas.
         }
 
+        /// <summary>
+        /// Evento de clic para crear una nueva valoración.
+        /// </summary>
         private void btnNovaValoracio_Click(object sender, RoutedEventArgs e)
         {
             FerValoracio ferValoracio = new FerValoracio(persona);
             ferValoracio.Show();
-            ferValoracio.Closed += FinestraValoracio_Closed;
+            ferValoracio.Closed += FinestraValoracio_Closed; // Suscribe el evento de cierre para actualizar las valoraciones.
+
         }
 
+        /// <summary>
+        /// Evento que se dispara cuando la ventana de valoración se cierra.
+        /// </summary>
         private void FinestraValoracio_Closed(object sender, EventArgs e) 
         {
             ActualizarValoracions();
         }
 
+        /// <summary>
+        /// Actualiza la lista de valoraciones del usuario.
+        /// </summary>
         private void ActualizarValoracions()
         {
             dgValoracions.ItemsSource = null;
-            dgValoracions.ItemsSource = valoracio.ObtenirValoracioClient(persona.Dni);
+            dgValoracions.ItemsSource = valoracio.ObtenirValoracioClient(persona.Dni); // Obtiene y muestra la lista actualizada de valoraciones.
         }
+
+        /// <summary>
+        /// Evento de clic para eliminar una valoración seleccionada.
+        /// </summary>
         private void btnEliminarValoracio_Click(object sender, RoutedEventArgs e)
         {
             // Obtenir la valoracio seleccionada
-            var valoracioSeleccionada = dgValoracions.SelectedItem as Valoracio;
+            var valoracioSeleccionada = dgValoracions.SelectedItem as Valoracio; // Obtiene la valoración seleccionada.
 
             if (valoracioSeleccionada != null)
             {

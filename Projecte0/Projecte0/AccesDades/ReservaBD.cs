@@ -182,11 +182,11 @@ namespace Projecte0.AccesDades
                 string query = "SELECT COUNT(*) FROM Reserva WHERE nomTaula = @nomTaula"; 
 
                 MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
-                cmd.Parameters.AddWithValue("@nomTaula", nomTaula); // Afegim el valor a @nomTaula
+                cmd.Parameters.AddWithValue("@nomTaula", nomTaula); // Afegim el valor del paràmetre 'nomTaula' a la consulta SQL per evitar injeccions SQL.
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar()); // Executem la comanda i el resultat el convertim en int
 
-                return count > 0; // Mirem si el valor es major a 0
+                return count > 0; // Mirem si el valor es major a 0, i si ho és dncs signific que hi ha almenys una reserva per la taula, retornem true
             }
         }
     }
