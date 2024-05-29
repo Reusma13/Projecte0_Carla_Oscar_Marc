@@ -113,17 +113,17 @@ namespace Projecte0.AccesDades
         }
 
         /// <summary>
-        /// Elimina la valoració havent-li passat el id de la valoració 
+        /// Aquest metode l'utilizem per poder eliminar una reserva desde el datagrid
         /// </summary>
-        /// <param name="valoracio">Li passem la valoració</param>
-        /// <returns>Retrna true si s'ha eliminat la valoració especificada, sino retorna false</returns>
+        /// <param name="valoracio">Li pasem una valoracio seleccionada del datagrid</param>
+        /// <returns>Ens retorna true si l'ha eliminat o false si no la eliminat</returns>
         public bool DeleteValoracioBDD(Valoracio valoracio)
         {
             bool eliminadaValoracio = false;
             MySqlConnection connection = connexio.ConnexioBDD(); // Fem la conexio
             if (connection != null)
             {
-                // Comanda sql per eliminar totes les valoracions segons el dni
+                // Comanda sql per eliminar una valoracio segons la id de la valoracio
                 string sql = $"DELETE FROM valoracio WHERE id = '{valoracio.Id}'";
 
                 MySqlCommand sqlCommand = new MySqlCommand(sql, connection);
@@ -154,6 +154,7 @@ namespace Projecte0.AccesDades
                 // Creem la valoracio
                 Valoracio valoracio = new Valoracio()
                 {
+                    Id = reader.GetInt32("id"),
                     Comentari = reader.GetString("comentari"),
                     Puntuacio = reader.GetInt32("puntuacio"),
                     Dni = reader.GetString("dni")
@@ -200,7 +201,7 @@ namespace Projecte0.AccesDades
         {
             List<Valoracio> valoracions = new List<Valoracio>();
 
-            // Comanda sql per seleccionar totes les valoracions del restaurant segons el nom
+            // Comanda sql per seleccionar totes les valoracions de un usuari amb el dni
             string sql = $"SELECT * FROM valoracio WHERE Dni = '{dni}';";
 
             MySqlConnection mySqlConnection = connexio.ConnexioBDD(); // Fem la conexio

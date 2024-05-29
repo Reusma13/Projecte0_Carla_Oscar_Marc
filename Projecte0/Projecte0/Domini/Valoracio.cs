@@ -33,18 +33,22 @@ namespace Projecte0.Domini
         /// </summary>
         /// <param name="puntuacio">La puntuacio que vol posar</param>
         /// <param name="comentari">El comentari que es vol posar</param>
-        public Valoracio(string comentari, int puntuacio, string dni)
+        public Valoracio(string comentari, int puntuacio, string dni) : this()
         {
             this.comentari = comentari;
             this.puntuacio = puntuacio;
             this.dni = dni;
         }
-        public Valoracio(int id, string comentari, int puntuacio, string dni)
+        /// <summary>
+        /// Constructor amb atribut de valoracio
+        /// </summary>
+        /// <param name="id">Id de la valoracio</param>
+        /// <param name="comentari">Comentari del client</param>
+        /// <param name="puntuacio">Puntacio del client</param>
+        /// <param name="dni">Dni del client</param>
+        public Valoracio(int id, string comentari, int puntuacio, string dni) : this(comentari,puntuacio,dni)
         {
             this.id = id;
-            this.comentari = comentari;
-            this.puntuacio = puntuacio;
-            this.dni = dni;
         }
         // -------- Propietats --------
         public int Id

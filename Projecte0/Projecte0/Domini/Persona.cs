@@ -98,8 +98,7 @@ namespace Projecte0.Domini
         /// <returns>Retorna la persona seleccionada si existeix a la base de dades, si no existeix, retorna null.</returns>
         public Persona SelectPersona(string dni, string password)
         {
-            Persona p = personaBD.SelectPersonesBDD(dni, password);
-            return p;
+            return personaBD.SelectPersonesBDD(dni, password);
         }
 
         /// <summary>
@@ -111,7 +110,6 @@ namespace Projecte0.Domini
         {
             return personaBD.InsertPersonaBDD(persona);
         }
-
         /// <summary>
         /// Elimina una persona de la base de dades
         /// </summary>

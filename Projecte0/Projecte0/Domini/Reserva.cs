@@ -48,6 +48,8 @@ namespace Projecte0.Domini
         /// <param name="numComensals">Numero de comensals de la reserva</param>
         /// <param name="preferencies">Preferencies de la reserva</param>
         /// <param name="nomTaula">El nom de la taula reservada</param>
+        /// <param name="dni">Es el dni de la persona</param>
+        /// <param name="idRestaurant">Es el id del restaurant escogido</param>
         public Reserva(int idReserva, DateTime data, TimeSpan hora, int numComensals, string preferencies, string nomTaula, string dni, int idRestaurant): this()
         {
             this.idReserva = idReserva;

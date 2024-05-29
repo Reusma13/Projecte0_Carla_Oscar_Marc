@@ -118,7 +118,6 @@ namespace Projecte0.Domini
         {
             return restaurantBD.SelectRestaurantBD(nom);
         }
-
         /// <summary>
         /// Retorna una llista de restaurants d'un client específic.
         /// </summary>
@@ -128,7 +127,14 @@ namespace Projecte0.Domini
         {
             return restaurantBD.SelectRestaurantListBD(dni);
         }
-
+        /// <summary>
+        /// Serviex per cridar al metode SelectRestaurantListBD
+        /// </summary>
+        /// <returns>Ens retorna una llista de restaurant</returns>
+        public List<Restaurant> SelectRstaurantList()
+        {
+            return restaurantBD.SelectRestaurantListBD();
+        }
         /// <summary>
         /// Inserta un nou restaurant a la base de dades.
         /// </summary>
@@ -149,7 +155,6 @@ namespace Projecte0.Domini
         {
             return restaurantBD.DeleteRestaurantBD(nom);
         }
-
         /// <summary>
         /// Actualitza un restaurant existent a la base de dades.
         /// </summary>
@@ -162,6 +167,7 @@ namespace Projecte0.Domini
             return restaurantBD.UpdateRestaurantBD(restaurant, p, nom);
         }
 
+
         /// <summary>
         /// Retorna una llista de fotos d'un restaurant específic.
         /// </summary>
@@ -171,7 +177,6 @@ namespace Projecte0.Domini
         {
             return fotoBD.SelectFotosBDD(r);
         }
-
         /// <summary>
         /// Inserta noves fotos a la base de dades per a un restaurant específic.
         /// </summary>
@@ -182,11 +187,10 @@ namespace Projecte0.Domini
         {
             return fotoBD.InsertFotoBD(fotos, r);
         }
-
         /// <summary>
-        /// Retorna el nom del restaurant.
+        /// Sobreescribim el metode ToString per aixi en doni el nom del restaurant
         /// </summary>
-        /// <returns>Retorna una cadena de text que representa el nom del restaurant.</returns>
+        /// <returns>Retorna el nom del restaurant</returns>
         public override string ToString()
         {
             return nom;
